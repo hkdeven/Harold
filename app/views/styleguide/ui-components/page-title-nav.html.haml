@@ -1,0 +1,14 @@
+= render 'styleguide/partials/shared'
+
+- page_titles = styleguide_stubs('title_nav')['titles']
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 Page titles with navigation
+  %p
+    This is the same as Page Title but with navigation control. A subnav is shown on hover and you can navigate to the siblings of the current section/sub-section
+
+  %p
+    Page titles are also truncated to help with long place name combinations.
+
+- page_titles.each_with_index do | title, i |
+  = styleguide_component('place_title_nav', properties: title, count: i, full_width: true)

@@ -1,0 +1,9 @@
+:javascript
+  window.lp.fs.log(function(){
+    return {
+      url: window.location.href,
+      referrer: document.referrer,
+      viewport: document.documentElement.clientWidth,
+      variant: window.lp.getCookie("_v")
+    };
+  }());

@@ -1,0 +1,11 @@
+.widget__flickr
+  .copy--h1
+    = properties[:tag]
+
+  - if properties[:comments].present?
+    .grid-wrapper--10.results
+      - properties[:comments].first(5).each.with_index do |(id, entry), index|
+        = ui_component("cards/card", properties: card_from_widget_data(entry, index))
+  - else
+    .no--content
+      No content found, please try again later

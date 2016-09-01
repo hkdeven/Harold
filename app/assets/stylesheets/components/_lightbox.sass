@@ -1,0 +1,135 @@
+$lightbox-width: 800px !default
+
+.lightbox
+  +z-layer(modal)
+  +alpha-background($darkgray, 0.75)
+  width: 100%
+  height: 100%
+  left: 0
+  opacity: 0
+  position: fixed
+  transition: 0.3s opacity
+  top: 0
+  visibility: hidden
+
+  &.is-visible
+    visibility: visible
+
+  &.is-active
+    opacity: 1
+
+    .lightbox__content
+      > iframe
+        display: block
+
+.lightbox__wrapper
+  -webkit-overflow-scrolling: touch
+  overflow-y: scroll
+  overflow-x: hidden
+  height: 100%
+  perspective: 700
+  width: 100%
+
+.lightbox__content
+  margin: auto
+  position: relative
+  transition: transform 0.75s cubic-bezier(0.075, 0.820, 0.165, 1.000), opacity 0.1s
+  transform: translate3d(0, 250px, 50px)
+  opacity: 0
+  width: 95%
+  max-width: $lightbox-width
+
+  .lightbox__close
+    +z-layer
+    height: 25px
+    width: 25px
+    position: absolute
+    right: .5em
+    top: .5em
+    cursor: pointer
+    &:hover
+      +icon-color(body-grey)
+
+    .lightbox--layer &, .is-loading &
+      display: none
+
+  .content-ready &
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+    padding-bottom: 50px
+
+  .lightbox--layer &
+    max-width: $lightbox-width
+
+  .is-loading &
+    opacity: 1
+    height: 100%
+
+  .preloader
+    top: 30%
+
+  > iframe
+    background: black
+    border: 0
+    display: none
+    height: 100%
+    width: 100%
+
+  .row--billboard
+    display: none
+    .content-ready &
+      display: block
+
+.lightbox--open
+  overflow: hidden
+  -webkit-overflow-scrolling: touch
+
+.lightbox__controls-wrapper
+  position: absolute
+  width: 100%
+  top: 50%
+  display: none
+  +respond-to(1200)
+    display: block
+
+.lightbox__controls
+  // Move the lightbox arrows slightly wider to fit in the thumbnails
+  max-width: $lightbox-width + 80px
+  margin: auto
+  position: relative
+
+.lightbox__tooltip
+  +css-arrow-central(bottom, $size: 22px)
+  @extend %standard-shadow
+  transition: opacity 0.5s ease
+  opacity: 0
+  position: absolute
+  bottom: 40px
+  width: 160px
+  margin-left: -78px
+  padding: 20px
+  &:after
+    position: absolute
+    bottom: 7px
+  .lightbox__controls__arrow:hover &
+    opacity: 1
+
+.lightbox--show-pagination
+  .arrow--left,
+  .arrow--right,
+  .lightbox__tooltip
+    opacity: 1
+
+.lightbox__tooltip__inner
+  @extend %rounded-corners
+  background: white
+  box-sizing: border-box
+  overflow: hidden
+
+.lightbox__tooltip__text
+  padding: 10px
+  color: $feature-copy
+
+.lightbox__tooltip__image
+  display: block
+  max-width: 100%

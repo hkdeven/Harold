@@ -1,0 +1,132 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+  %h1.copy--h1
+    Ad units
+
+  %p
+    Ad units are placeholder elements decorated with a little information about their intended content. 
+    Ad units are controlled by the ad manager and served via DoubleClick for Publishers (DFP).
+
+  %p
+    Advertisements are targeted based on meta data about the current page provided by an inline JS
+    configuration (<code>lp.ads</code>). The configuration provides information such as the 
+    destination and country the page content is about and the current page layout. Each ad unit can be 
+    further targeted by decorating it with extra meta data.
+
+  %p
+    The ad manager is initialised within <code>lib/core/base.js</code> which should be included within 
+    every application.
+
+.card.styleguide-block.copy--body.context--content
+
+  .styleguide-block__description
+
+    %h2.copy--h2.styleguide-block__heading
+      Usage
+
+    %p
+      Each ad unit type is available as a Rizzo UI component. The available ad types are:
+    %ul
+      %li
+        %code ad_sense
+      %li
+        %code leaderboard
+      %li
+        %code mpu
+      %li
+        %code sponsor_logo
+      %li
+        %code sponsor_logo_html
+      %li
+        %code traffic_driver_html
+
+    %pre.styleguide.copy--body.language-haml
+      %code
+        = preserve do
+          :plain
+            = ui_component("ads/leaderboard", properties: {...})
+
+    %p
+      Ad components can be configured in three ways:
+
+    %dl
+      %dt.copy--h5 Size mapping
+      %dd 
+        Size maps allow for loading differently sized ads based on the viewport. We use this 
+        as well to differentiate ad units based on their context.
+      
+      %dt.copy--h5 Extension
+      %dd
+        Certain ad unit types require a callback to further configure them, for instance a
+        double height MPU unit within a card stack needs to make space for itself.
+
+      %dt.copy--h5 Targeting
+      %dd
+        Ad units can be decorated with extra data about themselves to better target ads. It's 
+        sensible to add a position property.
+
+    %pre.styleguide.copy--body.language-haml
+      %code
+        = preserve do
+          :plain
+
+            // Include a simple HTML traffic driver
+            = ui_component('ads/traffic_driver_html')
+
+            // Include the double height MPU
+            = ui_component('ads/mpu', properties: { size: { mapping: 'mpu-double' } })
+            
+            // Include two leaderboards with different content
+            = ui_component("ads/leaderboard", properties: { targeting: { position: "top"} })
+            = ui_component("ads/leaderboard", properties: { targeting: { position: "bottom"} })
+
+.card.styleguide-block.copy--body.context--content
+
+  .styleguide-block__description
+
+    %h2.copy--h2.styleguide-block__heading
+      Controlling ads
+
+    %p
+      The ad manager will apply an event listeners to the page which will listen for events. Currently 
+      configured events are:
+    
+    %dl
+      %dt.copy--h5 Refresh
+      %dd
+        All ad units on the page can be refreshed by triggering an <code>:ads/refresh</code> event. The 
+        refresh action can also be filtered by type (based on the ID of the ad unit placeholder).
+
+        %pre.styleguide.copy--body.language-javascript
+          %code
+            = preserve do
+              :plain
+                $(LISTENER).trigger(":ads/refresh", { type: "leaderboard" });
+
+      %dd
+        The config parameters for the ads can be changed too with <code>:ads/refresh</code> event. Just pass the new config and it will be refreshed. 
+
+        %pre.styleguide.copy--body.language-javascript
+          %code
+            = preserve do
+              :plain
+                $(LISTENER).trigger(":ads/refresh", { ads: { param: "newValue" } });
+
+    %p
+      Individual ads can be refreshed by accessing the ad unit instance:
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :plain
+            $(".adunit").data("adUnit").refresh();
+
+    %p
+      Also for individual ads, you can pass new config:
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :plain
+            $(".adunit").data("adUnit").refresh({ ads: { param: "newValue" } });

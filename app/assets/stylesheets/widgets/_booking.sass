@@ -1,0 +1,103 @@
+.booking-widget
+  @extend %rounded-corners
+  background-color: white
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  max-width: 435px
+  padding: 15px 15px 12px 15px
+  transition: all 0.5s ease-in-out
+  width: 80%
+
+  .field--booking
+    margin: 12px 0
+    padding: 0
+    width: 100%
+
+.field--booking
+  .input
+    font-weight: bold
+    float: none
+  &:last-child
+    margin-bottom: 0
+  &.field--has-label
+    .field__label
+      float: left
+      width: 35%
+    .field__content
+      float: left
+      width: 65%
+  &.field--no-label
+    .field__content
+      width: 100%
+      .fieldset--pair &
+        display: inline
+
+  .fieldset--pair &
+    display: inline-block
+    margin: 3px 0
+    vertical-align: top
+    width: 49%
+    .dropdown__value
+      box-shadow: none
+    &.field--no-label
+      .field-content
+        display: inline
+    +respond-to(narrow-view)
+      margin: 3px .3%
+    .booking-widget--stacked &
+      margin-top: 12px
+      width: 100%
+
+.field--booking__date
+  @extend %clearfix
+  margin-top: 12px
+
+.booking-input
+  background-color: $body-background-offset
+  font-weight: bold
+  &:focus
+    background-color: $body-background-offset
+
+.booking-subtitle
+  color: $header-blue
+
+.booking-legend
+  float: left
+
+.booking-radios
+  float: right
+  label
+    margin: 0 10px 0 3px
+
+.date-group--booking
+  padding: 0
+  margin: 12px 0
+
+.dropdown--booking
+  margin: 12px 0
+
+.driver-info
+  margin-bottom: 3px
+
+.booking__powered-by
+  +font-size(12)
+  color: $bodygray
+  margin-top: 10px
+  text-align: right
+.booking__powered-by__logo
+  height: 40px
+  position: relative
+  vertical-align: middle
+
+
+.btn--booking
+  position: relative
+.btn--booking__error
+  background: $red
+  display: none
+  font-size: inherit
+  left: -10px
+  padding: 22px 15px
+  position: absolute
+  top: -15px

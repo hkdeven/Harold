@@ -1,0 +1,134 @@
+= render 'styleguide/partials/shared'
+
+- require "ostruct"
+- sliders = styleguide_stubs('slider')
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 Slider
+  %p
+    Responsive image slider component. If you want a thumbnail slider attached to it, you can create the 
+    %code
+      ThumbSlider 
+    component (see below for example) in conjunction with the base 
+    %code
+      Slider.
+
+  %h2.copy--h2 Default Javascript Parameters
+  %p
+    %code
+      slides: ".js-slide"
+    %br
+    %code
+      slidesContainer: ".js-slider-container"
+    %br
+    %code
+      slidesViewport: ".js-slider-viewport"
+    %br
+    %code
+      assetBalance: 2
+    the number of images to load on either side of is-current
+    %br
+    %code
+      assetReveal: false
+    Must be set to true if setting lazyLoad to true in the component properties.
+    %br
+    %code
+      autoSlideDelay: 0
+    The delay after which to automatically slide. A value of 0 means this feature is off.
+    %br
+    %code
+      keyboardControl: false
+    Next: R arrow / l / n; Previous: L arrow / h / p
+    %br
+    %code
+      loopAround: false
+    %br
+    %code
+      showPagination: false
+    %br
+    %code
+      showSliderControls: true
+    %code
+      %br
+      transition: "200"
+    The duration for the slide transitions
+      
+  %h2.copy--h2
+    Example - Creating an image slider
+
+  You can change any slider defaults when the slider is created. For example:
+    
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      :escaped
+        new Slider({ el: ".js-slider", showSliderControls: false, loopAround: true });
+
+
+
+
+  %h1.copy--h1 ThumbSlider
+  The ThumbSlider will create a ribbon of thumbnail-sized images beneath the large hero element.
+  
+  %h2.copy--h2 Default Thumbnail Parameters 
+  %p
+  %code
+    el: ".js-slider-thumbs"
+  thumbnail reel container
+  %br
+  %code
+    slides: ".js-slide"
+  should match slider setting
+  %br
+  %code  
+    thumbs: ".js-thumb-link"
+  class for individual thumbnails
+  %br
+  %code  
+    sliderViewport: ".js-slider-viewport"
+  thumbnail element it appended to it
+  %br
+  %code  
+    scrollBox: ".js-scrollbox"
+  scrollable thumbnail area
+  %br
+  %code  
+    scrollControlls:".js-thumb-arrow"
+  thumbnail left right controlls
+  %br
+  %code  
+    listener: document
+  listener should match slider setting
+  %br
+  %code  
+    scrollDistance: 300
+  scroll distance
+  %br
+
+  %h2.copy--h2
+    Example - Creating a slider with a thumbnail reel
+
+  In this example, we use a component that determines if the user is on a mobile device, because the thumbnail slider is not responsive, so it shouldn't be used on smaller devices.
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          define(["lib/components/slider",
+                 "lib/utils/mobile_helper"], function (Slider, Device) {
+
+            var _listener = window.document;
+            var _device = new Device();
+
+            // Create the main hero slider
+            new Slider({ el: ".js-slider", assetReveal: true, listener: _listener });
+
+            // Only show the thumbnail slider if not a mobile device
+            if (!_device.isMobile()) {
+              require(["lib/components/thumb_slider"], function (ThumbSlider) {
+                new ThumbSlider({ listener: _listener });
+              });
+            }
+          });
+
+- sliders.each_with_index do |slider, i|
+  = styleguide_component("slider", properties: slider, count: i, card_style: true, full_width: true)

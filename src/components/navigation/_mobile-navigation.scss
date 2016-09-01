@@ -1,0 +1,99 @@
+@import "../../../sass/webpack_deps";
+
+.mobile-navigation {
+  background-color: $color-white;
+  bottom: 0;
+  height: 100vh;
+  max-width: 75vw;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  padding: $gutter;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25rem;
+  z-index: z("modal") + 1;
+
+  &,
+  &__list {
+    opacity: 0;
+    transform: translateX(30%);
+    transition: transform ($animation-speed / 2), opacity ($animation-speed / 2);
+  }
+
+  &--hidden {
+    z-index: z("below");
+  }
+
+  &--visible,
+  &--visible &__list {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__close {
+    $size: 5rem;
+    color: $titlegray;
+    cursor: pointer;
+    display: none;
+    height: $size;
+    line-height: $size;
+    position: absolute;
+    right: 1.5rem;
+    text-align: center;
+    text-indent: -9999px;
+    top: 1.5rem;
+    width: $size;
+
+    &::before {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-indent: 0;
+      top: 0;
+    }
+  }
+
+  &__list {
+    transition: transform $animation-speed ($animation-speed / 4), opacity $animation-speed ($animation-speed / 4);
+  }
+
+  &__item {
+    border-bottom: .1rem solid $color-gray;
+    position: relative;
+
+    // Search
+    &:first-child {
+      display: none;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &--active > .mobile-navigation__link {
+      color: $lpblue;
+    }
+
+    .icon {
+      float: right;
+      height: 1.3rem;
+      margin-top: .6rem;
+      transition: transform $animation-speed linear;
+      width: 1.3rem;
+    }
+
+    &.clicked .icon {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &__link {
+    color: $titlegray;
+    display: block;
+    padding: ($spacing + .1) 0 ($spacing - .4);
+    position: relative;
+  }
+}

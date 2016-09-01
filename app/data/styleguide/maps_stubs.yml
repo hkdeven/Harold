@@ -1,0 +1,27 @@
+-
+  :styleguide_title: "Static map"
+  :alt: "A map showing the centre of London"
+  :width: 320
+  :height: 240
+  :latitude: 51.5073
+  :longitude: -0.1277
+
+-
+  :styleguide_title: "Static map"
+  :alt: "A map showing the centre of London"
+  :zoom: 12
+  :width: 320
+  :height: 240
+  :marker: false
+  :latitude: 51.5073
+  :longitude: -0.1277
+
+-
+  :styleguide_title: "Dynamic map"
+  :alt: "A map showing the centre of London"
+  :zoom: 15
+  :scale: 2
+  :width: 320
+  :height: 240
+  :latitude: 51.5073
+  :longitude: -0.1277

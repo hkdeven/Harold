@@ -1,0 +1,109 @@
+// -----------------------------------------------------------------------------
+//
+//  Main page layout - adapts to not having a sidebar
+//
+// -----------------------------------------------------------------------------
+
+.stack
+  margin-left: 10px
+  min-height: 400px
+
+  .results
+    position: relative
+
+  .nav--left + &
+    overflow: visible
+    vertical-align: top
+    clear: both
+    +respond-to(wide-view)
+      clear: none
+      display: table-cell
+      margin-left: 10px
+      max-width: 798px
+      width: 798px
+    .ie7  &
+      display: block
+      overflow: hidden
+      width: auto
+
+// -----------------------------------------------------------------------------
+// New responsive layout with fixed ad rail
+// -----------------------------------------------------------------------------
+
+.stack--with-rail
+  @extend %clearfix
+  position: relative
+  margin-left: 0
+
+  +respond-to(wide-view)
+    margin-top: 25px
+
+.stack__wrapper
+  width: 100%
+  box-sizing: border-box
+
+  +respond-to(wide-view)
+    float: left
+    padding-right: 340px
+
+.stack__content
+  position: relative
+
+.stack__rail
+  +respond-to(wide-view)
+    float: right
+    margin-left: -300px
+    width: 300px
+
+  .adunit
+    display: table
+    margin-left: auto
+    margin-right: auto
+    min-width: 300px
+    background: $body-background
+    +respond-to(wide-view)
+      display: block
+      min-width: 0
+
+  .adunit--mpu
+    min-height: 250px
+
+  .adunit--traffic-driver-rail
+    min-height: 100px
+
+.stack__rail__sticky
+  +respond-to(wide-view)
+    width: 300px
+
+    &.is-at-bottom
+      position: absolute
+      right: 0
+      bottom: 0
+
+.stack__rail__section
+  margin-top: 20px
+  +respond-to(wide-view)
+    margin-top: 0
+    margin-bottom: 40px
+
+.stack__rail__heading
+  margin-bottom: 10px
+  color: $body-copy
+
+// -----------------------------------------------------------------------------
+// Stack rows
+// -----------------------------------------------------------------------------
+
+.stack__row
+  margin-top: 40px
+
+.stack__row__heading
+  margin-bottom: 16px
+  color: inherit
+
+.stack__row__cta
+  float: right
+  margin-top: -0.25em
+
+.stack__row__grid
+  margin-bottom: -10px

@@ -1,0 +1,69 @@
+<div class="modal__column--left">
+  {{#with ebook}}
+    <img src="{{img.url}}"/>
+  {{/with}}
+</div>
+<div class="modal__column--right">
+  <div class="ebook__title">
+    {{ebook.title}}
+  </div>
+  <div class="ebook__strapline">
+    <h1>{{ebook.strapline}}</h1>
+  </div>
+  <div class="ebook__copy">
+    {{{ebook.copy}}}
+  </div>
+  {{#if ebook.form}}
+    <form action="{{ebook.form.action}}" class="js-sailthru-form">
+    {{#each ebook.form.hidden_fields}}
+    <input type="{{type}}" name="{{name}}" value="{{value}}" />
+    {{/each}}
+    {{#each ebook.form.text_fields}}
+    <input class="ebook__form-field"type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
+    {{/each}}
+    <select class="ebook__form-field" name="{{ebook.form.country_select.name}}" required>
+    <option value>Country</option>
+    {{#each countries}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
+    <input class="button" type="submit" value="Download">
+    </form>
+  {{/if}}
+  <div class="js-success is-hidden">
+    <div class="ebook__success">
+      <div class="social-share social-share--centered js-action-sheet">
+        <ul class="social-share__list">
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="twitter" data-msg="{{social.twitter}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-twitter-21px"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="facebook" data-msg="{{social.facebook}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 9 17" width="9" height="16">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-facebook-9px"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="email" data-msg="{{{social.email}}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 18 17" width="18" height="17">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-email-18px"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div><!-- .social-share -->
+      <h1 class="ebook__success__copy">Thank you!</h1>
+      <div class="ebook__download__button">
+        <a class="button ebook__download__button--position" href=" https://itunes.apple.com/gb/book/secret-europe/id1116016884?mt=11" data-lpa-category="Best in Europe" data-lpa-action="ebook download" data-lpa-label="iBook">for iBooks</a>
+        <a class="button ebook__download__button--position" href="https://www.amazon.co.uk/Secret-Europe-2016-Discover-Europes-ebook/dp/B01FWY1Y30/ref=sr_1_12?ie=UTF8&qid=1463739643&sr=8-12&keywords=Lonely+Planet+Secret+Europe" data-lpa-category="Best in Europe" data-lpa-action="ebook download" data-lpa-label="kindle UK">for Kindle (UK)</a>
+        <a class="button ebook__download__button--position" href="https://www.amazon.com/Secret-Europe-2016-Discover-Europes-ebook/dp/B01FWY1Y30?" target="_blank" role="button" data-lpa-category="Best in Europe" data-lpa-action="ebook download" data-lpa-label="kindle US">for Kindle (US)</a>
+        <a class="button ebook__download__button--position" href="https://s3.amazonaws.com/static-asset/marketing/BIE2016/Secret_Europe.pdf" target="_blank" role="button" data-lpa-category="Best in Europe" data-lpa-action="ebook download" data-lpa-label="PDF">for PDF</a>
+      </div>
+  </div>
+  </div>
+</div>

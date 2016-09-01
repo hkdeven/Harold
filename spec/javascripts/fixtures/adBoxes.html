@@ -1,0 +1,29 @@
+<script type="text/javascript">
+	// New
+	window.lp = window.lp || {};
+	window.lp.ads = lp.ads || {};
+	window.lp.ads.networkCode = 6956;
+	window.lp.ads.layers = ["Test_LP"];
+
+	// This is just a JSON formatted object to make it easy to add as many key:value pairs as desired.
+	window.lp.ads.keyValues = { "theme": "family-travel, honeymoons, world-food", "template": "highlights", "topic":"highlights" };
+
+	// Deprecated key:value pairs
+	window.lp.ads.adZone = "destinations/europe;";
+	window.lp.ads.adTnm = "overview";
+</script>
+<div class="ad-container">
+	<div id="js-ad-leaderboard"></div>
+	<div id="js-ad-leaderboard"></div>
+	<div id="js-ad-mpu"></div>
+	<div id="js-ad-trafficDriver"></div>
+	<div id="js-ad-adSense"></div>
+</div>
+
+<!-- Tracking pixel -->
+<div id="tracking-pixel">
+	<iframe id="tracking-pixel-iframe"></iframe>
+</div>
+<script type="text/javascript">
+	document.getElementById("tracking-pixel-iframe").contentWindow.document.write('<html><body><img width="1" height="1"></body></html>');
+</script>

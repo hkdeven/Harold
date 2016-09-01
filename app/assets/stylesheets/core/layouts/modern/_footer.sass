@@ -1,0 +1,213 @@
+.wrapper--footer
+  @extend %lp-font-stack
+  @extend %subpixel-text
+  @extend %transition--nav
+  position: relative
+
+// ----------------------------------------------------------------------------
+//
+// Row Sitemap
+//
+// ----------------------------------------------------------------------------
+
+.row--sitemap
+  +respond-to(wide-view)
+    margin-bottom: 30px
+    border-top: 1px solid $input-border
+
+  .col--footer
+    padding-left: 10px
+    +respond-to(wide-view)
+      padding: 0
+
+.row--sitemap__inner
+  +respond-to(wide-view)
+    padding-top: 20px
+
+.col--footer,
+.col--footer--last
+  border-bottom: 1px solid $input-border
+  +respond-to(wide-view)
+    float: left
+    border: none
+    margin: 0 20px 15px 0
+
+.col--footer--last
+  padding: 0 10px
+  +respond-to(wide-view)
+    float: right
+    width: 240px
+    padding: 0
+    margin-right: 10px
+
+  @if $is-ie == true
+    width: 200px
+
+.nav__item--footer
+  line-height: 18px
+  padding: 8px 0
+
+  &:last-child
+    padding-bottom: 20px
+
+  +respond-to(wide-view)
+    padding: 0
+    &:last-child
+      padding-bottom: 0
+
+.nav__item--sitemap
+  color: $body-copy
+  &:hover
+    color: $body-copy
+
+.title--footer
+  font-weight: bold
+
+
+.title--list--footer
+  display: inline-block
+  padding: 14px 0
+  color: $body-copy
+  font-weight: bold
+  +respond-to(wide-view)
+    display: block
+    margin-bottom: 15px
+    padding: 0
+
+// Override some of the default accordion styles
+
+.col--footer,
+.col--footer--last
+
+  .accordion__target--mid
+    max-height: 40px
+    +respond-to(wide-view)
+      max-height: none
+
+  .accordion__title
+    +respond-to(wide-view)
+      display: none
+
+  .accordion__title--footer
+    float: right
+    padding-right: 0
+    width: 50%
+    height: 30px
+
+
+// ----------------------------------------------------------------------------
+//
+// Social Icons
+//
+// ----------------------------------------------------------------------------
+
+.nav--social
+  padding: 0 20px
+  +respond-to(wide-view)
+    padding: 0
+.nav--social__inner
+  float: right
+  +respond-to(wide-view)
+    float: none
+  .base &
+    display: none
+
+.title--social
+  +font-size(14)
+  padding: 26px 0
+  margin-right: 5px
+  display: none
+  +respond-to(wide-view)
+    display: inline-block
+
+  .ie7 &
+    display: none
+
+.nav__item--social
+  @extend %image-replacement
+  border-radius: 15px
+  margin: 16px 0
+  width: 30px
+  height: 30px
+  background-size: 28px
+  background-position: 1px 1px
+  &:hover
+    background-color: white
+  .ie7 &
+    text-indent: 0
+    height: auto !important
+    width: auto !important
+    margin: 26px 5px 0 0
+    background: none
+
+
+// ----------------------------------------------------------------------------
+//
+// 'About Lonely Planet'
+//
+// ----------------------------------------------------------------------------
+
+.row--footer--about
+  +respond-to(wide-view)
+    padding: 0 10px
+    border-top: 1px solid $input-border
+
+  .media--lp-logo
+    margin: 12px 0 0
+
+  .wv--nav--inline
+    width: 100%
+    +respond-to(wide-view)
+      width: auto
+
+.row--footer--social__logo
+  display: inline-block
+  +respond-to(wide-view)
+    display: none
+
+.row--footer--about__logo
+  display: none
+  +respond-to(wide-view)
+    display: block
+
+.nav__item--about
+  color: $body-copy
+  padding: 14px 0 14px 20px
+  border-bottom: 1px solid $input-border
+
+  +respond-to(wide-view)
+    padding: 26px 0
+    margin-left: 15px
+    border-bottom: none
+    font-weight: normal
+
+// ----------------------------------------------------------------------------
+//
+// Row Smallprint
+//
+// ----------------------------------------------------------------------------
+
+.row--smallprint__inner
+  padding-top: 20px
+  +respond-to(wide-view)
+    padding: 20px 10px
+
+.text--legal
+  line-height: 1.5em
+  margin-bottom: 0
+  text-align: center
+  +respond-to(wide-view)
+    width: 60%
+    text-align: left
+
+.form--international
+  width: 60%
+  margin: 20px auto
+  +respond-to(wide-view)
+    width: 20%
+    margin: 0
+
+.link--view-full-site
+  padding-bottom: 20px
+  &:hover
+    text-decoration: none

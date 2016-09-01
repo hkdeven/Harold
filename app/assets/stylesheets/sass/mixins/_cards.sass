@@ -1,0 +1,16 @@
+@mixin card-dimensions-list-format($size: "tall")
+  $height: if($size == "short", $card-list-format-content-height, $card-list-format-height)
+
+  padding-top: aspect-ratio($card-list-format-width, $height)
+
+  &.card--has-img.card--cover
+    padding-top: aspect-ratio($card-list-format-width, $card-list-format-figure-height)
+
+@mixin card-dimensions-column-format($span: 1, $size: "tall")
+  $width: ($card-column-format-width * $span) + ($card-gutter * ($span - 1))
+  $height: if($size == "short", $card-column-format-figure-height, $card-column-format-height)
+  padding-top: aspect-ratio($width, $height)
+
+  &.card--fixed
+    width: $width
+    padding-top: $height

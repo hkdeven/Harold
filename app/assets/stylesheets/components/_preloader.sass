@@ -1,0 +1,109 @@
+$discMargin: 2px
+$discSize: 12px
+$discBoxSize: $discSize + ($discMargin * 2)
+
+.preloader
+  @extend %transition--base
+  left: 50%
+  margin-left: -#{$discBoxSize * 4 / 2} // 4 = number of discs
+  margin-top: -#{$discBoxSize / 2}
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  top: 50%
+  z-index: 0
+  visibility: hidden
+  .is-loading &
+    opacity: 1
+    visibility: visible
+  .no-3d-support &, .base &
+    // Put this behind this flag so that we don't get a flash of the fallback
+    background: url("#{image_path('shared/spinner.gif')}") no-repeat center center white
+    .preloader__disc, .preloader__cover
+      visibility: hidden
+
+  .results &
+    +z-layer(modal)
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2)
+    border-radius: 8px
+    background-color: #fff
+    padding: $discSize
+    top: 200px
+
+.preloader--styled
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2)
+  border-radius: 8px
+  background-color: #fff
+  margin-left: -#{( ($discBoxSize * 4) / 2 ) + $discSize} // 4 = number of discs
+  margin-top: -#{($discBoxSize  / 2) + $discSize}
+  padding: $discSize
+
+.preloader__disc
+  background: #dbe6ec
+  border-radius: $discSize / 2
+  display: block
+  float: left
+  height: $discSize
+  margin: $discMargin
+  overflow: hidden
+  width: $discSize
+
+  .is-disabled &,
+  [disabled] &
+    background: white
+
+.preloader__disc--coloured
+  +hardware-acceleration()
+  border-radius: $discSize / 2
+  height: $discSize
+  margin-top: -#{$discSize}
+  position: relative
+  top: $discSize / 2
+  width: $discSize
+  .is-loading &
+    animation: discmove 1.75s infinite
+
+  &.preloader__disc--blue
+    background: $teal
+  &.preloader__disc--red
+    background: $red
+    animation-delay: 0.25s
+  &.preloader__disc--green
+    background: $green
+    animation-delay: 0.5s
+  &.preloader__disc--orange
+    background: $orange
+    animation-delay: 0.75s
+
+@keyframes discmove
+  0%
+    transform: translateY(0px)
+
+  40%
+    transform: translateY($discSize)
+
+  80%
+    transform: translateY($discSize * 2)
+
+  100%
+    transform: translateY($discSize * 2)
+
+.preloader__cover
+  height: 36px
+  left: 1px
+  position: absolute
+  top: -10px
+  width: 62px
+  z-index: 10
+  background: url("#{image_path('shared/spinner.svg')}") no-repeat center center
+
+  .media-gallery &
+    background-image: url("#{image_path('shared/spinner-grey.svg')}")
+  .is-disabled &,
+  [disabled] &
+    background-image: url("#{image_path('shared/spinner-subduedgray.svg')}")
+
+  .results &,
+  .preloader--styled &
+    left: 13px
+    top: 2px

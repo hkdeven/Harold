@@ -1,0 +1,12 @@
+= render 'styleguide/partials/shared'
+
+- tiles = styleguide_stubs('tiles')
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 Tiles
+  %p
+    Tiles should be included as components where possible, and always in rails apps. You can include the ui_component includes as detailed below.
+
+.styleguide--section__tiles
+  - tiles['basic'].each do |tile|
+    = styleguide_component("tile", properties: tile)

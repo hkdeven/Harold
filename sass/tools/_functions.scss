@@ -1,0 +1,92 @@
+/// Convert a pixel value to an em value
+///
+/// For a relational value, the input is calculated based on a parent value.
+/// The default parent is 16px. The parent can be changed by passing an
+/// optional second value.
+///
+/// @param  {String} $pixel       - Pixel value to convert
+/// @param  {String} $base [16px] - Base pixel value
+/// @return {String}              - em value
+@function em($pixel, $base: 16px) {
+  @return ($pixel / $base) * 1em;
+}
+
+/// An alias for `map-get`
+///
+/// @param  {Map}    $map - Map name
+/// @param  {String} $key - Key name
+/// @return {String}      - Key value
+@function get($map, $key) {
+  @return map-get($map, $key);
+}
+
+/// Half gutter; requires [Susy](http://susy.oddbird.net/)
+@function gutter-half() {
+  @return (gutter() / 2);
+}
+
+/// Quarter gutter; requires [Susy](http://susy.oddbird.net/)
+@function gutter-quarter() {
+  @return (gutter() / 4);
+}
+
+/// Double gutter; requires [Susy](http://susy.oddbird.net/)
+@function gutter-double() {
+  @return (gutter() * 2);
+}
+
+/// Quadruple gutter; requires [Susy](http://susy.oddbird.net/)
+@function gutter-quad() {
+  @return (gutter() * 4);
+}
+
+/// Create a unitless line-height variable
+///
+/// @param  {Value}  $font-size   - Font size value in px or rem
+/// @param  {Value}  $line-height - Line height value in px or rem
+/// @return {String}              - Unitless value
+@function create-unitless-line-height($font-size, $line-height) {
+  // Check the font-size units and strip them
+  @if unit($font-size) == "rem" {
+    $font-size: strip-units($font-size) * 10;
+  } @else {
+    $font-size: strip-units($font-size);
+  }
+
+  // Check the line-height units and strip them
+  @if unit($line-height) == "rem" {
+    $line-height: strip-units($line-height) * 10;
+  } @else {
+    $line-height: strip-units($line-height);
+  }
+
+  // Calculate unitless line-height and return it
+  @return ($line-height / $font-size);
+}
+
+/// Removes units from a number string
+///
+/// @param {string} $number The string to remove units from
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/// Returns a value from the $z-index map from a given key
+///
+/// Contains a map to hold all of the possible z-index values with a matching
+/// key. Avoid declaring a z-index value in the CSS itself, but instead add
+/// another key-value pair to the map.
+///
+/// @param  {String} $layer - Name of z layer
+/// @return {String}        - z-index value
+/// @example
+/// .foo {
+///   z-index: z("default");
+/// }
+@function z($layer) {
+  @if not map-has-key($z-index, $layer) {
+    @warn "No layer found for `#{$layer}` in $z-index map. Property omitted.";
+  }
+
+  @return map-get($z-index, $layer);
+}

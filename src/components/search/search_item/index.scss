@@ -1,0 +1,58 @@
+@import "../../../../sass/webpack_deps";
+
+.lp-search-item {
+  $height: 6rem;
+  cursor: pointer;
+  line-height: $height;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+  transition: background-color ($animation-speed / 2);
+  white-space: nowrap;
+
+  &:hover,
+  &:active,
+  &:focus {
+    .lp-search-item__name {
+      @media (min-width: $min-720) {
+        transform: translateX($spacing / 2);
+      }
+    }
+  }
+
+  &::after {
+    @include fade-edge("right");
+    border-bottom: .1rem solid rgba($color-light-slate, .5);
+  }
+
+  &--selected {
+    background-color: $active-background-color;
+  }
+
+  &__link {
+    display: block;
+    padding-left: (8rem + $gutter);
+    position: relative;
+  }
+
+  &__name {
+    backface-visibility: hidden;
+    border-bottom: .1rem solid rgba($color-light-slate, .5);
+    color: $darkgray;
+    font-size: $font-size;
+    font-weight: 300;
+    transition: transform $animation-speed;
+
+    @media (min-width: $min-720) {
+      font-size: 2.2rem;
+    }
+
+    .is-highlight {
+      color: $titlegray;
+    }
+  }
+
+  &--selected &__name {
+    transform: translateX($spacing / 2);
+  }
+}

@@ -1,0 +1,34 @@
+-
+  :title: "Design Elements"
+  :slug: "/design-elements"
+-
+  :title: "UI Components"
+  :slug: "/ui-components"
+-
+  :title: "JS Components"
+  :slug: "/js-components"
+-
+  :title: "Widgets"
+  :slug: "/widgets"
+  :submenu:
+    -
+      :title: 'Car Rental'
+      :slug: '/styleguide/widgets/car-rental'
+    -
+      :title: 'Flickr'
+      :slug: '/styleguide/widgets/flickr'
+    -
+      :title: 'Flights'
+      :slug: '/styleguide/widgets/flights'
+    -
+      :title: 'Promo Unit'
+      :slug: '/styleguide/widgets/promo'
+    -
+      :title: 'Travel Insurance'
+      :slug: '/styleguide/widgets/travel-insurance'
+    -
+      :title: 'Social'
+      :slug: '/styleguide/widgets/social'
+-
+  :title: "CSS Utilities"
+  :slug: "/css-utilities"

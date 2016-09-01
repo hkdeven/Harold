@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+//
+//  Card layer module
+//
+// -----------------------------------------------------------------------------
+
+$layer-max-width: 800px
+
+.card--layer
+  width: 100%
+  max-width: $layer-max-width
+  margin: 0 auto
+
+  .row--billboard
+    width: 100%
+    background: transparent
+    height: 98px
+    padding: 16px 0
+    .ad-billboard
+      padding: 0
+  .row--secondary
+    background: none
+    padding-top: 20px
+  .row__title--secondary
+    max-width: 100%
+    background-color: transparent
+    position: absolute
+    .place-title
+      padding-left: 30px
+      padding-top: 1px
+      &:before
+        +size(24px)
+        top: 0
+        left: 0
+
+.card--layer__content
+  @extend %clearfix
+  @extend %large-shadow
+  position: relative
+  overflow: hidden
+
+  .copy--h1
+    width: 90%
+    margin: 0 0 10px 0
+    line-height: 1.1em
+
+  .copy--feature
+    +font-size(20)
+
+  a > img
+    width: 100%
+    height: auto
+
+.card--layer__close
+  +size(30px)
+  +z-layer(modal)
+  position: absolute
+  top: 26px
+  right: 20px
+  &:hover
+    background-position: 0 0
+    top: 25px
+
+.card--layer__article
+  padding-bottom: 10px
+
+.card--layer__preloader
+  position: relative
+  margin-top: 50px
+
+.lightbox
+
+  .prerender-container
+    height: 100%
+    &.will-transition
+      transition: .4s ease-in-out transform
+      will-change: transform
+
+  .prerender-panel
+    position: absolute
+    top: 0
+    width: $layer-max-width

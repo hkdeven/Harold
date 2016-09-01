@@ -1,0 +1,77 @@
+= render 'styleguide/partials/shared'
+
+:ruby
+  button_stub = styleguide_stubs('buttons')
+  colors = button_stub['colors']
+  variation = button_stub['variation']
+  social_media = button_stub['social_media']
+  template = File.read(File.expand_path("../../../components/_button.html.haml", __FILE__))
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+  %h1.copy--h1 Buttons
+  %p.copy--h2 Please note:
+  %p
+    Buttons do not call this component directly as the abstraction would be overkill. Buttons should always look like these through a combination of the modifier classes detailed below and in
+    %a{href: 'https://github.com/lonelyplanet/rizzo/blob/master/app/assets/stylesheets/components/_buttons.sass'}
+      buttons.sass
+
+.styleguide-block.styleguide-block__buttons.context--content
+
+
+
+  .copy--h3 Colour variations
+  .grid-wrapper--10.styleguide-block
+    - colors.each_with_index do | color, i |
+      - color[:modifiers] = "btn--medium"
+      .col--one-half
+        .styleguide-block__description.card.copy--body{class: color[:type] == "white" ? "theme--dark" : nil}
+          .styleguide-block__items.clearfix
+
+            %h2.copy--h2.styleguide-block__heading.split--left
+              = color[:styleguide_title]
+
+            .styleguide-block__item.split--right{class: " styleguide-block__item--#{i}"}
+              = ui_component("button", button: color)
+
+          %pre.styleguide.copy--body.language-markup
+            %code #{raw(CGI::escapeHTML(Haml::Engine.new(template).render(template, button: color)))}
+
+  .copy--h3 Size and Style variations
+  .grid-wrapper--10.styleguide-block
+    - i = 0
+    - modifier_classes = variation.delete(:modifiers)
+
+    - while i < modifier_classes.length
+      - variation[:modifiers] =  modifier_classes[i]
+      - heading = variation[:modifiers].split(' ').last.split('btn--').last
+
+      .col--one-half
+        .styleguide-block__description.card.context--content
+          .styleguide-block__items.clearfix
+
+            %h2.copy--h2.styleguide-block__heading.split--left
+              = heading
+
+            .styleguide-block__item.split--right{class: "styleguide-block__item--#{i}", style: variation[:modifiers] =~ /btn--full-width/ ? "float: none;" : ""}
+              = ui_component("button", button: variation)
+
+          %pre.styleguide.copy--body.language-markup
+            %code #{raw(CGI::escapeHTML(Haml::Engine.new(template).render(template, button: variation)))}
+        - i += 1
+
+
+  .copy--h3 Social Media
+  .grid-wrapper--10.styleguide-block
+    - social_media.each_with_index do | button, i |
+      .col--one-half
+        .styleguide-block__description.card.copy--body
+          .styleguide-block__items.clearfix
+
+            %h2.copy--h2.styleguide-block__heading.split--left
+              = button[:styleguide_title]
+
+            .styleguide-block__item.split--right{class: " styleguide-block__item--#{i}"}
+              = ui_component("button", button: button)
+
+          %pre.styleguide.copy--body.language-markup
+            %code #{raw(CGI::escapeHTML(Haml::Engine.new(template).render(template, button: button)))}

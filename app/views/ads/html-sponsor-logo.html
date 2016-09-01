@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><script>
+/* ==== Ad configuration ==== */
+
+var adTitleText = "I Paid For This Ltd.",
+    adLabelText = "Sponsor",
+    adLogoSrc = "http://placehold.it/120x40",
+    adClickHref = "http://google.com",
+    adImpressionHref = "http://placehold.it/1x1";
+
+/* ==== Do not modify below this line ==== */
+
+window.parent.document.getElementById("js-sponsor-logo-html").innerHTML += [
+  "<div class='sponsor-logo' aria-label='Advertisement'>",
+    "<a class='sponsor-logo__link' href='" + adClickHref + "'>",
+      "<img class='sponsor-logo__logo' src='" + adLogoSrc + "'>",
+      "<p class='sponsor-logo__title'>" + adTitleText + "</p>",
+      "<span class='sponsor-logo__badge badge badge--orange'>" + adLabelText + "</span>",
+    "</a>",
+  "</div>"
+].join("");
+
+if (adImpressionHref && /^(http|\/\/)/.test(adImpressionHref)) {
+  var impressionImg = document.createElement("img");
+  impressionImg.style.position = "absolute";
+  impressionImg.style.left = "-9999px";
+  impressionImg.src = adImpressionHref;
+}
+</script>
+</head><body>

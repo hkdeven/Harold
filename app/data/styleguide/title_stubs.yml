@@ -1,0 +1,143 @@
+titles:
+  -
+    :styleguide_title: "Country or Continent title (not a link)"
+    :no_place_link: true
+    :title: "France"
+
+  -
+    :styleguide_title: "World title (not a link) with custom icon"
+    :no_place_link: true
+    :title: "World"
+    :icon: "globe"
+    :primary_submenu:
+      :submenu:
+        -
+          :title: "Africa"
+          :slug: "http://www.lonelyplanet.com/africa"
+          :show_responsive_toggle: true
+        -
+          :title: "Antarctica"
+          :slug: "http://www.lonelyplanet.com/antarctica-1007062"
+          :show_responsive_toggle: true
+        -
+          :title: "Asia"
+          :slug: "http://www.lonelyplanet.com/asia"
+          :show_responsive_toggle: true
+        -
+          :title: "Caribbean"
+          :slug: "http://www.lonelyplanet.com/caribbean"
+          :show_responsive_toggle: true
+
+  -
+    :styleguide_title: "Place title on subsection pages (as a link)"
+    :title: "Paris"
+    :slug: "/france/paris"
+    :parent: "France"
+    :parent_slug: "/france"
+
+  -
+    :styleguide_title: "A very long and truncated place title"
+    :no_place_link: true
+    :title: "The city of Jerusalem"
+    :parent: "Israel and the Palestinian Territories"
+    :parent_slug: "/israel-and-the-palestinian-territories/"
+    :show_responsive_toggle: true
+  -
+    :styleguide_title: "A very long and truncated place title, with submenu in primary and parent"
+    :no_place_link: true
+    :title: "The city of Jerusalem"
+    :parent: "Israel and the Palestinian Territories"
+    :parent_slug: "/israel-and-the-palestinian-territories/"
+    :show_responsive_toggle: true
+
+    :primary_submenu:
+      :submenu:
+        -
+          :title: "Africa"
+          :slug: "http://www.lonelyplanet.com/africa"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Antarctica"
+          :slug: "http://www.lonelyplanet.com/antarctica-1007062"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Asia"
+          :slug: "http://www.lonelyplanet.com/asia"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Caribbean"
+          :slug: "http://www.lonelyplanet.com/caribbean"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+    :parent_submenu:
+      :submenu:
+        -
+          :title: "Africa"
+          :slug: "http://www.lonelyplanet.com/africa"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Antarctica"
+          :slug: "http://www.lonelyplanet.com/antarctica-1007062"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Asia"
+          :slug: "http://www.lonelyplanet.com/asia"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+        -
+          :title: "Caribbean"
+          :slug: "http://www.lonelyplanet.com/caribbean"
+          :show_responsive_toggle: true
+          :image_url: http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg
+
+  -
+    :styleguide_title: "Page title as a H1, with submenu"
+    :is_body_title: true
+    :title: "Search this page"
+    :primary_submenu:
+      :submenu:
+        -
+          :title: "Africa"
+          :slug: "http://www.lonelyplanet.com/africa"
+          :show_responsive_toggle: true
+        -
+          :title: "Antarctica"
+          :slug: "http://www.lonelyplanet.com/antarctica-1007062"
+          :show_responsive_toggle: true
+        -
+          :title: "Asia"
+          :slug: "http://www.lonelyplanet.com/asia"
+          :show_responsive_toggle: true
+        -
+          :title: "Caribbean"
+          :slug: "http://www.lonelyplanet.com/caribbean"
+          :show_responsive_toggle: true
+  -
+    :styleguide_title: "Place title with a parent (not a link) and parent submenu only"
+    :no_place_link: true
+    :title: "Paris"
+    :parent: "France"
+    :parent_slug: "/france"
+    :parent_submenu:
+      :submenu:
+        -
+          :title: "Africa"
+          :slug: "http://www.lonelyplanet.com/africa"
+          :show_responsive_toggle: true
+        -
+          :title: "Antarctica"
+          :slug: "http://www.lonelyplanet.com/antarctica-1007062"
+          :show_responsive_toggle: true
+        -
+          :title: "Asia"
+          :slug: "http://www.lonelyplanet.com/asia"
+          :show_responsive_toggle: true
+        -
+          :title: "Caribbean"
+          :slug: "http://www.lonelyplanet.com/caribbean"
+          :show_responsive_toggle: true

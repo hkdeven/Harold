@@ -1,0 +1,139 @@
+body
+  background-color: $body-background
+
+
+// -----------------------------------------------------------------------------
+// Main page layout - Left Nav + Content
+//
+// We have to adapt it for when we don't have a left nav in responsive view
+// -----------------------------------------------------------------------------
+
+.grid--main-layout
+
+  +respond-to(wide-view)
+    margin-left: -10px
+
+  > [class*="col--"]
+    padding-left: 0
+    +respond-to(wide-view)
+      padding-left: 10px
+
+// ----------------------------------------------------------------------------
+//
+// Row
+//
+// ----------------------------------------------------------------------------
+
+.row
+  @extend %clearfix
+
+.row__inner
+  @extend %clearfix
+  margin: 0 auto
+  position: relative
+  padding-left: $layout-gutter
+  padding-right: $layout-gutter
+  width: auto
+
+  +respond-to(wide-view)
+    width: $fixed-layout-width
+
+  .layout--fluid &
+    width: $fluid-layout-width
+
+  .layout--ad-rail &
+    width: auto
+    max-width: $adrail-layout-width
+
+  &.row__inner--full-width
+    padding-left: 0
+    padding-right: 0
+
+.row__inner--content
+  padding-top: 15px
+
+.row--text-centered
+  text-align: center
+  .row__inner
+    +respond-to(wide-view)
+      width: 600px
+
+.row--image
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  background-size: cover
+  position: relative
+
+.row--image__standout
+  text-align: center
+  +respond-to(wide-view)
+    display: block
+    position: absolute
+    right: 55%
+
+
+// ----------------------------------------------------------------------------
+//
+// Row Faux Banner
+//
+// When we use the offscreen nav we need to fake a 55px blue bar at the top
+// because the logo and nav are no longer part of the same node
+// ----------------------------------------------------------------------------
+
+.row--faux-banner
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  background-color: $navblue
+  height: $primary-nav-height
+  +respond-to(wide-view)
+    display: none
+
+// ----------------------------------------------------------------------------
+//
+// Row Container
+//
+// ----------------------------------------------------------------------------
+
+.row--content
+  +z-layer
+  @extend %transition--nav
+  // Ensure that nav dropdowns sit above any content
+  position: relative
+  margin-bottom: 40px
+
+
+// ----------------------------------------------------------------------------
+//
+// Pointer cover
+//
+// 60fps scrolling
+// http://www.thecssninja.com/javascript/follow-up-60fps-scroll
+//
+// ----------------------------------------------------------------------------
+
+.pointer-cover
+  +z-layer(modal)
+  transform: translate3d(0,0,0)
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  opacity: 0
+  position: fixed
+  pointer-events: none
+  display: none
+
+
+// -----------------------------------------------------------------------------
+//
+// Microsoft touch actions
+//
+// This is so that while you are swiping that element, internet explorer won't
+// override it with history fiddling and whatever else it feels like.
+//
+// -----------------------------------------------------------------------------
+
+.js-onswipe
+  -ms-touch-action: none

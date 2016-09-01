@@ -1,0 +1,108 @@
+// ----------------------------------------------------------------------------
+//
+// Place title nav is a component that allows us to show long place names on hover
+// and also can have a subnav to navigate throw child places of the current section/subsection
+//
+// ----------------------------------------------------------------------------
+
+$submenu-item-padding: 11px 10px 10px 50px
+
+.place-title__wrapper
+  @extend %inline-block
+  text-overflow: ellipsis
+  white-space: nowrap
+  max-width: 130px
+  &:hover
+    max-width: none
+  .nav__submenu__trigger--icon
+    display: none
+
+  &.nav__submenu__trigger
+    +respond-to(wide-view)
+      padding-right: 15px
+
+    .nav__submenu__trigger--icon
+      +size(12px)
+      position: absolute
+      top: 8px
+      right: 0
+      margin-top: 0
+      +respond-to(wide-view)
+        display: block
+
+  .place-title__submenu__item
+    position: relative
+    padding: $submenu-item-padding
+
+  .place-title__submenu__item--no-image
+    padding: 0
+    .nav__submenu__item__text
+      padding: $submenu-item-padding
+
+  .nav__submenu__item--image,
+  .nav__icon:before
+    +size(40px)
+    position: absolute
+    top: 0
+    left: 0
+
+  .nav__submenu__item__text
+    +font-size(15px)
+
+  .nav__icon:before
+    background-size: 45%
+    background-color: $body-background-offset
+    background-position: 50% 50%
+    .no-background-size &
+      background-image: none
+
+.place-title--text
+  @extend %truncate-text
+  display: block
+
+.place-title
+  @extend %left-icon
+  +font-size(16)
+  line-height: 1em
+  margin-left: 20px
+  // Fix the text-overflow bug in firefox to avoid the final letter being clipped
+  padding: 7px 6px 7px 22px
+  &:before
+    +size(18px)
+    top: 10px
+
+  +respond-to(wide-view)
+    +font-size(20)
+    padding-top: 0
+    padding-bottom: 0
+    margin-left: 0
+    &:before
+      +size(20px)
+      top: 3px
+
+  .no-background-size &
+    padding-left: 0
+    &:before
+      display: none
+
+.place-title__heading
+  font-weight: bold
+  color: $dark-blue-gray
+  line-height: 26px
+  &:hover
+    text-decoration: none
+
+.place-title__heading__description
+  font-weight: normal
+
+.place-title__parent
+  line-height: 26px
+  color: $dark-blue-gray
+  &:hover
+    text-decoration: none
+
+.place-title__separator
+  position: relative
+  top: -7px
+  display: inline-block
+  margin: 0 5px

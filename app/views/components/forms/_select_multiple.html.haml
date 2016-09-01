@@ -1,0 +1,23 @@
+:ruby
+  tooltip = properties[:tooltip]
+  tooltip_class = !tooltip.nil? ? ' tooltip--container' : ''
+  disabled_class = properties[:disabled] ? ' is-disabled' : ''
+
+  select_properties = {
+    multiple: true,
+    id: properties[:id],
+    name: properties[:name],
+    data: properties[:data],
+    class: "input--select-multiple #{properties[:class]}#{disabled_class}#{tooltip_class}",
+    disabled: properties[:disabled],
+    required: properties[:required]
+  }
+
+%select.input{ select_properties }
+
+  - properties[:options].each do |option|
+    %option{value: option[:value] || option[:title], disabled: option[:disabled], data: option[:data], selected: (properties[:selected].to_s.include?(option[:value].to_s) || properties[:selected].to_s.include?(option[:title])) ? 'selected' : false}<
+      = option[:title]
+
+
+= render :partial => 'components/forms/partials/tooltip', :locals => { tooltip: tooltip }

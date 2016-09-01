@@ -1,0 +1,5 @@
+%script#tmpl-nav-item{ type: 'text/html' }
+  = render "components/navigation/nav_item", active: false, submenu_item: true, item: { slug: '/{{slug}}', image_url: '{{image_url}}', title: '{{title}}', extra_class: "place-title__submenu__item" }
+
+%script#tmpl-nav-item-no-image{ type: 'text/html' }
+  = render "components/navigation/nav_item", active: false, submenu_item: true, item: { slug: '/{{slug}}', title: '{{title}}', icon_class: "icon--destination--pin--before", extra_class: "place-title__submenu__item--no-image" }

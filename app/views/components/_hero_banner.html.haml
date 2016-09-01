@@ -1,0 +1,52 @@
+- image_info = properties[:image_info]
+
+.hero-banner.js-story-container{ class: image_info.present? ? 'hero-banner--flickr' : 'js-bg-parallax' }
+  = safe_image_tag(properties[:image_url], class: "hero-banner__image", alt: properties[:title])
+
+  - if properties[:image_caption].present? && properties[:image_caption]
+    .hero-banner__image-story__cover
+    .hero-banner__image-story__toggle.arrow--up.js-toggle-active{ data: { toggle_target: ".js-story-container" } }
+      .hero-banner__image-story__expand.icon--chevron-up.icon--white
+      .hero-banner__image-story__contract.icon--cross.icon--white
+    .hero-banner__image-story.theme--dark
+      .hero-banner__image-story__content.row__inner
+        %h4.copy--h4
+          Story behind the picture
+        %p.copy--body
+          != enable_mailto_links(properties[:image_caption])
+
+  .hero-banner__content.row__inner
+    - unless properties[:image_info]
+      .hero-banner__text
+        %p.hero-banner__lead-in
+          = properties[:lead_in]
+        %h1.hero-banner__header
+          - if properties[:slug]
+            %a.hero-banner__link{ href: "#{properties[:slug]}", title: properties[:title] }
+              = properties[:title]
+          - else
+            = properties[:title]
+        - if properties[:strapline]
+          %p.hero-banner__strapline
+            = properties[:strapline]
+
+    - if image_info.present?
+      - if image_info[:attribution].present?
+        .hero-banner__image-content
+          .hero-banner__image-footer
+            .hero-banner__source
+              = ui_component('user_attribution', properties: { url: image_info[:attribution_url], image: image_info[:attribution_image_url], name: image_info[:attribution], theme: "dark" } )
+            .hero-banner__image-title
+              = image_info[:title]
+      - else
+        .hero-banner__image-content
+          .hero-banner__image-footer
+            .hero-banner__image-title
+              = image_info[:caption]
+
+
+    - if properties[:sponsored]
+      .hero-banner__sponsor.ad-sponsorTile.is-closed
+        .ad-sponsorTile__tag
+          Sponsored by
+        = ui_component('ads/sponsor_logo')

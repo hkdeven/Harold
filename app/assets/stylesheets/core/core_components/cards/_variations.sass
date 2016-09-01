@@ -1,0 +1,134 @@
+// -----------------------------------------------------------------------------
+// Guide book cards
+// -----------------------------------------------------------------------------
+
+.card--guide
+
+  &.card--has-img
+
+    .card__figure
+      background: image_url("cards/guide-background.jpg") no-repeat
+      background-size: cover
+
+    .card__figure__img
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      min-width: 0
+      margin: 20px auto
+
+      +respond-to(narrow-view)
+        height: 80%
+        margin: auto
+
+    .card__content
+      border-top: 0
+
+// -----------------------------------------------------------------------------
+// Quote cards
+// -----------------------------------------------------------------------------
+
+.card--quote
+
+  .card__content__title
+    @extend %visually-hide
+
+  .card__content__desc
+    +font-size(20)
+    margin-top: 0
+    padding: 0 10px
+    line-height: 1.2
+    color: $titlegray
+
+    // left/right quote marks
+    p:before
+      content: "\201C"
+      margin: 0 -.15em 0 -.5em
+    p:after
+      content: "\201D"
+      margin-left: -.15em
+
+// -----------------------------------------------------------------------------
+// POI types
+// -----------------------------------------------------------------------------
+
+@for $i from 1 through length($poi-names)
+
+  $kind: nth($poi-names, $i)
+  $color: nth($poi-colors, $i)
+
+  .card--#{$kind}
+
+    .card__content
+      border-top: 2px solid $color
+
+    &.card--has-img
+
+      .card__content
+        border: 0
+
+    .card__content__context
+      &:before
+        border-color: $color
+        background-color: $color
+
+        // Tweak icon position for Josh
+        @if $kind == 'hotel'
+          background-position-y: 41%
+
+// -----------------------------------------------------------------------------
+// Link list cards
+// -----------------------------------------------------------------------------
+
+.card__links
+  +font-size(13)
+  padding-left: 15px
+
+.card__links__item
+  margin: 4px 15px 4px 0
+
+// -----------------------------------------------------------------------------
+// Sponsored (ad) cards
+// -----------------------------------------------------------------------------
+
+.card--sponsored
+
+  .card__content
+    &:before
+      content: normal !important
+
+.card--sponsored--mpu
+  padding-top: 100%
+  .card__content
+    width: 300px
+    padding: 0
+    margin: 50px auto 0
+
+  .results &
+    float: right
+
+.card--sponsored--adSense
+  margin-top: 20px
+  .card__content
+    position: static
+    padding-top: 40px
+
+// -----------------------------------------------------------------------------
+// Legacy compatibility
+// -----------------------------------------------------------------------------
+
+// Tweak page cards used within stacks
+.card--page
+  .card__content
+    .card--page__header,
+    .card--page__content
+      padding-left: 0
+      padding-right: 0
+
+    .card--page__header
+      padding-top: 0
+
+    .card--page__content
+      padding-bottom: 0

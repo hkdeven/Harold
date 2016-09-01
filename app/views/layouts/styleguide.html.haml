@@ -1,0 +1,46 @@
+= render 'layouts/partials/snippets/doctype_declaration'
+
+%head
+  = render 'layouts/custom/head', tynt: (defined?(tynt) ? tynt : true), responsive: false, third_party: false, include_js: true, legacy_lp: false, app_core: false, default_title: true
+  = stylesheet_link_tag 'styleguide', :media => "all"
+
+%body
+
+  .wrapper.js-wrapper
+    .row.row--primary
+      .row--faux-banner
+
+      .nav-container.m-hidden-menu
+        .split--left
+          .wv--nav--inline.nav--primary#js-nav--primary
+            %a.media--lp-logo.logo--header.icon--lp-logo.icon--white{href: 'http://rizzo.lonelyplanet.com/styleguide'}
+            - @app.primary_nav_items.each do |item|
+              %a.nav__item.nav__item--primary{ href: "#{item[:slug]}" }<
+                = item[:name]
+
+    .row.row--content#js-row--content
+
+      .row.row--secondary#js-secondary-nav
+        .row__inner.row__inner--secondary.row__inner--full-width
+          = yield :secondary
+
+      .row__inner.row__inner--content
+
+        .grid-wrapper--10
+          - if @app.left_nav_items.present?
+            = ui_component('navigation/left', properties: @app.left_nav_items)
+
+          .main-content.stack#js-main-content
+            = yield
+
+      = ui_component('lightbox')
+      %script#tmpl-preloader{ type: 'text/html' }
+        = ui_component('preloader')
+
+  .js-config.is-hidden
+    = render 'layouts/partials/snippets/footer_js', third_party: false
+    = yield :scripts
+
+    = javascript_include_tag 'prism'
+
+  = render 'layouts/partials/snippets/pointer_cover'

@@ -1,0 +1,71 @@
+= render 'styleguide/partials/shared'
+
+- pictures = styleguide_stubs('picture')
+.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 Picture
+
+  %p<
+    Our implementation of the responsive
+    %code &lt;picture&gt;
+    element.
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Content Picture Component
+
+  %p<
+    Used where the image will only ever be as wide as the main content width (meaning
+    %code.language-markup .row__inner
+    ).
+
+  %pre.styleguide.copy--body.language-ruby
+    %code
+      = preserve do
+        :escaped
+          = ui_component('picture/content', properties: { alt: "Foo", src: "http://media.lonelyplanet.com/a/g/hi/t/2efbfec4e203d6e47bb609bd9f016f82-adventure-travel.jpg" })
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Hero Picture Component
+
+  %p<
+    Used where the image needs to be able to go the full width of the screen, such as the
+    %a{ href: "/styleguide/ui-components/hero-banner" } Hero Banner
+    for example.
+
+  %pre.styleguide.copy--body.language-ruby
+    %code
+      = preserve do
+        :escaped
+          = ui_component('picture/hero', properties: { alt: "Foo", class: "hero-banner__image", src: "http://media.lonelyplanet.com/a/g/hi/t/2efbfec4e203d6e47bb609bd9f016f82-adventure-travel.jpg" })
+
+.styleguide-block.styleguide-block__description.styleguide-block__picture.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Base Picture Component
+
+  %p<
+    This will output the base picture element that the above pre-existing (and opinionated) components themselves
+    use. Only use this if you've determined that you do actually need to use the picture element for what you're trying
+    to achieve and when one of the above don't suffice.
+
+  %p<
+    %code.language-markup sizes
+    defines the sizes that will be used by the picture element. For more information on how these work, refer to the
+    %a{ href: "https://github.com/lonelyplanet/image-resizer" }
+      ImageResizer gem
+    \.
+
+  %p<
+    %code.language-markup breakpoints
+    defines the breakpoints beyond which to update the image url, along with the new sizes as mentioned above.
+
+  %p<
+    %strong NOTE:
+    While this base component does provide fallbacks, it's recommended that you specify all the properties for your
+    specific use case.
+
+= styleguide_component('picture', properties: pictures[:picture_base])

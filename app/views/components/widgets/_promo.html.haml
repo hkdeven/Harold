@@ -1,0 +1,11 @@
+.widget__promo.context--content
+
+  %h2.copy--h1{ class: properties[:title_class] || false }
+    = properties[:title]
+    %span.copy--feature
+      = properties[:description]
+
+  .nav--inline
+    - 3.times do |i|
+      .nav__item{ class: i == 1 ? "widget__promo--middle" : "" }
+        = ui_component("ads/mpu")

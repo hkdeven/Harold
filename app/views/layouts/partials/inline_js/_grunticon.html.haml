@@ -1,0 +1,28 @@
+:javascript
+  (function() {
+    var docElement = document.documentElement,
+        activePath = "#{normalised_asset_path('icons/active.css')}",
+        criticalPath = "#{normalised_asset_path('icons/critical.css')}";
+
+    function supportsSVG() {
+      var hasBgSize = ("background-size" in docElement.style || "backgroundSize" in docElement.style),
+          hasSvg = !!window.document.createElementNS &&
+                   !!window.document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect &&
+                   !!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") &&
+                   !(window.opera && navigator.userAgent.indexOf('Chrome') === -1);
+
+      return hasBgSize && hasSvg;
+    }
+
+    if (window.lp.enhanced && supportsSVG()) {
+      window.lp.loadCSS(activePath);
+      docElement.className += " supports-svg";
+    } else {
+      window.lp.loadCSS(criticalPath);
+      docElement.className += " no-background-size";
+    }
+
+  }());
+
+%noscript
+  %link{href: "#{normalised_asset_path('icons/critical.css')}", rel: "stylesheet"}

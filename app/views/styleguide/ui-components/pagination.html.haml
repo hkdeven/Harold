@@ -1,0 +1,13 @@
+= render 'styleguide/partials/shared'
+
+- pagination = styleguide_stubs('pagination')
+.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 Pagination
+    %p
+      %strong NB:
+      It's important that you include the <code>%i</code> in the path that gets passed through <em>or</em> provide the name of the URL parameter via the <code>param</code> property.
+    %p
+      If not specified otherwise, <code>visible_pages</code> property is set to 5.
+- pagination.each_with_index do | stub, i |
+  = styleguide_component('pagination', properties: stub, count: i, full_width: true, card_style: true)

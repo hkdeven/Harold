@@ -1,0 +1,33 @@
+paths:
+  flamsteed: "flamsteed/lib/javascripts/flamsteed"
+  hogan: "hogan/dist/hogan-3.0.0.amd"
+  jplugs: "jquery-plugins"
+  jquery: "jquery/dist/jquery"
+  jtimeago: "jquery-timeago/jquery.timeago"
+  sailthru: "sailthru/v1"
+  sCode: "omniture/s_code"
+  trackjs: "trackjs/trackjs"
+  dfp: "jquery.dfp.js/jquery.dfp"
+  autocomplete: "autocomplete/dist/autocomplete"
+  d3: "d3/d3"
+  nvd3: "nvd3/nv.d3"
+  usabilla: "usabilla/usabilla"
+  zeroclipboard: "zeroclipboard/dist/ZeroClipboard"
+  picker: "pickadate/lib/picker"
+  pickerDate: "pickadate/lib/picker.date"
+  pickerLegacy: "pickadate/lib/legacy"
+
+modules:
+  - name: 'infobox'
+  - name: 'app_core_external'
+  - name: 'app_core'
+    exclude:
+      - 'infobox'
+  - name: 'app_core_legacy'
+    exclude:
+      - 'infobox'
+  - name: 'styleguide'
+    exclude:
+      - 'infobox'
+
+findNestedDependencies: true

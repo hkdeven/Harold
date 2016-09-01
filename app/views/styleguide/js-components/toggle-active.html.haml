@@ -1,0 +1,107 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+  %h1.copy--h1 Toggle Active
+
+  %p
+    A simple component to replace the so called <a href="http://css-tricks.com/the-checkbox-hack/">"checkbox hack"</a> which we can't use because of issues in iOS, Android, and old IE.
+  %p
+    This component has an event-driven API if you wish to extend its functionality. Hook into
+    %code.language-javascript :toggleActive/click
+    events to be notified of when the component updates, fire
+    %code.language-javascript :toggleActive/update
+    to trigger the update function (passing in the target node).
+
+
+.styleguide-block
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Setup
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :plain
+            require([ "lib/components/toggle_active" ], (ToggleActive) {
+              new ToggleActive(arguments);
+            });
+
+    %h3.copy--h2.styleguide-block__heading
+      Arguments
+
+    %p
+      %code.language-markup selector
+      Selector for the toggle elements, default:
+      %code .js-toggle-active
+
+    %p
+      %code.language-markup context
+      Listen for all toggles within this context, default:
+      %code null
+
+    %p
+      %code.language-markup listener
+      Element to attach listeners onto, default:
+      %code #js-row--content
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Normal usage
+
+    %pre.styleguide.copy--body.language-markup
+      %code
+        = preserve do
+          :escaped
+            <a href="#" class="js-toggle-active" data-toggle-target=".foo">toggle it</a>
+
+    %p
+      This will toggle the
+      %code.language-markup
+        is-active
+      class on any element that has the
+      %code.language-markup
+        foo
+      class.
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Specifying the class
+
+    %pre.styleguide.copy--body.language-markup
+      %code
+        = preserve do
+          :escaped
+            <a href="#" class="js-toggle-active" data-toggle-target=".foo" data-toggle-class="custom-class">toggle it</a>
+
+    %p
+      This will toggle the
+      %code.language-markup
+        custom-class
+      class on any element that has the
+      %code.language-markup
+        foo
+      class.
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Toggling the clicked element as well
+
+    %pre.styleguide.copy--body.language-markup
+      %code
+        = preserve do
+          :escaped
+            <a href="#" class="js-toggle-active" data-toggle-me="true" data-toggle-target=".foo">toggle it</a>
+
+    %p
+      This will toggle the
+      %code.language-markup
+        is-active
+      class on the element that was clicked as well as any element with class of
+      %code.language-markup
+        foo
+      \.

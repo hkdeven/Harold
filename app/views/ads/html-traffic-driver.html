@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><script>
+/* ==== Ad configuration ==== */
+
+var adTitleText = "England's Historical Top 10",
+    adLabelText = "Sponsored content",
+    adImageSrc = "http://placehold.it/70x70",
+    adLogoSrc = "http://placehold.it/60x20",
+    adClickHref = "http://lonelyplanet.com/england/things-to-do/england-s-historical-top-ten",
+    adImpressionHref = "http://placehold.it/1x1";
+
+/* ==== Do not modify below this line ==== */
+
+window.parent.document.getElementById("js-traffic-driver-html").innerHTML += [
+  "<div class='card traffic-driver' aria-label='Advertisement'>",
+    "<a class='traffic-driver__link' href='" + adClickHref + "'>",
+      "<div class='media'>",
+        "<div class='media__img'>",
+          "<img class='traffic-driver__thumbnail' src='" + adImageSrc + "' width='70' height='70'>",
+        "</div>",
+        "<div class='media__body'>",
+          "<div class='traffic-driver__content'>",
+            "<p class='traffic-driver__title'>" + adTitleText + "</p>",
+            "<span class='traffic-driver__badge badge badge--orange'>" + adLabelText + "</span>",
+            "<img class='traffic-driver__logo' src='" + adLogoSrc + "'>",
+          "</div>",
+        "</div>",
+      "</div>",
+    "</a>",
+  "</div>"
+].join("");
+
+if (adImpressionHref && /^(http|\/\/)/.test(adImpressionHref)) {
+  var impressionImg = document.createElement("img");
+  impressionImg.style.position = "absolute";
+  impressionImg.style.left = "-9999px";
+  impressionImg.src = adImpressionHref;
+}
+</script>
+</head><body>

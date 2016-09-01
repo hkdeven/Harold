@@ -1,0 +1,67 @@
+// -----------------------------------------------------------------------------
+// Range slider as used on filters
+// -----------------------------------------------------------------------------
+
+// Import vendor styles
+@import 'noUiSlider'
+
+
+.noUi-target,
+.noUi-connect,
+.noUi-background
+  border-radius: 4px
+
+.noUi-target
+  border: 1px solid $disabled
+
+.noUi-connect
+  transition: background 0.5s ease
+  background: $lpblue
+
+.noUi-background
+  background: white
+
+.noUi-origin
+  border-radius: 0
+
+.noUi-horizontal
+  height: 10px
+  box-sizing: border-box
+  padding: 0 9px 0 11px
+
+.noUi-vertical
+  width: 10px
+
+.noUi-handle
+  +size(22px)
+  position: relative
+  border: 1px solid $disabled
+  border-radius: 100%
+  background: #FFF
+  cursor: default
+
+  &:after
+    @extend %empty-abs-generated-content
+    +size(8px)
+    top: 6px
+    left: 6px
+    background-color: $lpblue
+    border-radius: 8px
+    pointer-events: none
+
+  .noUi-horizontal &
+    left: -12px
+    top: -7px
+
+  .noUi-vertical &
+    left: -7px
+    top: -12px
+
+  .ie8 &
+    width: 4px
+    &:after
+      display: none
+
+.range-slider__labels
+  +font-size(24)
+  margin-top: 15px

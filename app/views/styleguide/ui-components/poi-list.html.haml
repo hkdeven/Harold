@@ -1,0 +1,12 @@
+= render 'styleguide/partials/shared'
+
+- require "ostruct"
+- maps = styleguide_stubs('poi_list')
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 POI List
+  %p
+    Extends the POI Dynamic Maps component with a nearby list of other POIs.
+
+- maps.each_with_index do |map, i|
+  = styleguide_component("poi_maps/#{map[:styleguide_title].downcase.split(' ').first}", properties: map, count: i, card_style: true, full_width: true)

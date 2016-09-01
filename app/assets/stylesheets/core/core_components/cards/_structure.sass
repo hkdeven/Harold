@@ -1,0 +1,338 @@
+.card
+  @extend %rounded-corners
+  position: relative
+  margin-bottom: $card-gutter
+  background: #FFF
+
+  .results &
+    float: left
+    margin-left: $card-gutter
+
+// Single column list format cards for small screens
+@media screen and (max-width: map-get($breakpoints, narrow-view))
+
+  .card--list--tall
+    +card-dimensions-list-format()
+  .card--list--short
+    +card-dimensions-list-format("short")
+
+// Multiple column cards for larger screens
++respond-to(narrow-view)
+
+  .card--column--single
+
+    &.card--column--tall
+      +card-dimensions-column-format(1)
+    &.card--column--short
+      +card-dimensions-column-format(1, "short")
+
+  .card--column--double
+
+    &.card--column--tall
+      +card-dimensions-column-format(2)
+    &.card--column--short
+      +card-dimensions-column-format(2, "short")
+
+  .card--column--triple
+
+    &.card--column--tall
+      +card-dimensions-column-format(3)
+    &.card--column--short
+      +card-dimensions-column-format(3, "short")
+
+
+// -----------------------------------------------------------------------------
+// Basic card layout and styles
+// -----------------------------------------------------------------------------
+
+.card__mask,
+.card__figure,
+.card__footer,
+.card__content
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.card__mask
+  @extend %rounded-corners
+
+.card__mask,
+.card__figure
+  overflow: hidden
+
+.card__figure
+  background: $subduedgray
+
+.card__figure__img
+  height: 100%
+  min-width: 100%
+  object-fit: cover
+
+.card__figure__icon
+  +size(30px)
+  +icon-color(white)
+  position: absolute
+
+.card__content
+  box-sizing: border-box
+  overflow: hidden
+  color: $body-copy
+
+.card__content__pin
+  margin-bottom: 6px
+
+.card__content__context
+  +font-size(13)
+  @extend %truncate-text
+  padding: 2px 0
+  color: $bodygray
+
+  &.copy--icon--before:before
+    margin-top: -4px
+    margin-bottom: -2px
+    border-radius: 50%
+
+    // Fake padding around the icon
+    border: 2px solid
+    background-size: 100%
+
+  .card__content__ribbon + &
+    margin-right: 40px
+
+.card__content__ribbon
+  position: absolute
+  top: 12px
+  right: 0
+  width: 56px
+  height: 18px
+
+.card__content__title
+  color: $titlegray
+
+.card__content__desc
+  +font-size(15)
+  margin: 10px 0 0
+  line-height: 1.3
+  color: $feature-copy
+
+.card__footer
+  +font-size(13)
+  top: auto
+  display: none
+  color: $grey-highlight
+
+  .copy--icon--before:before
+    +icon-color(body-grey)
+    width: 10px
+    opacity: .75
+
+.card__footer__reviewed
+  float: right
+  margin-top: 6px
+  padding-left: 4px
+
+.card__footer__locale
+  @extend %truncate-text
+  margin-top: 6px
+
+  &.copy--icon--before:before
+    +size(16px)
+    top: 0.25em
+    margin-top: -2px
+    margin-bottom: -2px
+
+.card__tags
+  position: absolute
+  top: -2px
+
+
+// -----------------------------------------------------------------------------
+// Cards with or without image
+// -----------------------------------------------------------------------------
+
+.card--has-img
+
+  .card__content__pin
+    display: none
+
+  &.card--no-cover
+
+    .card__footer,
+    .card__content
+      background: #FFF
+
+  &.card--cover
+
+    .copy--icon--before:before
+      +icon-color(white)
+      opacity: 1
+
+    .card__footer,
+    .card__content
+      color: #FFF
+
+    .card__content
+      top: auto
+
+    .card__content__title,
+    .card__content__context
+      color: inherit
+
+    .card__content__title
+      +font-size(24)
+
+    .card__content__desc
+      @extend %visually-hide
+
+
+// -----------------------------------------------------------------------------
+// Single column list format
+// -----------------------------------------------------------------------------
+
+@media screen and (max-width: map-get($breakpoints, narrow-view))
+
+  .card__figure__icon
+    top: $card-list-format-padding
+    left: $card-list-format-padding
+
+  .card__content
+    padding: $card-list-format-padding
+
+  .card__content__title
+    +font-size(16)
+
+  .card__content__desc
+    display: none
+
+  .card__content__pin
+    float: right
+    width: 15px
+    height: 22px
+
+  .card__tags
+    left: 8px
+
+  .card--no-cover
+
+    &.card--has-img
+
+      // Adjust image aspect ratio
+      &.card--list--tall
+
+        .card__figure
+          // Because the image height will always fill
+          // whatever space the content isn't in, see?
+          bottom: $card-list-format-content-height
+
+        .card__content
+          top: auto
+          height: $card-list-format-content-height
+
+    // Switch to a media block style layout
+    &.card--list--short
+
+      $figure-width: aspect-ratio($card-list-format-width, $card-list-format-content-height)
+
+      &.card--has-img,
+      &.card--has-price
+
+        .card__figure
+          right: 100% - $figure-width
+
+        .card__content
+          left: $figure-width
+
+
+// -----------------------------------------------------------------------------
+// Multiple column format
+// -----------------------------------------------------------------------------
+
++respond-to(narrow-view)
+
+  .card__figure__icon
+    top: $card-column-format-padding
+    left: $card-column-format-padding
+
+  .card__content
+    padding: $card-column-format-padding
+
+  .card__content__title
+    +font-size(20)
+
+  .card__content__pin
+    width: 22px
+    height: 32px
+
+  .card__tags
+    right: 8px
+
+  .card--has-footer
+
+    .card__content
+      bottom: $card-column-format-footer-height
+
+    .card__footer
+      display: block
+      padding: 0 $card-column-format-padding
+      // A cheeky extra 1px to cover any seams or
+      // artefacts on iDevices when zoomed out
+      height: $card-column-format-footer-height + 1px
+
+  .card--column--tall
+
+    &.card--has-img
+
+      &.card--no-cover
+
+        .card__figure
+          // Because the image height will always fill
+          // whatever space the content isn't in, see?
+          bottom: $card-column-format-content-height
+
+        .card__content
+          top: auto
+          transition: height .2s ease-out
+
+        &.card--no-footer
+          .card__content
+            height: $card-column-format-content-height
+
+          a:hover,
+          a:focus
+            .card__content
+              height: $card-column-format-content-height + 60px
+
+        &.card--has-footer
+          .card__content
+            height: $card-column-format-content-height - $card-column-format-footer-height
+
+          a:hover,
+          a:focus
+            .card__content
+              height: $card-column-format-content-height - $card-column-format-footer-height + 60px
+
+      &.card--cover
+        &.card--double
+
+          .card__content__title
+            +font-size(28)
+
+    &.card--no-img
+
+      .card__content__desc
+        display: block
+
+      &.card--has-price
+        .card__content__title
+          padding-right: 40px
+
+// -----------------------------------------------------------------------------
+// Paraphernalia
+// -----------------------------------------------------------------------------
+
+.card
+
+  .user-attribution
+    font-size: 100%

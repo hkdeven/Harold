@@ -1,0 +1,321 @@
+// -----------------------------------------------------------------------------
+// Base classes for hanging tags used on cards
+// -----------------------------------------------------------------------------
+
+%tag
+  &:before,
+  &:after
+    @extend %empty-abs-generated-content
+
+%tag--top
+  border-bottom-left-radius: 6px
+  border-bottom-right-radius: 6px
+  border-top-right-radius: 6px
+
+%tag--side--left
+  border-top-left-radius: 6px
+  border-top-right-radius: 6px
+  border-bottom-right-radius: 6px
+
+%tag--side--right
+  border-top-right-radius: 6px
+  border-top-left-radius: 6px
+  border-bottom-left-radius: 6px
+
+@mixin tag-price-option($color:$yella)
+  background-color: $color
+  padding: 4px 6px
+  line-height: 15px
+
+// -----------------------------------------------------------------------------
+// Top-hanging tag (default is top hanging)
+// -----------------------------------------------------------------------------
+
+.tag
+  @extend %tag
+  +font-size(11)
+  float: right
+  margin-left: 6px
+  position: relative
+  text-align: center
+
+
+// -----------------------------------------------------------------------------
+// Side-hanging card tag
+// -----------------------------------------------------------------------------
+
+.tag--horizontal
+  +z-layer(middle)
+  @extend %tag
+  +font-size(12)
+  color: #fff
+  position: absolute
+  font-weight: bold
+  padding: 6px 10px
+  text-transform: uppercase
+  background: $green
+  top: 12px
+
+.tag--horizontal--left
+  @extend %tag--side--left
+  +tag-curl-left($green)
+  left: -6px
+
+.tag--horizontal--right
+  @extend %tag
+  @extend %tag--side--right
+  +tag-curl-right($green)
+  right: -6px
+
+// -----------------------------------------------------------------------------
+// Price tag
+// -----------------------------------------------------------------------------
+
+.tag--price
+  +tag-curl-top($yella)
+  min-width: 46px
+
+.tag--price--small
+  min-width: 32px
+
+.tag--price--large
+  min-width: 60px
+  +tag-curl-top-large($yella)
+
+.tag--price--wide
+  min-width: 80px
+  +tag-curl-top-large($green)
+
+.tag--price__inner
+  @extend %tag--top
+  @extend %subpixel-text
+  overflow: hidden
+
+
+.tag--price__values
+  +tag-price-option()
+  .tag--price--small &
+    padding: 2px 4px
+    line-height: 13px
+
+  .tag--price--large &
+    padding: 6px 10px
+    +font-size(12)
+
+  .tag--price--wide &
+    padding: 4px 10px
+    +font-size(13)
+
+.tag--price--discount
+  &.tag--price--wide
+    color: #fff
+    .tag--price__values
+      +tag-price-option($green)
+
+.tag--price__icon
+  width: 100%
+  height: 20px
+  text-align: center
+  &:before
+    display: inline-block
+    width: 18px
+    height: 18px
+
+.tag--price__amount
+  +font-size(20)
+  display: block
+
+  .tag--price--small &
+    +font-size(16)
+
+  .tag--price--large &
+    +font-size(28)
+    line-height: 26px
+
+  .tag--price--wide &
+    +font-size(28)
+    line-height: 26px
+    margin-top: 5px
+
+.tag--price__currency
+  font-size: 0.65em
+  line-height: 0
+  position: relative
+  top: -0.35em
+  word-spacing: -2px
+
+  .tag--price--large &
+    font-size: 0.55em
+    top: -0.5em
+
+  .tag--price--wide &
+    font-size: 0.55em
+    top: -0.5em
+
+.tag--price__decimal
+  +font-size(12)
+  position: relative
+  top: -.4em
+
+  .tag--price--small &
+    +font-size(10)
+
+  .tag--price--large &
+    top: -.5em
+    +font-size(16)
+
+  .tag--price--wide &
+    top: -.5em
+    +font-size(16)
+
+.tag--price__retail
+  +font-size(12)
+  background: $dark-blue-gray
+  color: #fff
+  padding: 2px 0
+  text-decoration: line-through
+  .tag--price--wide &
+    +font-size(14)
+
+.tag--non-bookable
+  @extend %tag--top
+  +tag-curl-top($yella)
+  background-color: $yella
+  padding: 7px
+  .icon--contact
+    width: 30px
+    height: 30px
+    opacity: 0.3
+
+
+// -----------------------------------------------------------------------------
+// Tags on cards - lp reviewed, top choice etc.
+// -----------------------------------------------------------------------------
+
+.tag--card
+  @extend %tag--top
+  +tag-curl-top($header-blue)
+  background-color: $header-blue
+  color: #fff
+
+.tag--card__content
+  position: relative
+  width: 34px
+
+  .icon--white
+    @extend %image-replacement
+    width: 32px
+    height: 23px
+
+  .tag--top-choice &
+    &:after
+      position: absolute
+      bottom: -13px
+      height: 12px
+      width: 100%
+      left: 0
+
+.tag--lp-reviewed
+  width: 34px
+  .icon--lp-reviewed
+    width: 28px
+    height: 24px
+    margin: 8px 0 3px
+
+// Top choice uses the svg collar rather than border-radius
+.tag--top-choice
+  padding-bottom: 5px
+  border-bottom-left-radius: 0
+  border-bottom-right-radius: 0
+  .icon--top-choice
+    position: relative
+    left: -1px
+
+
+// -----------------------------------------------------------------------------
+// Best in Travel badge (destination highlights page)
+// -----------------------------------------------------------------------------
+
+// 2015 version that has to be supported until 2016 goes live
+.tag--best-in-travel
+  bottom: auto
+  top: 20px
+  background-color: $lpblue
+  width: 220px
+  padding: 5px 0px 5px 10px
+  max-height: 26px
+  .tag__ribbon
+    +z-layer(below)
+    position: absolute
+    width: 0
+    bottom: 0
+    border: 13px solid $lpblue
+  &.tag--horizontal--right
+    +tag-curl-right($lpblue)
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+    .tag__ribbon
+      left: -10px
+      border-left-color: transparent
+      border-left-width: 6px
+  &.tag--horizontal--left
+    +tag-curl-left($lpblue)
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+    .tag__ribbon
+      right: -10px
+      border-right-color: transparent
+      border-right-width: 6px
+  img
+    max-width: 100%
+    display: block
+    height: 16px
+    margin: 0 auto
+
+// 2016 version
+.tag--best-in-travel-2016
+  top: 20px
+  left: 15px
+  background-color: transparent
+  &:before, &:after
+    display: none
+  
+// -----------------------------------------------------------------------------
+// Brazil World Cup Tag
+// -----------------------------------------------------------------------------
+.tag--brazil-world-cup
+  +size(253px, 35px)
+  background: none
+  right: -13px
+  &:before,
+  &:after
+    display: none
+  img
+    max-height: 100%
+    max-width: 100%
+
+// -----------------------------------------------------------------------------
+// Competition tag
+// -----------------------------------------------------------------------------
+.tag--competition
+  +tag-curl-top($green)
+  min-width: 28px
+
+
+.tag--competition__inner
+  @extend %tag--top
+  @extend %subpixel-text
+  overflow: hidden
+
+.tag--competition__values
+  background-color: $green
+  padding: 9px 7px 5px
+  line-height: 10px
+  +font-size(16)
+  color: white
+
+.tag--competition__position
+  +font-size(10)
+  position: relative
+  top: -5px
+

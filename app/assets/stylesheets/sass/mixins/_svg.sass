@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// [doc]
+//
+// Change the colour of an SVG icon.
+//
+// This is normally done on hover. You pass in a colour to the mixin.
+//
+// Colour options: body-grey, white, lp-blue, custom, custom-2.
+//
+// [/doc]
+// -----------------------------------------------------------------------------
+@mixin icon-color($color: '')
+  $colors: body-grey, white, lp-blue, custom, custom-2
+  background-position: 0 percentage(index($colors, $color) * .2)
+
+
+// -----------------------------------------------------------------------------
+// [doc]
+//
+// Add a svg as a background image
+//
+//
+// [/doc]
+// -----------------------------------------------------------------------------
+@mixin svg-bg-icon($iconName, $section)
+  .icon--#{$iconName},
+  .icon--#{$iconName}--after:after,
+  .icon--#{$iconName}--before:before
+    .supports-svg &
+      background-image: image-url(icons/#{$section}/#{$iconName}#{"."}svg)

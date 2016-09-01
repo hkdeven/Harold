@@ -1,0 +1,209 @@
+.hero-banner
+  @extend %clearfix
+  position: relative
+  width: 100%
+  height: 350px
+  overflow: hidden
+  background-size: cover
+  background-position: center 30%
+
+  &:before
+    +z-layer(middle)
+    +image-overlay--gradient($color-end: $darkgray, $opacity-end: 0.1, $stop: 100%)
+    content: ''
+    display: block
+    position: absolute
+    width: 100%
+    height: 100%
+
+  // While we're using the static layout don't hide
+  // all the breakpoints behind the responsive flag
+  +respond-to(wide-view)
+    height: 300px
+  +respond-to(1200)
+    height: 350px
+  +respond-to(1500)
+    height: 450px
+
+.hero-banner--flickr
+  height: auto
+  .hero-banner__image
+    position: relative
+
+.hero-banner__content
+  +z-layer(middle)
+  position: relative
+  height: 100%
+  color: white
+
+.hero-banner__text
+  position: absolute
+  bottom: 16px
+  width: 50%
+  margin-right: 150px
+  +respond-to(1500)
+    width: auto
+
+.hero-banner__lead-in
+  +font-size(14)
+  font-weight: bold
+  margin-bottom: 2px
+  text-transform: uppercase
+
+.hero-banner__header
+  +font-size(85)
+  text-transform: uppercase
+  font-weight: bold
+  line-height: .8
+
+  // While we're using the static layout don't hide
+  // all the breakpoints behind the responsive flag
+  +respond-to(1500)
+    +font-size(100)
+
+.hero-banner__link
+  color: white
+  &:hover
+    text-decoration: none
+
+.hero-banner__strapline
+  +font-size(18)
+  font-weight: bold
+  margin: 16px 0
+  +respond-to(1500)
+    +font-size(24)
+
+.hero-banner__image-content
+  position: relative
+  height: 100%
+
+.hero-banner__image-header
+  position: relative
+  top: 30px
+
+.hero-banner__image-description
+  font-weight: bold
+  &:before
+    +icon-color(custom)
+    top: 7px
+    width: 30px
+
+.hero-banner__image-footer
+  position: absolute
+  bottom: 15px
+  width: 100%
+  line-height: 50px
+
+.hero-banner__image-story
+  +z-layer(middle)
+  position: absolute
+  top: 90%
+  transition: top 0.5s ease
+  width: 100%
+  .supports-transform .is-active &
+    top: 50%
+  .is-active &
+    top: 35px
+
+.hero-banner__image-story__cover
+  +alpha-background($darkgray, 0.75)
+  +size(100%)
+  +z-layer(middle)
+  left: 0
+  opacity: 0
+  position: absolute
+  top: 0
+  transition: opacity 0.5s ease
+  .is-active &
+    opacity: 1
+
+.hero-banner__image-story__contract
+  opacity: 0
+  .is-active &
+    opacity: 1
+.hero-banner__image-story__expand
+  top: 23%
+  .is-active &
+    opacity: 0
+
+.hero-banner__image-story__toggle
+  +size(40px)
+  +z-layer(top)
+  background: rgba(#fff, 0.2)
+  border-radius: 20px
+  bottom: 60px
+  left: 50%
+  margin-left: -20px
+  opacity: 1
+  position: absolute
+  transition: bottom 0.5s ease
+  [class*=" icon--"]
+    +size(50%)
+    left: 25%
+    position: absolute
+    top: 25%
+  .is-active &
+    bottom: 20px
+
+.hero-banner__image-story__content
+  text-align: center
+  .supports-transform .is-active &
+    transform: translateY(-50%)
+  .copy--body
+    +font-size(18)
+    color: white
+    margin-top: 10px
+    transition: opacity 0.5s ease
+    .js &
+      opacity: 0
+    .is-active &
+      opacity: 1
+
+.hero-banner__source
+  +font-size(16)
+  color: white
+  width: 100%
+  &:hover
+    text-decoration: none
+
+  +respond-to(medium-view)
+    float: left
+
+.hero-banner__source-text
+  font-style: italic
+  font-weight: lighter
+
+.hero-banner__avatar
+  +size(30px)
+  @extend %inline-block
+  vertical-align: middle
+  border-radius: 50%
+
+  // While we're using the static layout don't hide
+  // all the breakpoints behind the responsive flag
+  +respond-to(wide-view)
+    +size(50px)
+
+.hero-banner__username
+  font-weight: bold
+  font-style: normal
+
+.hero-banner__image-title
+  +font-size(18)
+  position: absolute
+  right: 0
+
+.hero-banner__sponsor
+  position: absolute
+  right: 0
+  bottom: 34px
+  width: 150px
+  height: 120px
+
+.hero-banner__image
+  +hardware-acceleration()
+  display: block
+  position: absolute
+  width: 100%
+  &.hero-banner__image-initial-position
+    transition: transform 2s ease

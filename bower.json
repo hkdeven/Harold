@@ -1,0 +1,15 @@
+{
+  "name": "rizzo",
+  "dependencies": {
+    "flamsteed": "latest",
+    "hogan": "latest",
+    "jquery": "jquery#1.11",
+    "jquery.dfp.js": "~1.1.0",
+    "pickadate": "3.3.1",
+    "requirejs": "~2.1.11",
+    "autocomplete": "2.x",
+    "jquery-timeago": "latest",
+    "d3": "3.4.10",
+    "nvd3": "latest"
+  }
+}

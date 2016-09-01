@@ -1,0 +1,172 @@
+// -----------------------------------------------------------------------------
+// Base button
+// -----------------------------------------------------------------------------
+
+.btn
+  @extend %inline-block
+  @extend %rounded-corners
+  @extend %transition--base
+  box-sizing: border-box
+  cursor: pointer
+  font-weight: bold
+  line-height: 1.4em
+  padding: 5px 20px
+  overflow: hidden
+  text-align: center
+  border: 1px solid
+  border-color: transparent
+  &:hover
+    text-decoration: none
+
+// -----------------------------------------------------------------------------
+// Button Size Modifiers
+// -----------------------------------------------------------------------------
+
+.btn--full-width
+  display: block
+  width: 100% // Ensure inputs also stretch full width
+
+.btn--small
+  +btn-font-size(13)
+  padding: 2px 14px
+
+.btn--medium
+  +btn-font-size(14)
+  padding: 3px 20px
+
+.btn--large
+  +btn-font-size(16)
+  padding: 4px 30px
+
+.btn--x-large
+  +btn-font-size(18)
+  padding: 4px 40px
+
+// -----------------------------------------------------------------------------
+// Buttons font modifiers
+// -----------------------------------------------------------------------------
+
+.btn--caps
+  text-transform: UPPERCASE
+
+// -----------------------------------------------------------------------------
+// Buttons with icons
+// -----------------------------------------------------------------------------
+
+.btn--icon-only
+  @extend %image-replacement
+  padding-left: 14px
+
+.btn--icon:before
+  display: inline-block
+  vertical-align: text-bottom
+  margin-right: 7px
+
+.btn--social-icon:before
+  display: inline-block
+  vertical-align: sub // Different vertical align because social icons are a bit bigger
+  margin-right: 7px
+
+.btn--icon--minus:before
+  content: '\2212'
+  font-size: 1.25em
+  margin-right: 0.5em
+
+// -----------------------------------------------------------------------------
+// Button Layout Modifiers
+// -----------------------------------------------------------------------------
+
+.btn--inline
+  display: inline-block
+  margin-right: 5px
+  overflow: visible
+  &:last-child
+    margin-right: 0
+
+// -----------------------------------------------------------------------------
+// Button Colors
+// -----------------------------------------------------------------------------
+
+.btn
+  &.is-disabled, &[disabled]
+    +btn-color($input-border, $lightgray, $subduedgray)
+    cursor: default
+    opacity: .75
+
+.btn--linkblue
+  +btn-color($linkblue)
+
+.btn--yella
+  +btn-color($yella, $body-copy)
+
+.btn--darkgray
+  +btn-color($darkgray)
+
+.btn--lightgray
+  +btn-color($lightgray)
+
+.btn--green
+  +btn-color($green)
+
+.btn--red
+  +btn-color($red)
+
+.btn--white
+  +btn-color(white, $lpblue)
+  &:hover
+    color: $linkblue
+
+.btn--facebook
+  +btn-color($facebook)
+
+.btn--google-plus
+  +btn-color($google-plus)
+
+.btn--twitter
+  +btn-color($twitter)
+
+.btn--pinterest
+  +btn-color($pinterest)
+
+.btn--clear
+  background-color: transparent
+  border: 1px solid $input-border
+  color: $body-copy
+
+  &.is-active
+    color: white
+    background-color: $active
+    box-shadow: 1px 1px 1px 0 rgba($darkblue, 0.1) inset
+    border-color: transparent
+    &:before, &:after
+      +icon-color(white)
+
+.btn--outline
+  background-color: transparent
+  border: 1px solid
+  &:hover
+    border-color: transparent
+
+// -----------------------------------------------------------------------------
+// Social Media
+// -----------------------------------------------------------------------------
+%btn--social
+  &:before
+    +size(20px)
+    top: 3px
+
+.btn--facebook
+  @extend %btn--social
+  background: $facebook
+
+.btn--google-plus
+  @extend %btn--social
+  background: $google-plus
+
+.btn--twitter
+  @extend %btn--social
+  background: $twitter
+
+.btn--pinterest
+  @extend %btn--social
+  background: $pinterest

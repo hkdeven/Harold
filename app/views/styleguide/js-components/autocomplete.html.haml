@@ -1,0 +1,80 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 AutoComplete
+
+  %p
+    = succeed "." do
+      This is just an example showing AutocComplete implementation for
+      %strong Page Hopper
+    Check it out by pressing
+    %code.language-markup ctrl + k
+    = succeed "." do
+      = surround "(", ")" do
+        %code.language-markup cmd + k
+        for Macs
+  %p
+    For detailed config & usage instructions please visit our
+    = succeed "." do
+      %a{ href: "https://github.com/lonelyplanet/autocomplete" } AutoComplete repository
+
+.styleguide-block
+
+  .styleguide-block.styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Text input
+
+    %pre.styleguide.copy--body.language-markup
+      %code
+        = preserve do
+          :escaped
+            <input class='js-autocomplete-page-hopper input--page-hopper' type='text'>"
+
+
+  .styleguide-block.styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Config
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :escaped
+            var config = {
+              el: ".js-autocomplete-page-hopper",
+              threshold: 2,
+              limit: 4,
+              templates: {
+                item: "<div class='copy--feature'>{{title}}</div>",
+                value: "{{slug}}",
+                empty: "<div class='copy--feature'>No matches found</div>"
+              },
+              extraClasses: {
+                wrapper: "page-hopper"
+              },
+              fetch: function(searchTerm, callback) {
+                var regex = new RegExp(searchTerm, "gim"),
+                    results = window.lp.pageHopper.sections.filter(function(current) {
+                      return regex.test(current.title);
+                    });
+                    
+                callback(results);
+              },
+              onItem: function(item) {
+                location.href = $(item).data("value");
+              }
+            };
+
+  .styleguide-block.styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Initialization
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :escaped
+            new AutoComplete(config);
+

@@ -1,0 +1,248 @@
+$picker-width: 32rem;
+
+.picker__holder {
+  clear: both;
+  height: 0;
+  position: relative;
+  width: 100%;
+  z-index: z("modal");
+}
+
+.picker__frame {
+  background-color: $color-white;
+  border-radius: .2rem;
+  left: 0;
+  max-height: 0;
+  max-width: $picker-width;
+  min-width: 256px;
+  overflow-y: hidden;
+  position: relative;
+  top: 0;
+
+  .picker--opened & {
+    max-height: 25em;
+  }
+}
+
+.picker__box {
+  border: .1rem solid $subduedgray;
+  padding: 1rem;
+  text-align: center;
+}
+
+.picker__month--wrap,
+.picker__year--wrap {
+  display: inline-block;
+}
+
+.picker__month--wrap {
+  margin-right: .4rem;
+}
+
+.picker__month {
+  margin-right: 1rem;
+}
+
+.picker__month,
+.picker__year {
+  color: $darkgray;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.picker__header {
+  padding-bottom: 1rem;
+  padding-top: .8rem;
+  position: relative;
+}
+
+.picker__nav--prev,
+.picker__nav--next {
+  background-size: cover;
+  cursor: pointer;
+  height: 2rem;
+  position: absolute;
+  top: .8rem;
+  width: 2rem;
+
+  .no-background-size & {
+    background: none;
+  }
+
+  .no-background-size &::after,
+  .no-js &::after {
+    font-size: 3.2rem;
+    font-weight: bold;
+    line-height: .5;
+  }
+}
+
+.picker__nav--prev {
+  left: 1rem;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    content: "\2039";
+  }
+}
+
+.picker__nav--next {
+  right: 1rem;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    content: "\203a";
+  }
+}
+
+.picker__nav--disabled {
+  background: none;
+  cursor: auto;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    content: initial;
+  }
+}
+
+.picker__table {
+  border-collapse: separate;
+  border-spacing: .4rem;
+  width: 100%;
+}
+
+.picker__weekday {
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: .5;
+  text-transform: uppercase;
+}
+
+.picker__day {
+  border: .1rem solid $subduedgray;
+  border-radius: 3rem;
+  color: $darkgray;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  height: 2.6rem;
+  line-height: 2.4;
+  text-align: center;
+  width: 2.6rem;
+}
+
+.picker__day--selected,
+.picker__day--selected:hover {
+  background-color: $active-color;
+  border-color: $active-color;
+  color: $color-white;
+}
+
+.picker__day--outfocus,
+.picker__day--disabled {
+  border: 0;
+  opacity: .25;
+}
+
+.picker__day--disabled {
+  color: darken($color-white, 20);
+  cursor: default;
+  opacity: .5;
+}
+
+.picker__footer {
+  display: none;
+  margin-top: 1rem;
+}
+
+.picker__button--clear {
+  display: none;
+}
+
+.picker__button--today {
+  border: .1rem solid rgba($color-white, .2);
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+// -----------------------------------------------------------------------------
+// Datepickers with an arrow above (icon classes to be defined in JS)
+// -----------------------------------------------------------------------------
+
+.picker__holder[class*="arrow-up"] {
+  .picker--opened & {
+    @include css-arrow($size: 3rem);
+
+    &::after {
+      left: 50%;
+      position: absolute;
+      top: -1.1rem;
+      transform: translateX(-50%);
+    }
+  }
+
+  .picker__frame {
+    top: 1rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Centered datepicker
+//
+// Class to be defined in JS
+// -----------------------------------------------------------------------------
+
+.picker--centered {
+  .picker__frame {
+    left: 50%;
+    margin-left: -#{$picker-width / 2};
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Blue theme for the datepicker
+//
+// This class should be added in the js when the datepicker is created
+//
+// $input_datepicker.pickadate({
+//   class: {
+//     picker: "picker picker__theme-blue",
+//     navPrev: "picker__nav--prev icon--white",
+//     navNext: "picker__nav--next icon--white"
+//   }
+// });
+//
+// -----------------------------------------------------------------------------
+
+.picker__theme-blue {
+  .picker__frame {
+    background-color: $lpblue;
+    color: $color-white;
+    transition: none;
+  }
+
+  .picker__box,
+  .picker__day--selected {
+    border: 0;
+  }
+
+  .picker__day--selected {
+    &,
+    &:hover {
+      background-color: $color-white;
+      color: $lpblue;
+    }
+  }
+
+  .picker__day--infocus {
+    border-color: rgba($color-white, .25);
+  }
+
+  .picker__footer {
+    display: block;
+  }
+}

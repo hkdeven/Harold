@@ -1,0 +1,29 @@
+:ruby
+  custom_title = properties[:custom_title]
+  responsive_items = properties[:responsive_items]
+  items = responsive_items || properties[:items]
+  current_item = (items.find {|i| i[:current]} || items.first)[:title]
+
+.nav--secondary__container
+  -# The secondary navigation for small screens
+  .nav--secondary.nav__tabs.wv--hidden-block
+    .grid-wrapper--0
+      .col--one-half
+        .nav--secondary__col.nav--secondary__title.copy--h4
+          = !!custom_title ? custom_title.html_safe : current_item
+
+      .col--one-half
+        %a.nav--secondary__other-toggle.nav--secondary__col.js-toggle-active{ data: { toggle_target: ".js-secondary-nav-other-menu", toggle_me: "true" } }
+          = !!custom_title ? "Sections" : "Other sections"
+          %span.nav--secondary__other-toggle--icon.icon--chevron-down.icon--body-grey
+          %span.nav--secondary__other-toggle--icon.icon--chevron-up.icon--body-grey
+
+  %nav.wv--split--right.nav--secondary.js-secondary-nav-other-menu.nav--secondary--categories(role="navigation" aria-label="Category navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement")
+    %h6.accessibility Category navigation
+
+    .wv--nav--inline.split--right__inner{ class: !!responsive_items ? "wv--block" : "" }
+      = render :partial => "components/navigation/secondary_items", locals: { items: properties[:items] }
+
+    - if !!responsive_items && responsive_items.length > 0
+      .wv--nav--inline.split--right__inner.wv--hidden-block
+        = render :partial => "components/navigation/secondary_items", locals: { items: responsive_items }

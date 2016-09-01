@@ -1,0 +1,396 @@
+$fixed-width: true
+
+@import "base_helpers"
+@import "core/core_components/*"
+@import "components/**/*"
+@import "widgets/*"
+@import "icons/destination/icons"
+@import "icons/interest/icons"
+@import "icons/need-to-know/icons"
+@import "icons/weather/icons"
+@import "styleguide/perf"
+@import "prism"
+
+
+
+.supports-cssfilters
+  &.lightbox--open
+    .row--primary,
+    .row--secondary,
+    .row__inner--content,
+    .wrapper--footer
+      filter: blur(4px)
+
+    .lightbox
+      background: rgba($darkgray, 0.95)
+      .row--primary,
+      .row--secondary,
+      .row__inner--content,
+      .wrapper--footer
+        filter: none
+
+.box
+  box-sizing: border-box
+  padding: 20px
+
+pre[class*="language-"]
+  @extend %rounded-corners
+  background: mix($subduedgray, white, 10%)
+  border: 1px solid #DEE2E6
+  box-sizing: border-box
+  max-height: 200px
+  overflow: auto
+  padding: 1em
+
+  .context--documentation &
+    max-height: none
+
+  .tag
+    +font-size(16)
+    margin: 0
+    float: none
+
+pre[class*="language-"].styleguide
+  margin: 20px 0 10px
+  +font-size(13)
+  .styleguide-intro &
+    padding: 15px 25px
+  .styleguide-intro__inner &
+    margin: 0
+
+pre.styleguide.is-open
+  max-height: none
+  &:after
+    background: none
+
+*:not(pre) > code,
+*:not(pre) > code[class*="language-"]
+  @extend %rounded-corners
+  background: rgba($subduedgray, 0.1)
+  border: 1px solid #DEE2E6
+  +font-size(13)
+  font-weight: normal
+  padding: .1em .3em
+
+.snippet-expand
+  width: 100%
+  border-radius: 0 0 4px 4px
+  margin-bottom: -15px
+
+.clearfix
+  @extend %clearfix
+
+.isnt-approximate
+  display: none
+.is-exact
+  position: relative
+  &:before
+    width: 20px
+    height: 20px
+    position: absolute
+    left: 10px
+    top: 10px
+
+.title--styleguide
+  color: white
+  padding: 10px 0
+
+.styleguide-intro,
+.styleguide-block
+  @extend %rounded-corners
+
+.styleguide-intro
+  padding: 25px
+  margin-bottom: 20px
+
+.styleguide-intro__section
+  margin-bottom: 20px
+
+.styleguide-block
+  @extend %clearfix
+  margin-bottom: 30px
+  &.theme--dark
+    background: $high-contrast-bg
+
+.styleguide-block__item--left
+  float: left
+  margin-right: 20px
+  .styleguide--section__tiles &
+    width: 323px
+
+.styleguide__subtitle
+  margin: 20px 10px
+
+.styleguide-block__buttons
+  .styleguide-block__heading
+    padding: 5px 0
+    margin-bottom: 0
+  pre.language-markup
+    padding: 7px
+    line-height: 1
+    span, &
+      +font-size(14)
+  .styleguide-block__items
+    margin-bottom: 20px
+  .styleguide-block__item
+    margin: 0
+  .styleguide-block__description
+    min-height: 120px
+    @extend %rounded-corners
+
+.styleguide-block__badges
+  .styleguide-block__item
+    margin-right: 10px
+    margin-top: 0
+
+  pre[class*="language-"]
+    margin: 2px 0 0
+    padding: 7px
+    &, .tag
+      +font-size(14)
+
+.styleguide-block__badges
+  .styleguide-block__items
+    margin-top: 20px
+  .styleguide-block__item
+    min-width: 100px
+    padding-top: 7px
+
+.styleguide-block__item
+  min-height: 40px
+  margin: 20px 0
+
+.styleguide__colours
+  text-align: center
+  .copy--h4
+    padding: 10px
+  .card
+    overflow: hidden
+    code
+      white-space: nowrap
+
+.styleguide-block__item--colour
+  +font-size(13)
+  padding: 25px 0
+  color: white
+  margin: 0
+  @extend %rounded-corners
+
+  &.is-light
+    color: $body-copy
+  .is-approximate &
+    border-color: transparent
+
+.styleguide-block__description
+  box-sizing: border-box
+  overflow: hidden
+  padding: 20px
+  @extend %rounded-corners
+
+.styleguide-block__heading
+  margin-top: 0
+
+.styleguide-block__tooltips
+  .styleguide-block__description
+    overflow: visible
+  .tooltip--left,
+  .tooltip--right
+    width: 165px
+  .tooltip--left
+    right: 103%
+  .tooltip--right
+    left: 103%
+  .tooltip--hover:hover,
+  .tooltip--focus:focus
+    .tooltip--left, + .tooltip--left
+      right: 101%
+    .tooltip--right, + .tooltip--right
+      left: 101%
+.styleguide-block__picture
+  margin-bottom: 0
+
+.styleguide__partial
+  padding: 10px 0
+
+.filter--links
+  min-width: 200px
+  +font-size(15)
+  .dropdown
+    line-height: 1
+    width: 140px
+    &:after
+      right: 10px
+  .dropdown
+    float: left
+  .styleguide-proximity
+    float: left
+    margin-right: 10px
+
+
+.field
+  background: #fff
+  padding: 10px
+  width: 250px
+
+.styleguide-proximity__input
+  float: left
+  width: 200px
+
+.styleguide__input-copy
+  width: 100%
+
+.styleguide__anchor
+  position: relative
+
+  > a:first-child
+    +z-layer
+    +size(30px)
+    @extend %transition--base
+    @extend %rounded-corners
+    display: block
+    position: absolute
+    right: -35px
+    top: 20px
+    background-color: white
+    opacity: 0.7
+    &:hover
+      opacity: 1
+    &:after
+      +size(22px)
+      position: absolute
+      left: 5px
+      top: 4px
+
+.styleguide-grid
+  .card
+    text-align: center
+    padding: 10px 0
+
+.styleguide-icons
+  [class*="icon--"]
+    height: 40px
+    width: 40px
+    margin-left: 10px
+  [class*="icon--"][class*="--pin"]
+    width: 28px
+  [class*="icon--"][class*="--simple"]
+    width: 30px
+  [class*="icon--"][class*="--place--pin"]
+    width: 40px
+  .icon--lp-logo
+    width: 70px
+  .icon--collar
+    width: 70px
+    height: 20px
+    margin: 10px
+  .icon.icon--pinterest
+    width: 40px
+  .is-white
+    background-color: $body-copy
+    color: white
+
+  .icon__name
+    text-align: right
+    padding: 10px
+    +font-size(12)
+
+.styleguide-icons--destination,
+.styleguide-icons--interests
+  .icon
+    +size(100px)
+    @extend %inline-block
+  .icon__name
+    text-align: center
+    height: 30px
+    font-weight: bold
+
+.styleguide-intro--icons
+  .styleguide-intro__inner
+    @extend %transition--base
+    overflow: hidden
+    height: 365px
+    &.is-closed
+      height: 100px
+
+.filter--links
+  .svg-colourise
+    width: 170px
+
+.lightbox__content
+  padding-top: 50px
+
+.nav--left__item--konami
+  transition: height 0.5s ease
+  border-bottom: 0
+  height: 0
+  margin: 0
+  overflow: hidden
+  padding-bottom: 0
+  padding-top: 0
+  &.is-visible
+    border-bottom: 1px solid $body-background-offset
+    height: 17px
+    padding-bottom: 12px
+    padding-top: 12px
+
+.styleguide-preloader
+  border: 1px solid $body-background-offset
+  height: 100px
+  position: relative
+
+.js-onswipe
+  -ms-touch-action: none
+
+.styleguide-row
+  padding: 15px
+  p
+    margin-bottom: 0
+
+.hero-banner,
+.hero-banner__content,
+.hero-banner__image-story__content
+  width: 798px
+
+#select-field
+  .styleguide-block__item--2
+    .field__label
+      width: 60%
+    .field
+      width: 295px
+      .field__content
+        width: 100% !important
+
+.multi-select-0, .multi-select-1
+  width: 32.3%
+
+.multi-select-2
+  width: 35.3%
+
+#dropdown-intro
+  p
+    span
+      font-style: italic
+
+.styleguide-typography-block
+  .copy--h1,
+  .copy--h2,
+  .copy--h3,
+  .copy--h4,
+  .copy--h5
+    padding-bottom: 15px
+    border-bottom: 1px solid $body-background
+
+  code
+    float: right
+    line-height: 1.4
+
+// Ensure tags are actually in the styleguide, not over the left nav
+// Scoped to parent/child to avoid changing the behaviour inside cards
+.card__tags
+  .styleguide-block__item--left > &
+    position: static
+    .price-label
+      margin-top: 0
+
+.booking-widget
+  margin-bottom: 220px

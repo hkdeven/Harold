@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// Text sections with left hand icons
+// -----------------------------------------------------------------------------
+
+.text-icon
+  &:before
+    position: relative
+    display: inline-block
+    width: 20px
+    height: 20px
+    top: 4px
+  .no-js &, .no-background-size &
+    &:before
+      display: none

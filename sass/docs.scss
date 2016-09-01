@@ -1,0 +1,34 @@
+@import "core";
+
+.layout-container {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  > header {
+    border-bottom: .1rem solid $lpblue;
+
+    a {
+      color: $titlegray;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $lpblue;
+      }
+    }
+  }
+}
+
+.navigation {
+  a {
+    color: $titlegray;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $lpblue;
+    }
+  }
+}

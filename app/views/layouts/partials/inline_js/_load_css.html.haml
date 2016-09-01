@@ -1,0 +1,35 @@
+:javascript
+  /*
+  loadCSS: load a CSS file asynchronously.
+  [c]2014 @scottjehl, Filament Group, Inc.
+  Licensed MIT
+  */
+  window.lp.loadCSS = function loadCSS( href, before, media ){
+    "use strict";
+    var ss = window.document.createElement( "link" ),
+        ref = before || window.document.getElementsByTagName( "script" )[ 0 ],
+        sheets = window.document.styleSheets;
+    
+    ss.rel = "stylesheet";
+    ss.href = href;
+    // temporarily, set media to something non-matching to ensure it'll fetch without blocking render
+    ss.media = "only x";
+    ref.parentNode.insertBefore( ss, ref );
+    // Set the link's media back to `all` so that the stylesheet applies once it loads
+    function toggleMedia(){
+      var defined;
+      for( var i = 0; i < sheets.length; i++ ){
+        if( sheets[ i ].href && sheets[ i ].href.indexOf( href ) > -1 ){
+          defined = true;
+        }
+      }
+      if( defined ){
+        ss.media = media || "all";
+      }
+      else {
+        setTimeout( toggleMedia );
+      }
+    }
+    toggleMedia();
+    return ss;
+  }

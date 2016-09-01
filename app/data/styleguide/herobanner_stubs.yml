@@ -1,0 +1,13 @@
+-
+  :title: "Hero banner"
+  :image_url: "http://assets.staticlp.com/slothstronaut.jpg"
+  :strapline: "This is a hero banner"
+
+-
+  :image_url: "http://assets.staticlp.com/slothstronaut.jpg"
+  :image_caption: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio aperiam cumque aliquam tempore nam accusamus et voluptatibus libero reiciendis! Suscipit facere nihil obcaecati quia expedita, deleniti, sapiente odio sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio aperiam cumque aliquam tempore nam accusamus et voluptatibus libero reiciendis! Suscipit facere nihil obcaecati quia expedita, deleniti, sapiente odio sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio aperiam cumque aliquam tempore nam accusamus et voluptatibus libero reiciendis! Suscipit facere nihil obcaecati quia expedita, deleniti, sapiente odio sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio aperiam cumque aliquam tempore nam accusamus et voluptatibus libero reiciendis! Suscipit facere nihil obcaecati quia expedita, deleniti, sapiente odio sed!"
+  :image_info:
+    :attribution: "Slothy"
+    :attribution_url: "/styleguide/404"
+    :attribution_image_url: "http://assets.staticlp.com/sloth-avatar.jpg"
+    :title: "Slothstronaut"

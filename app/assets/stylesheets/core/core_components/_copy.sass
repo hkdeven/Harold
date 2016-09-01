@@ -1,0 +1,141 @@
+// -----------------------------------------------------------------------------
+// Headings
+//
+// Headings only inherit their margins when included within a .context--content
+// container. This allows for fewer overrides when using them elsewhere.
+// -----------------------------------------------------------------------------
+
+.copy--h1
+  @extend %heading--1
+  .context--content &
+    margin-bottom: 0.4em
+
+.copy--h2
+  @extend %heading--2
+  .context--content &
+    margin-bottom: 0.75em
+    &:first-child
+      margin-top: 0
+
+.copy--h3
+  @extend %heading--3
+  .context--content &
+    margin-bottom: .9em
+
+.copy--h4
+  @extend %heading--4
+  .context--content &
+    margin-bottom: .9em
+
+.copy--h5
+  @extend %heading--5
+
+.copy--label
+  +font-size(13)
+  color: $lightgray
+  text-transform: uppercase
+  letter-spacing: .05em
+  font-weight: bold
+
+// -----------------------------------------------------------------------------
+// Body content
+// -----------------------------------------------------------------------------
+
+.copy--feature
+  @extend %text--feature
+
+.copy--body
+  @extend %text--body
+  color: $body-copy
+
+// Copy with a long line length
+.copy--full-width,
+.copy--full-width .copy--body
+  +font-size(18)
+
+.copy--half-width,
+.copy--half-width .copy--body
+  +font-size(16)
+
+.copy--meta
+  @extend %text--meta
+
+.copy--caption
+  @extend %text--caption
+
+.copy--disclaimer
+  @extend %text--disclaimer
+
+
+// -----------------------------------------------------------------------------
+// Theming
+// -----------------------------------------------------------------------------
+
+.theme--dark
+  &,
+  .copy--h1,
+  .copy--h2,
+  .copy--h3,
+  .copy--h4,
+  .copy--h5,
+  .copy--feature
+    color: white
+
+  .copy--meta,
+  .copy--caption,
+  .copy--disclaimer
+    color: $subduedgray
+
+// -----------------------------------------------------------------------------
+// Links
+// -----------------------------------------------------------------------------
+
+.copy--body__link, .copy a
+  border-bottom: 1px dotted
+  color: inherit
+  &:hover
+    color: $linkblue
+    text-decoration: none
+  .theme--dark &:hover
+    // Change the border to give some feedback on hover (on white text)
+    border-bottom-style: solid
+    color: inherit
+
+// -----------------------------------------------------------------------------
+// Lists
+// -----------------------------------------------------------------------------
+
+.copy--list, ul, ol
+  .context--content &
+    padding-left: 1.2em
+    margin-bottom: 15px
+
+.copy--list, ul, ol
+  li
+    .context--content &
+      margin-bottom: 10px
+
+.context--content ul,
+ul.copy--list
+  list-style-type: square
+
+.list--alpha
+  list-style-type: lower-alpha
+
+
+// -----------------------------------------------------------------------------
+// Inline Icons
+// -----------------------------------------------------------------------------
+.copy--icon,
+.copy--icon--after:after,
+.copy--icon--before:before
+  +size(1em)
+  display: inline-block
+  position: relative
+  top: 0.2em
+.copy--icon
+  margin: 0 0.1em
+.copy--icon--after:after
+  margin-left: 0.1em
+.copy--icon--before:before
+  margin-right: 0.1em

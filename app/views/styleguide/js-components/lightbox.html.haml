@@ -1,0 +1,180 @@
+= render 'styleguide/partials/shared'
+
+#js-card-holder.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 Lightbox
+
+    %p.js-example-one
+      %a.btn.btn--linkblue.btn--large.btn--icon.icon--sight--before.icon--white--before.js-custom-opener-one.sg-lightbox-toggle{ href: "#" } Example lightbox
+
+    %p.js-example-two
+      %a.btn.btn--linkblue.btn--large.btn--icon.icon--sight--before.icon--white--before.js-custom-opener-two.sg-lightbox-toggle{ href: "#" } .js-custom-opener Example
+
+    %p.js-example-three
+      %a.btn.btn--linkblue.btn--large.btn--icon.icon--sight--before.icon--white--before.js-custom-opener-three.sg-lightbox-toggle{ href: "#" } fetchContent Example
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Initiating
+
+  %pre.styleguide.copy--body.language-markup
+    %code
+      = preserve do
+        :escaped
+          <a href="#" class="js-lightbox-toggle">show lightbox</a>
+
+  %p
+    The
+    %code js-lightbox-toggle
+    class will open the lightbox.
+
+  %p Note: The component will self instantiate if that class exists on the page, but you can still fire up your own by running:
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+
+      :escaped
+        new LightBox({ $opener: ".js-other-lightbox-opener" });
+
+  %p
+    If you want more than one lightbox in the page, with different openers and content, you have to specify the
+    %code $el
+    parameter.
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      :escaped
+        new LightBox({ $el: ".js-element" });
+
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Parameters
+  %p
+    Some parameters can be customized with data attributes in the opener element:
+
+  %p
+    %code
+      data-lightbox-class
+    and
+    %code
+      data-lightbox-showpreloader
+    useful when you want to fetch content with an ajax call
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          <a href="#" class="js-lightbox-toggle" data-lightbox-class"some-custom-class" data-lightbox-showpreloader="true">show lightbox</a>
+
+  %p
+    You can add a
+    %code
+      mobileBreakpoint
+    parameter to set a specific breakpoint based on the window width. The Lightbox by default won't open on devices with small screens (< 500px), unless this parameter is set.
+
+  %p
+    Note: To disable the breakpoint entirely, set the value to 0 as follows:
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          new Lightbox({
+            mobileBreakpoint: 0
+          });
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Updating the content
+  %p
+    You can update the content with HTML directly triggering the
+    %code
+      ":lightbox/renderContent"
+    event.
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+
+          $("#js-row--content").on(":lightbox/open", function( ) {
+            $("#js-row--content").trigger( ":lightbox/renderContent", "<img src='http://assets.staticlp.com/assets/rizzo-sloth-404.jpg' height='600' width='800' />" );
+          });
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Custom rendering of content
+  %p
+    You can also specify a custom rendering function... a useful case for this is when having the data returned as JSON. This function must return the markup as a string.
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          new Lightbox({
+            customRenderer: function(data) {
+              return "<h1>" + data.title + "</h1><div class='contents'>" + data.contents + "</div>";
+            }
+          });
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Updating the content from remote
+  %p
+    Also, you can fetch content from remote triggering the event
+    %code
+      ":lightbox/fetchContent"
+    with the url where you want to load the content. You have to add a reference in your script to
+    %code
+      "lib/components/controller"
+    Also, you must instantiate the controller with
+    %code
+      "new Controller()"
+    When the response of the ajax call is received, the path in the browser will be updated with the one that you pass on the parameters.
+
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      :escaped
+        require([ ...., "lib/page/controller" ... ], function(..., Controller, ...)
+
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          $("#js-row--content").on(":lightbox/open", function( ) {
+            $("#js-row--content").trigger( ":lightbox/fetchContent", "/relative/path/content" );
+          });
+
+  %p
+    When you fetch content from remote, you would want to show the preloader with the
+    %code
+      data-lightbox-showpreloader
+    parameter or with the parameter in the constructor if you are using it.  The template for the preloader is placed within the layout, so you don't have to worry about that.
+
+  %pre.styleguide.copy--body.language-javascript
+    %code
+      = preserve do
+        :escaped
+          new Lightbox({
+            showPreloader: true
+          });
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Navigation within the lightbox
+  %p
+    You can have links inside the lightbox to navigate to another url, without closing the lightbox.
+  %p
+    In order to do that, add the links within the content of the ligthbox and give them the js-lightbox-navigation class with the href pointing to the url to load.
+    %code
+      js-lightbox-navigation
+    These links will load the url in the href of the link on the lightbox

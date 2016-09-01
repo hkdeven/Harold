@@ -1,0 +1,21 @@
+// ----------------------------------------------------------------------------
+//
+// Showing the user's basket in the primary nav
+//
+// ----------------------------------------------------------------------------
+
+.user-basket
+  position: relative
+  margin-left: 5px
+  padding: 4px 8px
+
+.user-basket__icon
+  @extend %image-replacement
+  @extend %inline-block
+  @extend %transition--base
+  height: 23px
+  width: 24px
+  margin-right: 5px
+  opacity: 0.75
+  &:hover
+    opacity: 1

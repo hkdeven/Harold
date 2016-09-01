@@ -1,0 +1,108 @@
+// -----------------------------------------------------------------------------
+// Tooltips
+// -----------------------------------------------------------------------------
+
+.tooltip--container
+  position: relative
+
+.tooltip
+  +z-layer(below)
+  @extend %rounded-corners
+  @extend %standard-shadow
+  @extend %transition--base
+  background-color: $body-copy
+  color: white
+  opacity: 0
+  padding: 5px 20px
+  position: absolute
+  text-align: center
+  left: 0
+  .enhanced &
+    box-shadow: 0 1px 1px 2px $new-header-grey-shadow
+
+  .ie7 &, .ie8 &, .browserIE7 &, .browserIE8 &
+    display: none
+
+  &:after
+    position: absolute
+  &:before
+    display: none
+
+.tooltip__header
+  +font-size(14)
+  color: $header-blue
+  font-weight: bold
+
+.tooltip--above
+  +css-arrow-central(bottom, $size: 22px)
+  bottom: 115%
+
+.tooltip--below
+  +css-arrow-central(top, $size: 22px)
+  top: 115%
+
+.tooltip--left
+  +css-arrow-central(right, $size: 22px)
+  left: auto
+  right: 105%
+  text-align: right
+  top: -5px
+
+.tooltip--right
+  +css-arrow-central(left, $size: 22px)
+  left: 105%
+  text-align: left
+  top: -5px
+
+// -----------------------------------------------------------------------------
+// Set up the interactions
+// -----------------------------------------------------------------------------
+
+%tooltip--above--hover
+  bottom: 105%
+
+%tooltip--below--hover
+  top: 105%
+
+%tooltip--left--hover
+  right: 100%
+  top: -5px
+
+%tooltip--right--hover
+  left: 100%
+  top: -5px
+
+%tooltip-visible
+  +z-layer(modal)
+  opacity: 1
+  .ie7 &, .ie8 &, .browserIE7 &, .browserIE8 &
+    display: block
+
+.tooltip--hover,
+.tooltip--trigger
+  @extend .tooltip--container
+  &:hover
+    .tooltip
+      @extend %tooltip-visible
+    .tooltip--above
+      @extend %tooltip--above--hover
+    .tooltip--below
+      @extend %tooltip--below--hover
+    .tooltip--left
+      @extend %tooltip--left--hover
+    .tooltip--right
+      @extend %tooltip--right--hover
+
+.tooltip--focus
+  @extend .tooltip--container
+  &:focus
+    + .tooltip
+      @extend %tooltip-visible
+    + .tooltip--above
+      @extend %tooltip--above--hover
+    + .tooltip--below
+      @extend %tooltip--below--hover
+    + .tooltip--left
+      @extend %tooltip--left--hover
+    + .tooltip--right
+      @extend %tooltip--right--hover

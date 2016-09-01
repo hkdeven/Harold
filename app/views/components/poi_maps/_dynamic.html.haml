@@ -1,0 +1,24 @@
+:ruby
+
+  attrs = {
+    alt: "",
+    zoom: 15,
+    scale: 2,
+    width: 320,
+    height: 240,
+    marker: true,
+    latitude: 51.5073,
+    longitude: -0.1277,
+    icon: "http://assets.staticlp.com/assets/shared/poi-map-marker.png"
+  }
+
+  attrs.merge!(properties) if defined? properties
+  attrs[:pois] = attrs[:pois].to_json
+
+.poi-map.poi-map--dynamic.js-poi-map.is-closed
+  %a.poi-map__toggle.js-poi-map-placeholder{ rel: "map", href: google_maps_url(attrs[:latitude], attrs[:longitude]) }
+    = render :partial => '/components/poi_maps/partials/img', :locals => { properties: attrs }
+  = render :partial => '/components/poi_maps/partials/map', :locals => { properties: attrs }
+  - if properties[:pois].present?
+    = render :partial => '/components/poi_maps/partials/poi_list', :locals => { pois: properties[:pois] }
+  = render :partial => '/components/preloader'

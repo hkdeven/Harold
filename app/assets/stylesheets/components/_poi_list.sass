@@ -1,0 +1,56 @@
+.nearby-pois
+  +z-layer
+  @extend %rounded-corners
+  @extend %fly-out-shadow
+  overflow: auto
+  background: #fff
+
+  +respond-to-legacy-support(medium-view)
+    position: absolute
+    top: 12px
+    right: 12px
+    bottom: 12px
+    width: 294px
+    max-width: 50%
+
+  .is-closed &
+    +respond-to-legacy-support(medium-view)
+      display: none
+
+  &::-webkit-scrollbar
+    width: 4px
+  &::-webkit-scrollbar-thumb
+    border-radius: 2px
+    background: $details-panel-border
+  &::-webkit-scrollbar-track
+    background: none
+
+.nearby-pois__list
+  padding: 0
+  list-style: none
+  line-height: 1.4
+
+.nearby-pois__poi
+  position: relative
+  border-top: 1px solid $body-background-offset
+  padding: 10px 20px 15px 43px
+  cursor: pointer
+  &:first-child
+    border-top: none
+  &:before
+    position: absolute
+    top: 10px
+    left: 18px
+    display: block
+    width: 18px
+    height: 23px
+    line-height: 20px
+  &:hover,
+  &.is-selected
+    background-color: $body-background-offset
+
+.nearby-pois__title
+  +font-size(14)
+
+.nearby-pois__description
+  margin-bottom: 0

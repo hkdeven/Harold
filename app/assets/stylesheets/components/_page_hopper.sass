@@ -1,0 +1,24 @@
+.page-hopper
+  @extend %fly-out-shadow
+
+.page-hopper__input
+  width: 100%
+
+.lightbox--page-hopper
+  .lightbox__close
+    right: -40px
+    top: 75px
+
+  .autocomplete 
+    input
+      background-position: right 0px top 8px
+    &.is-loading input
+      background-size: 60px
+  .autocomplete__results
+    top: 100%
+  .autocomplete__list
+    +css-arrow-central(top, $size: 50px)
+    padding: 15px 0
+  .autocomplete__list__item
+    padding: 25px
+

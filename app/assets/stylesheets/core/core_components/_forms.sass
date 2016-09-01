@@ -1,0 +1,92 @@
+.fieldset
+  +font-size(16)
+
+.fieldset__legend
+  margin-bottom: 10px
+  padding: 0
+
+.field
+  @extend %clearfix
+  clear: both
+  margin-bottom: 10px
+  position: relative
+  .input
+    float: left
+
+.field__label,
+.field__content
+  @extend %clearfix
+  display: block
+  width: 100%
+  +respond-to(medium-view)
+    float: left
+
+.field__label
+  box-sizing: border-box
+  padding: 10px 10px 10px 0
+  +respond-to(medium-view)
+    width: 35%
+
+  .field--radio &
+    padding: 0 10px 0 0
+
+.field__content
+  +respond-to(medium-view)
+    width: 65%
+
+.field__input--error,
+.field__input--valid
+  &:after
+    +size(20px)
+    position: absolute
+    right: 10px
+    top: 9px
+
+.field__error
+  +font-size(14)
+  color: $red
+  clear: both
+  font-weight: bold
+  margin: 5px 0
+
+.field__content--checkbox
+  float: none
+  width: auto
+
+.input__container
+  @extend %clearfix
+  position: relative
+
+  &.icon--calendar--after
+    &:after
+      width: 22px
+      height: 22px
+      position: absolute
+      right: 8px
+      top: 8px
+
+  .field--half &
+    float: left
+    width: 50%
+  .field--radio &
+    @extend %clearfix
+    display: block
+    margin-right: 10px
+    margin-top: 10px
+    &:first-child
+      margin-top: 0
+
+.input--checkbox
+  margin: 0 5px
+.input--radio
+  margin-right: 2px
+
+.input--datepicker
+  padding-right: 30px
+
+.input--checkbox--disabled
+  input
+    cursor: not-allowed
+  label
+    color: $lightgray
+    cursor: not-allowed

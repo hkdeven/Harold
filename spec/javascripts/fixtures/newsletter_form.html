@@ -1,0 +1,23 @@
+<form action="//www.lonelyplanet.com/rizzo_sailthru" class="newsletter-footer js-newsletter-footer" method="post">
+  <label class="polyfill--placeholder newsletter-footer__placeholder">Email</label>
+  <input autocomplete="off" class="input--small--newsletter" id="newsletter-email" name="sailthru[email]" placeholder="your@email.com" required="required" type="text">
+  <input name="sailthru[source]" type="hidden" value="homepagefooter">
+  <input name="sailthru[email_template]" type="hidden" value="Welcome email">
+  <div class="dropdown dropdown--country js-select-group-manager">
+    <label class="dropdown__value dropdown__value--country js-select-overlay icon--chevron-down--after" for="select-country">
+      Select country
+    </label>
+    <select class="dropdown__select js-select" id="select-country" name="sailthru[required][country]">
+      <option value="Australia">
+        Australia
+      </option>
+      <option value="United Kingdom">
+        United Kingdom
+      </option>
+      <option value="United States">
+        United States
+      </option>
+    </select>
+  </div>
+  <input class="btn btn--green btn--large newsletter-footer__btn" data-lpa-action="newsletter" data-lpa-category="account" title="Subscribe Newsletter" type="submit" value="Sign up">
+</form>

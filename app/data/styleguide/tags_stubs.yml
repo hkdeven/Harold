@@ -1,0 +1,23 @@
+tag_price:
+  -
+    :size: "small"
+    :currency: "$"
+    :price: "500"
+    :retail_price: "1000"
+
+  -
+    :currency: "$"
+    :price: "500"
+    :scope: "next day"
+    :retail_price: "1000"
+
+  -
+    :size: "large"
+    :currency: "$"
+    :price: "500"
+    :scope: "next day"
+    :retail_price: "1000"
+
+tag_competition:
+  -
+    :position: "1"

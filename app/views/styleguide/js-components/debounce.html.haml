@@ -1,0 +1,55 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+
+  %h1.copy--h1
+    Debounce
+
+  %p
+    Defines and returns a function that should be called after a specified number of milliseconds, and only after the last time the function is invoked. Useful for responding to user gestures that may be repeated, such as window resizing or key presses for an autocomplete, so that the specified function will only execute after the last key has been pressed, or the browser resizing has stopped.
+
+.styleguide-block
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Arguments
+
+    %p
+      %code.language-markup
+        callback
+      (required) A function reference that will be called after the specified number of milliseconds has elapsed.
+
+    %p
+      %code.language-markup
+        wait
+      (required) The number of milliseconds to wait before executing the callback function.
+
+    %p
+      %code.language-markup
+        scope
+      (optional) The lexical scope in which the callback method should be executed.
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Usage
+
+    %p
+      The following example will apply a style to any element with a class of 
+      %code slider-js
+      whenever the user resizes the browser window. By using debounce, the performance of the page is not compromised because even though the base event fires for every pixel that the user resizes the window, the function will not get called until 150 milliseconds after the last one is fired.
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :plain
+            define(['jquery', 'lib/utils/debounce'], function ($, debounce) {
+              "use strict";
+
+              var resetSlider = function () {
+                $('.slider-js').css({"transform": "none !important"});
+              };
+
+              $(window).resize(debounce(resetSlider, 150));
+            });

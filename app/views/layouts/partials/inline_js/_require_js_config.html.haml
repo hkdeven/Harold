@@ -1,0 +1,42 @@
+:javascript
+
+  var require = require || {
+    baseUrl: '/assets',
+    paths: {
+      flamsteed: "flamsteed/lib/javascripts/flamsteed",
+      hogan: "hogan/dist/hogan-3.0.0.amd",
+      jplugs: "jquery-plugins",
+      jquery:  "jquery/dist/jquery",
+      jtimeago: "jquery-timeago/jquery.timeago",
+      sailthru: "sailthru/v1",
+      sCode: "omniture/s_code",
+      trackjs: "trackjs/trackjs",
+      dfp: "jquery.dfp.js/jquery.dfp",
+      autocomplete: "autocomplete/dist/autocomplete",
+      usabilla: "usabilla/usabilla",
+      zeroclipboard: "zeroclipboard/dist/ZeroClipboard",
+      picker: "pickadate/lib/picker",
+      pickerDate: "pickadate/lib/picker.date",
+      pickerLegacy: "pickadate/lib/legacy"
+    },
+    shim: {
+      "xdr": [ "jquery" ],
+      "dfp": [ "jquery"]
+    },
+    waitSeconds: 30
+  };
+
+  // App requirejs config is passed and stored on lp.require
+  #{ yield :app_require_config }
+
+  if (lp.require && lp.require.paths) {
+    for (path in lp.require.paths) {
+      require.paths[path] = lp.require.paths[path];
+    }
+  }
+
+  if (lp.require && lp.require.shim) {
+    for (shim in lp.require.shim) {
+      require.shim[shim] = lp.require.shim[shim];
+    }
+  }

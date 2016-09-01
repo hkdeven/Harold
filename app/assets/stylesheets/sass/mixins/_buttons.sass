@@ -1,0 +1,34 @@
+// -----------------------------------------------------------------------------
+// [doc]
+//
+// Apply font-size to a button and icon within the button
+//
+//
+// [/doc]
+// -----------------------------------------------------------------------------
+@mixin btn-font-size($font-size)
+  +font-size($font-size)
+  &.btn--caps
+    +font-size($font-size - 2)
+  &.btn--icon-only
+    background-size: $font-size + 6px
+  &.btn--icon:before
+    +size(#{$font-size}px)
+  &.btn--social-icon:before
+    +size($font-size + 3px)
+
+// -----------------------------------------------------------------------------
+// [doc]
+//
+// Apply color to a button and create the outline version in that color
+//
+// [/doc]
+// -----------------------------------------------------------------------------
+@mixin btn-color($primary, $secondary: white, $highlight: mix($primary, white, 80%))
+  background-color: $primary
+  color: $secondary
+  &.btn--outline
+    color: $primary
+  &:hover, &:focus
+    background-color: $highlight
+    color: $secondary

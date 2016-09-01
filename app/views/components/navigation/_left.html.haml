@@ -1,0 +1,14 @@
+#js-left-nav.nav--left.wv--table
+
+  #js-stack-list-aside
+
+    - properties[:groups].each_with_index do |group, i|
+      
+      .card.nav--left__group{class: (i > 0) ? "nav--left__group--linked" : ""}
+        
+        - if group[:title]
+          %label{class: 'nav--left__title copy--h5', for: "ac-#{group[:section]}"}
+            = group[:title]
+
+        - group[:items].each do |item|
+          = render 'components/navigation/left_nav_item', item: item

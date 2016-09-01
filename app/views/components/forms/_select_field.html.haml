@@ -1,0 +1,33 @@
+= render layout: 'components/forms/partials/field', locals: { id: properties[:id], label: properties[:label], error: properties[:error], extra_class: properties[:extra_class], tooltip: properties[:tooltip] } do
+  - properties[:fields].each_with_index do |dropdown, i|
+
+    - field_id = i == 0 ? properties[:id] : "#{properties[:id]}-#{i}"
+    - container_class = properties[:fields].length == 1 ? "single-select" : "multi-select-#{i}"
+
+    - dropdown_class = ""
+    - input_class = ""
+
+    - if properties[:fields].length > 1
+
+      - if properties[:fields].length == 2
+        - input_class = "dropdown--half"
+      - elsif properties[:fields].length == 3
+        - input_class = "dropdown--third"
+
+      - if i == 0
+        - dropdown_class = "dropdown--first"
+      - elsif i == properties[:fields].length - 1
+        - dropdown_class = "dropdown--last"
+      - else
+        - dropdown_class = "dropdown--middle"
+
+    - if dropdown[:error] || dropdown[:has_error]
+      - input_class += " field__input--error"
+
+    .input__container.js-input{ class: [input_class, container_class] }
+
+      = ui_component('forms/dropdown', properties: { id: field_id, required: dropdown[:required], name: dropdown[:name], placeholder: dropdown[:placeholder], options: dropdown[:options], class: dropdown_class, dropdown_class: dropdown[:class],  selected: dropdown[:selected], tooltip: properties[:tooltip], data: dropdown[:data]})
+
+    - if dropdown[:error]
+      .field__error.js-error
+        = dropdown[:error]

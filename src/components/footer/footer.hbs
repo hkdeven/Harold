@@ -1,0 +1,187 @@
+<footer class="lp-global-footer" id="footer" role="contentinfo">
+  <div class="lp-global-footer__container">
+
+    <div class="lp-global-footer__main">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--newsletter">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/newsletter" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Newsletter">
+            Newsletter sign up
+          </a>
+        </p>
+
+        <form class="newsletter-register" action="//www.lonelyplanet.com/newsletter/form-submission.php" method="post" _lpchecked="1">
+          <input name="Source" type="hidden" value="homepagefooter">
+          <input name="type" type="hidden" value="subscribe">
+
+          <p class="newsletter-register__text">
+            Subscribe now and receive a 20% discount on your next
+            guidebook purchase.
+          </p>
+
+          <label for="newsletter-register-email">Email address</label>
+          <input class="newsletter-register__email" id="newsletter-register-email" name="sailthru_email" type="email" placeholder="your@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" required>
+
+          <label for="newsletter-register-country">Country</label>
+          <select class="newsletter-register__country" id="newsletter-register-country" name="sailthru_Country">
+            <option value="">Select country</option>
+            {{#each newsletter_countries}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+
+          <button class="newsletter-register__button" data-lpa-action="newsletter" data-lpa-category="account">Sign up</button>
+        </form>
+      </div>
+
+      <input class="lp-global-footer__main__checkbox" id="destinations_checked" type="checkbox">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--destinations">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/destinations" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Destinations">
+            Destinations
+          </a>
+
+          <label for="destinations_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
+        </p>
+
+        <ul class="lp-global-footer__main__links__list">
+          {{#each footer_nav_destination_items}}
+            <li class="lp-global-footer__main__links__list__item">
+              <a href="{{url}}" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <input class="lp-global-footer__main__checkbox" id="shop_checked" type="checkbox">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--shop">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/shop" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Shop">
+            Shop
+          </a>
+
+          <label for="shop_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
+        </p>
+
+        <ul class="lp-global-footer__main__links__list">
+          {{#each footer_nav_shop_items}}
+            <li class="lp-global-footer__main__links__list__item" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <input class="lp-global-footer__main__checkbox" id="forum_checked" type="checkbox">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--forum">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/thorntree" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Forum">
+            Forum
+          </a>
+
+          <label for="forum_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
+        </p>
+
+        <ul class="lp-global-footer__main__links__list">
+          {{#each footer_nav_forum_items}}
+            <li class="lp-global-footer__main__links__list__item">
+              <a href="{{url}}" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <input class="lp-global-footer__main__checkbox" id="interests_checked" type="checkbox">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--interests">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/interests" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Interests">
+            Interests
+          </a>
+
+          <label for="interests_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
+        </p>
+
+        <ul class="lp-global-footer__main__links__list">
+          {{#each footer_nav_interest_items}}
+            <li class="lp-global-footer__main__links__list__item">
+              <a href="{{url}}" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <input class="lp-global-footer__main__checkbox" id="booking_checked" type="checkbox">
+      <div class="lp-global-footer__main__links lp-global-footer__main__links--booking">
+        <p class="lp-global-footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/bookings" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="Travel Booking">
+            Travel booking
+          </a>
+
+          <label for="booking_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
+        </p>
+
+        <ul class="lp-global-footer__main__links__list">
+          {{#each footer_nav_booking_items}}
+            <li class="lp-global-footer__main__links__list__item">
+              <a href="{{url}}" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="lp-global-footer__bottom">
+      <div class="lp-global-footer__links">
+        <nav class="links">
+          <ul class="links__list">
+            {{#each footer_bottom_links}}
+              <li class="links__item">
+                <a class="links__link" href="{{url}}" data-lpa-category="Destinations Next" data-lpa-action="Footer Click" data-lpa-label="{{title}}">{{title}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </nav>
+      </div>
+
+      <a class="lp-logo lp-logo--gray" href="/">
+        <svg class="svg-icon svg-icon--fit" viewBox="0 0 142 72" aria-label="Lonely Planet">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-logo"></use>
+        </svg>
+      </a>
+
+      <ul class="lp-global-footer__social-list">
+        {{#each footer_social_media_links}}
+          <li class="lp-global-footer__social-item">
+            <a class="lp-global-footer__social-link footer__social-link--{{className}}" href="{{url}}">
+              <svg class="svg-icon svg-icon--small svg-icon--inline" aria-label="{{title}}">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-{{className}}"></use>
+              </svg>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="language">
+        <label class="language__label" for="language-select">International</label>
+
+        <select class="language__select js-language-select" id="language-select">
+          <option value="www.lonelyplanet.com" selected>English</option>
+          <option value="www.lonelyplanet.in">English (India)</option>
+          <option value="www.lonelyplanet.de">Deutsch</option>
+          {{!-- <option value="www.lonelyplanet.fr">Français</option> --}}
+          {{!-- <option value="www.lonelyplanet.es">Español</option> --}}
+          <option value="www.lonelyplanetitalia.it">Italiano</option>
+          <option value="www.lonelyplanet.co.kr">한국어</option>
+          {{!-- <option value="www.lonelyplanet.ru">Русский</option> --}}
+          {{!-- <option value="www.lonelyplanetbrasil.com.br">Português</option> --}}
+          {{!-- <option value="www.lonelyplanet.cz">Česky</option> --}}
+        </select>
+      </div>
+
+      <p class="lp-global-footer__copyright">
+        &copy; {{copyright_year}} Lonely Planet. All rights reserved.
+        No part of this site may be reproduced without our written permission.
+      </p>
+    </div>
+
+  </div>
+</footer>

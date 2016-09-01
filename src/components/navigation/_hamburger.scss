@@ -1,0 +1,62 @@
+@import "rizzo/app/assets/stylesheets/rizzo_next/mixins";
+
+.hamburger-menu {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  height: 50px;
+  outline: none;
+  padding: 0;
+  position: relative;
+  top: 15px;
+  transition: transform 400ms ease;
+  width: 50px;
+  z-index: z("default") + 1;
+
+  @media (min-width: $min-720) {
+    display: none;
+  }
+}
+
+.hamburger-menu__svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.hamburger-menu__svg__toggle {
+  cursor: pointer;
+  fill: $color-white;
+  pointer-events: all;
+}
+
+.navigation--narrow .hamburger-menu__svg__toggle {
+  fill: $titlegray;
+}
+
+.hamburger-menu__svg__toggle__bar {
+  opacity: 1;
+  transform: rotate(0) translateY(0) translateX(0);
+  transform-origin: 20px 10px;
+  transition: transform 400ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.hamburger-menu__svg__toggle__bar:nth-of-type(1) {
+  transform-origin: 20px 10px;
+}
+
+.hamburger-menu__svg__toggle__bar:nth-of-type(3) {
+  transform-origin: 20px 20px;
+}
+
+.is-open .hamburger-menu__svg__toggle__bar:nth-of-type(1) {
+  transform: rotate(-45deg) translateY(0) translateX(0);
+}
+
+.is-open .hamburger-menu__svg__toggle__bar:nth-of-type(2) {
+  opacity: 0;
+}
+
+.is-open .hamburger-menu__svg__toggle__bar:nth-of-type(3) {
+  transform: rotate(45deg) translateY(0) translateX(0);
+}

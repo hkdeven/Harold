@@ -1,0 +1,132 @@
+-
+  :styleguide_title: "Card"
+  :url: "#"
+  :title: "Paris"
+  :description: "Paris has all but exhausted the superlatives that can reasonably be applied to any city. Notre Dame and the Eiffel Tower have been described countless times, as have the Seine and the subtle (and not-so-subtle) differences between the Left and Right Banks. Yet, what writers have never been able to even slightly reflect is the grandness and magic."
+-
+  :styleguide_title: "Card with image"
+  :url: "#"
+  :title: "Moulin Rouge in Paris"
+  :description: "Immortalised in the posters of Toulouse-Lautrec and later on screen by Baz Luhrmann, the Moulin Rouge twinkles beneath a 1925 replica of its original red windmill. Yes, it’s rife with bus-tour crowds. But from the opening bars of music to the last high kick it’s a whirl of fantastical costumes, sets, choreography and Champagne. Booking advised."
+  :image_alt: ""
+  :image_url: "http://cache.graphicslib.viator.com/graphicslib/thumbs674x446/5022/SITours/moulin-rouge-show-paris-in-paris-116546.jpg"
+-
+  :styleguide_title: "Card with kind, context text and context pin"
+  :url: "#"
+  :kind: "destination"
+  :context_pin: true
+  :context_text: "Destination"
+  :title: "Ko Pha-Ngan"
+  :description: "In the family of southern Gulf islands, Ko Pha-Ngan sits in the crystal sea between Ko Samui, its business-savvy older brother, and little Ko Tao, the spunky younger brother full of dive-centric energy."
+-
+  :styleguide_title: "Card with image and author"
+  :url: "#"
+  :title: "Classic Paris: a fresh look at the city of light"
+  :description: "Immortalised in the posters of Toulouse-Lautrec and later on screen by Baz Luhrmann, the Moulin Rouge twinkles beneath a 1925 replica of its original red windmill. Yes, it’s rife with bus-tour crowds. But from the opening bars of music to the last high kick it’s a whirl of fantastical costumes, sets, choreography and Champagne. Booking advised."
+  :image_alt: ""
+  :image_url: "http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2013/09/2-seine.jpg"
+  :author_avatar: "https://community-media.lonelyplanet.com/users/avatars/001/140/591/thumb/J_Crew_-_Crew_Mutt.jpg"
+  :author_name: "Phil McCracken"
+  :target: "_blank"
+
+-
+  :styleguide_title: "Card with kind, image, context text and context icon"
+  :url: "#"
+  :kind: "activity"
+  :context_text: "Tour"
+  :context_icon: true
+  :title: "Classic Paris: a fresh look at the city of light"
+  :description: "Immortalised in the posters of Toulouse-Lautrec and later on screen by Baz Luhrmann, the Moulin Rouge twinkles beneath a 1925 replica of its original red windmill. Yes, it’s rife with bus-tour crowds. But from the opening bars of music to the last high kick it’s a whirl of fantastical costumes, sets, choreography and Champagne. Booking advised."
+  :image_alt: ""
+  :image_url: "http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2013/09/2-seine.jpg"
+-
+  :styleguide_title: "Card with image, context text, context locale and all the tags"
+  :url: "#"
+  :context_text: "5 star hotel"
+  :context_locale: "St-Germain & Les Invalides"
+  :title: "L'hôtel"
+  :description: "In a quiet quayside street, this award-winning hostelry is the stuff of romance, Parisian myths and urban legends"
+  :image_alt: ""
+  :image_url: "http://aff.bstatic.com/images/hotel/max300/135/13558989.jpg"
+  :price_tag:
+    :price: "223"
+    :currency: "£"
+    :scope: "per night"
+  :tags:
+    :top_choice?: true
+    :lp_reviewed?: true
+-
+  :styleguide_title: "Guide card with image, context text and price tag"
+  :url: "#"
+  :kind: "guide"
+  :tall_listing?: true
+  :context_text: "Book & Ebook"
+  :title: "France's Best Trips"
+  :description: "Discover the freedom of the open road with France’s Best Trips. We’ve selected 39 amazing road trips through France, from two-day escapes to week-long adventures, and packed them full of expert advice and inspirational suggestions. Whether you want to cruise the corniches of the French Riviera, get lost among the snowcapped Alps or taste your way around Champagne’s hallowed vineyards, we’ve got the trip for you."
+  :image_alt: ""
+  :image_url: "cards/guide-sample.jpg"
+  :price_tag:
+    :price: "12.50"
+    :currency: "£"
+    :on_sale?: true
+    :retail_price: "16.00"
+-
+  :styleguide_title: "Short card"
+  :url: "#"
+  :short?: true
+  :title: "Paris"
+  :description: "Paris has all but exhausted the superlatives that can reasonably be applied to any city. Notre Dame and the Eiffel Tower have been described countless times, as have the Seine and the subtle (and not-so-subtle) differences between the Left and Right Banks. Yet, what writers have never been able to even slightly reflect is the grandness and magic."
+-
+  :styleguide_title: "Short quote card with author"
+  :url: "#"
+  :short?: true
+  :kind: "quote"
+  :title: "Thorntree"
+  :description: "It sounds like you don't know the rules for going to Bhutan."
+  :author_avatar: "https://community-media.lonelyplanet.com/users/avatars/000/095/975/thumb/Photo.jpg"
+  :author_name: "Ben2World"
+-
+  :styleguide_title: "Short card with image and author"
+  :url: "#"
+  :short?: true
+  :cover?: true
+  :title: "Travel shopping"
+  :description: ""
+  :image_alt: ""
+  :image_url: "http://images-resrc.staticlp.com/C=W3514,H3386,X1161,Y0/S=W300,H300/http://media.lonelyplanet.com/a/g/hi/t/a03b63e2de8b540613e1cab75404b5a2-travel-shopping.jpg"
+  :author_avatar: "https://community-media.lonelyplanet.com/users/avatars/001/140/591/thumb/J_Crew_-_Crew_Mutt.jpg"
+  :author_name: "Phil McCracken"
+-
+  :styleguide_title: "Short card with image and image icon"
+  :url: "#"
+  :short?: true
+  :cover?: true
+  :title: "Kyoto"
+  :description: ""
+  :image_alt: ""
+  :image_url: "http://images-resrc.staticlp.com/C=W788,H760,X0,Y0/S=W192,H185/http://media.lonelyplanet.com/a/g/hi/t/93beb9e9226011d72bce4b41db62d4ff-top-things-to-do-in-kyoto.jpg"
+  :image_icon: "japan_kansai_kyoto"
+-
+  :styleguide_title: "Card with cover image"
+  :url: "#"
+  :cover?: true
+  :title: "The best bars in Paris"
+  :image_alt: ""
+  :image_url: "http://media.lonelyplanet.com/a/g/hi/t/e420202c3c575b70c15a9307a525900a-best-places-to-drink-in-paris.jpg"
+-
+  :styleguide_title: "Card with cover image and author"
+  :url: "#"
+  :cover?: true
+  :title: "The best bars in Paris"
+  :image_alt: ""
+  :image_url: "http://media.lonelyplanet.com/a/g/hi/t/e420202c3c575b70c15a9307a525900a-best-places-to-drink-in-paris.jpg"
+  :author_avatar: "https://community-media.lonelyplanet.com/users/avatars/001/140/591/thumb/J_Crew_-_Crew_Mutt.jpg"
+  :author_name: "Phil McCracken"
+-
+  :styleguide_title: "Double width card with cover image"
+  :url: "#"
+  :cover?: true
+  :double?: true
+  :title: "Top things to do in Paris"
+  :image_alt: ""
+  :image_url: "http://media.lonelyplanet.com/a/g/hi/t/d79818893c366ac9d63dd756a86cb968-best-places-to-stay-in-paris.jpg"

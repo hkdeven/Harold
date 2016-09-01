@@ -1,0 +1,14 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 Cards
+  %p
+    Cards should be included as components where possible, and always in rails apps. You can include the ui_component includes as detailed below. Cards can either be fixed or flexible width.
+  %p
+    Flexible cards will expand to fit their container. The 
+    %a{ href: '/styleguide/css-utilities/responsive-grid' } responsive grid 
+    is well suited for this. When used as an engine Rizzo also provides a helper function to generate the responsive grid classes for you.
+
+- cards = styleguide_stubs('cards')
+- cards.each_with_index do |card, i|
+  = styleguide_component("cards/card", properties: card.merge(fixed?: true), count: i)

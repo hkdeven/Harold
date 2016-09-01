@@ -1,0 +1,191 @@
+// ----------------------------------------------------------------------------
+//
+// Row primary
+//
+// ----------------------------------------------------------------------------
+
+.row--primary
+  +z-layer(middle)
+  position: static
+  margin-bottom: $primary-nav-height
+
+// ----------------------------------------------------------------------------
+//
+// Lonely Planet Logo
+//
+// ----------------------------------------------------------------------------
+
+.logo--header
+  +z-layer(middle)
+  @extend %transition--nav
+  position: absolute
+  top: 0
+  left: 20px
+
+.media--lp-logo
+  +z-layer(top)
+  @extend %inline-block
+  height: 43px
+  margin: 7px 10px 0 0
+  width: 82px
+  vertical-align: top
+  padding-top: 2px
+
+// ----------------------------------------------------------------------------
+//
+// Core nav item
+//
+// ----------------------------------------------------------------------------
+
+.nav__item
+  &:hover, &:active, &.current
+    text-decoration: none
+
+// ----------------------------------------------------------------------------
+//
+// Primary Nav Layout
+//
+// ----------------------------------------------------------------------------
+
+.nav--primary
+  // Move the nav to the right of the absolutely positioned logo
+  margin-left: 0
+  +respond-to(wide-view)
+    margin-left: 117px
+
+.nav__item--primary
+  +font-size(18)
+  padding: 17px 10px
+  border-bottom: 1px solid $offscreen-nav-border
+  position: relative
+  text-transform: none
+  &:before
+    @extend %empty-abs-generated-content
+    width: 50px
+    border-right: 1px solid $offscreen-nav-border
+    left: 0
+    top: 0
+    height: 100%
+    color: $offscreen-nav-border
+    background-position: center
+    background-size: 40%
+
+  +respond-to(wide-view)
+    +font-size(13)
+    padding: 21px 4px 18px
+    border: none
+    text-transform: uppercase
+    &:before
+      width: 0
+      border: none
+
+  &.btn--small
+    +font-size(13)
+    margin: 16px 5px 0 0
+    padding: 2px 12px 1px
+
+  &, & > .nav__item
+    color: $nav-primary-type
+    font-weight: normal
+    +respond-to(wide-view)
+      font-weight: bold
+
+  .nav--primary &:last-child
+    +respond-to(970)
+      display: none
+
+    +respond-to(1050)
+      display: inline-block
+
+  .nav__item--primary--signout--mobile
+    +respond-to(wide-view)
+      display: none
+
+.nav__item--sign-in,
+.nav__item--join
+  &:before
+    width: 18px
+    height: 18px
+    display: inline-block
+    margin-right: 5px
+    opacity: .7
+  &:hover:before
+    opacity: 1
+
+.nav--primary--user
+  margin-right: 20px
+
+  .show-nav &
+    margin-right: 0
+
+.nav__item--user
+  color: $nav-primary-type
+  padding-right: 25px
+  margin-top: 0
+  height: 50px
+  +respond-to(990)
+    background: none
+  +respond-to(wide-view)
+    margin-top: 10px
+    height: auto
+
+  &:hover
+    color: #fff
+
+
+.nav__item--user-avatar
+  +size(50px)
+  +respond-to(wide-view)
+    +size(34px)
+    border-radius: 17px
+
+.nav__item--user-menu
+  background: $offscreen-nav-user-background
+  +respond-to(wide-view)
+    display: none
+
+.nav__item--user-menu--wv
+  display: none
+  +respond-to(wide-view)
+    display: inline
+
+.nav__item--primary
+  &.sign_up
+    color: white
+  &.or
+    text-transform: lowercase
+    padding-left: 1px
+    padding-right: 1px
+
+
+.nav__item
+  .nav__icon
+    position: relative
+    &:before
+      position: absolute
+
+.nav__item--primary .nav__icon
+  padding-left: 60px
+  &:before
+    +size(22px)
+    left: 5px
+    top: -3px
+  +respond-to(wide-view)
+    padding-left: 0
+
+.nav__submenu__item .nav__icon
+  padding-left: 30px
+  padding-top: 4px
+  &:before
+    +size(20px)
+    left: -2px
+    top: 0
+  +respond-to(wide-view)
+    &:before
+      left: 0
+
+.nav--primary--user .nav__icon
+  .nav__icon
+    padding-left: 60px
+    +respond-to(wide-view)
+      padding: 0

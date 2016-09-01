@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// Image attribution
+// -----------------------------------------------------------------------------
+
+.image-attribution
+  padding-left: 25px
+  position: relative
+  &:before
+    +size(20px)
+    position: absolute
+    top: 5px
+    left: 0
+
+.image-attribution__link
+  cursor: pointer
+  pointer-events: all
+  &:hover
+    text-decoration: underline
+
+.image-attribution__license
+  +size(32px)
+  @extend %image-replacement
+  margin-right: -10px
+  vertical-align: middle

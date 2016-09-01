@@ -1,0 +1,39 @@
+<div id="js-card-holder">
+  <div class="js-availability-card">
+    <form class="js-availability">
+      <input type="text" id="js-av-start" name="search[from]" />
+      <input type="text" id="js-av-end" name="search[to]" />
+      <input type="submit" id="js-booking-submit" />
+    </form>
+  </div>
+
+  <div class="js-availability-card-hidden is-hidden">
+    <form class="js-availability">
+      <input type="text" id="js-av-start" name="search[from]" />
+      <input type="text" id="js-av-end" name="search[to]" />
+      <input type="submit" id="js-booking-submit" />
+    </form>
+  </div>
+
+  <div class="js-availability-card-blocked">
+    <form class="js-availability">
+      <input type="text" id="js-av-start" name="search[from]" />
+      <input type="text" id="js-av-end" name="search[to]" />
+      <input type="submit" id="js-booking-submit" class="is-disabled" disabled="disabled" />
+    </form>
+  </div>
+
+  <div class="js-availability-card-with-values">
+    <form class="js-availability">
+      <input type="text" id="js-av-start" value="06 Jun 2013" name="search[from]" />
+      <input type="text" id="js-av-end" value="07 Jun 2013" name="search[to]" />
+      <select id="js-guests" name="search[guests]">
+        <option value="1" selected>1 Adult</option>
+      </select>
+      <select id="js-currency" name="search[currency]">
+        <option value="USD" selected>USD</option>
+      </select>
+      <input type="submit" id="js-booking-submit" />
+    </form>
+  </div>
+</div>

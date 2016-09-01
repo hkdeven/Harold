@@ -1,0 +1,51 @@
+<form id="test-form">
+
+  <div class="field js-field">
+    <label class="field__label js-field-label" for="name">Required</label>
+    <div class="field__content">
+      <div class="input__container js-input">
+        <input class="input input--text" data-rules="required" id="required" name="required">
+      </div>
+    </div>
+  </div>
+
+  <div class="field js-field">
+    <label class="field__label js-field-label" for="name">Number</label>
+    <div class="field__content">
+      <div class="input__container js-input">
+        <input class="input input--text" data-rules="required number" id="number" name="number">
+      </div>
+    </div>
+  </div>
+
+  <div class="field js-field">
+    <label class="field__label js-field-label" for="expiration_date">Multi Select</label>
+    <div class="field__content">
+      <div class="dropdown--half input__container js-input">
+        <div class="dropdown dropdown--first js-select-group">
+          <label class="dropdown__value js-select-overlay icon--chevron-down--grey--after">First</label>
+          <select class="dropdown__select js-select" data-label="First" data-rules="required" id="first-select" name="first-select">
+            <option value="">Empty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+      <div class="dropdown--half input__container js-input">
+        <div class="dropdown dropdown--first js-select-group">
+          <label class="dropdown__value js-select-overlay icon--chevron-down--grey--after">Second</label>
+          <select class="dropdown__select js-select" data-label="First" data-rules="required" id="second-select" name="second-select">
+            <option value="">Empty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="submit">
+
+</form>

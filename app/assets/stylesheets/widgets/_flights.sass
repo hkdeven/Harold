@@ -1,0 +1,41 @@
+.flights-widget__from-to
+  margin-bottom: 25px
+  .booking-widget--stacked &
+    margin-bottom: 0
+
+.flights-widget__age
+  float: left
+  width: 33%
+.flights-widget__age__icon
+  +size(32px)
+.flights-widget__age__icon--child
+  +size(28px)
+  margin: 2px
+.flights-widget__age__select
+  .dropdown__value
+    margin-bottom: 5px
+    padding: 6px 23px 6px 2px
+    &:after
+      right: 0
+      width: 10px
+      margin-right: 2px
+.flights-widget__age__label
+  +font-size(11px)
+  margin-left: 12px
+
+.flights-widget__round-trip
+  margin-bottom: 5px
+  margin-right: 10px
+
+.booking-widget--flights
+  .btn--booking
+    margin-top: 10px
+  // Everything under here was imported from Landing Pages
+  // Form validation
+  .form--error
+    box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.8)
+
+  // Styling for the autocomplete
+  .autocomplete__country-name
+    font-size: 85%
+    float: right

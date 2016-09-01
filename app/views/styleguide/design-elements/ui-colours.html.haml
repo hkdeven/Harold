@@ -1,0 +1,15 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.copy--body.context--content.js-colours
+  .clearfix
+    %h1.split--left.copy--h1 UI Colours
+    = render 'styleguide/partials/colour_finder'
+
+  %p
+    These are the colours outside of the primary palettes that are used within the sass. They are defined in
+    %a{href: 'https://github.com/lonelyplanet/rizzo/blob/master/app/assets/stylesheets/sass/variables/_colour_theme.sass'}
+      colour_theme.sass
+
+  .grid-wrapper--10
+    - @app.get_colours('../../assets/stylesheets/sass/variables/_colour_theme.sass').each do |group|
+      = render 'styleguide/partials/colour', group: group

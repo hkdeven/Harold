@@ -1,0 +1,44 @@
+// -----------------------------------------------------------------------------
+// Stacked navigation
+//
+// This object throws any list or list of links into a stack of elements
+// -----------------------------------------------------------------------------
+
+%stacked-nav
+  list-style: none
+  .obj-list__item
+    display: block
+
+// -----------------------------------------------------------------------------
+// Ruled list 
+// 
+// Extend the stacked list to have the typical LP ruled list
+// e.g. Services and facilities
+// -----------------------------------------------------------------------------
+
+%ruled-list
+  @extend %stacked-nav
+  > .obj-list__item
+    border-top: 1px solid $body-background
+
+// -----------------------------------------------------------------------------
+// Split list
+// 
+// For placing a title on the left and a list on the right
+// 
+// |  Heading     | Item1 |
+// |              | Item2 |
+// |              | Item3 |
+// |              | Item4 |
+// 
+// e.g. Services and facilities
+// -----------------------------------------------------------------------------
+
+%split-list
+  .obj-list__item
+    @extend %clearfix
+  .obj-list__title
+    display: block
+    float: left
+  .obj-list__sub-list
+    @extend %inline-block

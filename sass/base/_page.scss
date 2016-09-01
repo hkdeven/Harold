@@ -1,0 +1,22 @@
+html {
+  font-size: 62.5%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+body {
+  color: $titlegray;
+  font-family: $benton-sans;
+  font-size: $base-size;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: $line-height;
+  position: relative;
+
+  .no-scroll > & {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}

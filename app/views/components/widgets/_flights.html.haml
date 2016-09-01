@@ -1,0 +1,72 @@
+:ruby
+  from = properties[:prepopulation] ? properties[:prepopulation][:from] : nil
+  to = properties[:prepopulation] ? properties[:prepopulation][:to] : nil
+  from_code = properties[:prepopulation] ? properties[:prepopulation][:from_code] : nil
+  to_code = properties[:prepopulation] ? properties[:prepopulation][:to_code] : nil
+  today = Date.today
+  tomorrow = Date.tomorrow
+
+.booking-widget.booking-widget--flights.js-flights-widget{ class: properties[:widget_class] }
+  .booking-widget__inner
+
+    %h1.copy--h1.booking-title= properties[:title] || "Book flights"
+    - if properties[:show_subheading]
+      %h4.copy--h4.booking-subtitle Where would you like to fly?
+
+    %form#js-flights-form
+      .flights-widget__from-to
+        %fieldset.fieldset--pair
+          .field.field--booking
+            .clearfix
+              %label From
+              = ui_component('forms/text_input', properties: { class: "js-city-input js-from-city input--regular--dark", id: "js-from-city", name: "js-from-city", value: from })
+              %input.js-from-airport{ type: "hidden", value: from_code }
+            .field--booking__date.input__container.icon--calendar--after
+              = ui_component('forms/date_input', properties: { class: "js-input js-av-start input--regular--dark", id: "flight-depart-date", name: "departure_date", placeholder: "Departure Date", value: today })
+          .field.field--booking
+            .clearfix
+              %label To
+              = ui_component('forms/text_input', properties: { class: "js-city-input js-to-city input--regular--dark", id: "js-to-city", name: "js-to-city", value: to })
+              %input.js-to-airport{ type: "hidden", value: to_code }
+            .field--booking__date.input__container.icon--calendar--after
+              = ui_component('forms/date_input', properties: { class: "js-input js-av-end input--regular--dark", id: "flight-return-date", name: "return_date", placeholder: "Return Date", value: tomorrow })
+
+      %fieldset.fieldset--pair
+        .field.field--booking.media
+          .media__img
+            .flights-widget__round-trip#roundtrip-wrapper
+              %input#round-trip.js-roundtrip-btn{ name: "roundtrip", type: "radio", checked: "checked" }
+              %label{ for: "round-trip" } Round Trip
+            #oneway-wrapper
+              %input#one-way.js-oneway-btn{ name: "roundtrip", type: "radio" }
+              %label{ for: "one-way" } One Way
+          .media__body
+            %label.polyfill--placeholder#ie-label-currency
+              Currency
+            = ui_component('forms/dropdown', properties: {class: "js-currency-select", id: "flight-currency", name: "flight-currency", options: Currencies, selected: "USD" })
+
+        .field.field--booking
+          .booking__age-input-wrapper
+            .media.flights-widget__age
+              %label.flights-widget__age__icon.icon--person.icon--body-grey.media__img{ for: "adult-num" }
+              .media__body.flights-widget__age__select
+                = ui_component('forms/dropdown', properties: {class: "js-adult-num", id: "adult-num", selected: 1, options: [ {title: 1}, {title: 2}, {title: 3}, {title: 4}, {title: 5}, { title: 6}, {title: 7}, {title: 8} ]})
+              %label.flights-widget__age__label.copy--disclaimer{ for: "adult-num" }
+                12+ years
+            .media.flights-widget__age
+              %label.flights-widget__age__icon.flights-widget__age__icon--child.icon--person.icon--body-grey.media__img{ for: "child-num" }
+              .media__body.flights-widget__age__select
+                = ui_component('forms/dropdown', properties: {class: "js-child-num", id: "child-num", selected: 0, options: [ {title: 0}, {title: 1}, {title: 2}, {title: 3}, {title: 4}, {title: 5}, { title: 6}, {title: 7}, {title: 8} ]})
+              %label.flights-widget__age__label.copy--disclaimer{ for: "child-num" }
+                under 12
+            .media.flights-widget__age
+              %label.flights-widget__age__icon.icon--baby.icon--body-grey.media__img{ for: "baby-num" }
+              .media__body.flights-widget__age__select
+                = ui_component('forms/dropdown', properties: {class: "js-baby-num", id: "baby-num", selected: 0, options: [ {title: 0}, {title: 1}, {title: 2}, {title: 3}, {title: 4}, {title: 5}, { title: 6}, {title: 7}, {title: 8} ]})
+              %label.flights-widget__age__label.copy--disclaimer{ for: "baby-num" }
+                under 2
+
+      %button.btn.btn--green.btn--large.btn--submit.btn--booking.btn--full-width.call-to-action#js-flights-submit{ type: "submit" }
+        Search Flights
+        .alert.alert--error.btn--full-width.btn--booking__error.copy--icon--before.icon--cross--before.icon--white--before.js-btn-error
+          Please make sure all fields are filled out

@@ -1,0 +1,7 @@
+.segment-graph{class: "#{properties[:class]}"}
+  - properties[:segments].each_with_index do |segment, index|
+    - index += 1
+    .segment-graph-item{class: "segment-graph-item--#{index} #{index == properties[:segments].length ? 'segment-graph-item--last' : ''}", style: "width: #{100/(properties[:segments].length.to_f)}%"}>
+      .segment-graph__segment{class: "segment-graph__segment--#{segment[:modifier]}"}
+      .segment-graph__label.copy--caption
+        = segment[:label]

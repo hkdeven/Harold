@@ -1,0 +1,15 @@
+- tooltip = properties[:tooltip]
+- type = properties[:type] || "text"
+%input.input{ class: "input--#{type} #{properties[:class]} #{tooltip ? 'tooltip--focus' : ''}",
+              id: properties[:id],
+              name: properties[:name],
+              value: properties[:value] || "",
+              type: type,
+              placeholder: properties[:placeholder],
+              autofocus: properties[:autofocus],
+              autocomplete: properties[:autocomplete],
+              data: properties[:data],
+              maxlength: properties[:maxlength],
+              required: properties[:required] || false }
+
+= render :partial => 'components/forms/partials/tooltip', :locals => { tooltip: tooltip }

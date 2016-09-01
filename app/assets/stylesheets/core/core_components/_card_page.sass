@@ -1,0 +1,185 @@
+// -----------------------------------------------------------------------------
+//
+// Card page module
+//
+// Full width containers for page sections
+//
+// -----------------------------------------------------------------------------
+
+$card--page-padding-small: 10px
+$card--page-padding: 25px
+
+.card--top-choice
+  &:after
+    @extend %empty-abs-generated-content
+    background: url(image_path("shared/top-choice.png"))
+    top: -5px
+    left: 20px
+    height: 96px
+    width: 66px
+    +retinafy()
+      background: url(image_path("shared/top-choice-2x.png"))
+      background-size: 100%
+
+// -----------------------------------------------------------------------------
+//  General layout
+// -----------------------------------------------------------------------------
+
+.card--page__content,
+.card--page__hero-content
+  padding: $card--page-padding-small
+  +respond-to(medium-view)
+    padding: $card--page-padding
+
+// -----------------------------------------------------------------------------
+//  Hero
+// -----------------------------------------------------------------------------
+
+.card--page__hero
+  position: relative
+  overflow: hidden
+  max-height: 320px
+
+  &:after
+    @extend %empty-abs-generated-content
+    +image-overlay--gradient($stop: 80%)
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+.card--page__hero-content
+  +z-layer
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  color: white
+
+.card--page__hero-img
+  display: block
+  width: 100%
+  min-height: 160px
+
+.card--page__hero-name
+  +font-size(28)
+  margin-bottom: 10px
+
+  +respond-to(medium-view)
+    +font-size(32)
+  +respond-to(large-view)
+    float: left
+    max-width: 480px
+
+    ~ .image-attribution
+      float: right
+
+
+.card--page__hero-cta
+  white-space: nowrap
+
+  .btn
+    width: 100%
+
+  +respond-to(large-view)
+    float: right
+
+    .btn
+      width: auto
+
+// -----------------------------------------------------------------------------
+//  Header
+// -----------------------------------------------------------------------------
+
+.card--page__header
+  padding: $card--page-padding
+  .copy--h1
+    line-height: 1.1em
+    margin: 0
+  .card--top-choice &
+    padding-left: 95px
+
+.card--page__header--headline
+  padding-top: $card--page-padding
+  padding-bottom: $card--page-padding
+  // When in a layer we add breadcrumbs which needs to sit near the header
+  .layer-breadcrumbs + .article &
+    padding-top: 0
+
+.card--page__breadcrumb
+  position: relative
+  margin: 10px 0 0
+  line-height: 25px
+  text-transform: uppercase
+  &:before
+    +z-layer(middle)
+    content: ''
+    float: left
+    height: 20px
+    margin-right: 5px
+    position: relative
+    top: 2px
+    width: 15px
+  &.icon--place--pin--before
+    line-height: initial
+    &:before
+      width: 20px
+
+.card--page__breadcrumb--type
+  font-weight: bold
+
+.card--page__breadcrumb__link
+  color: $body-copy
+
+// -----------------------------------------------------------------------------
+//  Content rows
+// -----------------------------------------------------------------------------
+
+.card--page__content
+  @extend %clearfix
+
+  .card--page__header + &
+    border-top: 1px solid $body-background
+
+.card--page__fill
+  margin-left: $card--page-padding * -1
+  margin-right: $card--page-padding * -1
+  +respond-to(medium-view)
+    margin-left: auto
+    margin-right: auto
+
+// We cannot guarantee that the content will be decorated with classes
+.card--page__content--intro
+  @extend %text--body
+  p:first-of-type
+    @extend %text--feature
+  h2
+    @extend %heading--2
+
+.card--page__content--social
+  padding-top: 0
+  padding-bottom: 0
+
+  .card--page__header + &
+    border-bottom: 1px solid $body-background
+
+  .card--page__content + &
+    border-top: 1px solid $body-background
+
+// -----------------------------------------------------------------------------
+//  Variations
+// -----------------------------------------------------------------------------
+
+// We should avoid adding .card-- variations to things that are not cards
+// and give these commonly used classes top-level names.
+// <https://trello.com/c/szd8dMed/>
+.card--page--stack-hero
+  margin-right: -10px
+  margin-left: -10px
+  border-radius: 0
+  overflow: hidden
+
+  +respond-to(narrow-view)
+    margin-right: 0
+    margin-left: 0
+    border-radius: 4px

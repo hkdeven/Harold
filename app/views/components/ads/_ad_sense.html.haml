@@ -1,0 +1,11 @@
+- type = defined?(properties) ? properties[:type] : "default"
+- adsense = ad_sense_properties(type)
+
+- content_for :scripts do
+  %script{ async: true, src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+  :javascript
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
+#js-ad-adSense{class: type == "leaderboard" ? "ad-adSense--leaderboard" : false}
+
+  %ins{class: "adsbygoogle", style: adsense[:style], data: {ad_client: adsense[:id], ad_slot: adsense[:ad_slot], ad_format: adsense[:ad_format]}}

@@ -1,0 +1,250 @@
+%input--regular--dark
+  @extend %rounded-corners
+  box-sizing: border-box
+  word-wrap: break-word
+  font-weight: bold
+  background-color: $body-background-offset
+  border: 1px solid $body-background-offset
+  box-shadow: 1px 1px 1px rgba(3, 46, 92, 0.2)
+  display: block
+  padding: 10px 40px 10px 10px
+  width: 100%
+  margin-top: 14px
+
+#wn-insurance-quote-editor
+  min-height: 415px
+  opacity: 0
+  transition: opacity 1.5s ease-in
+  &.is-ready
+    opacity: 1
+  .input-group, .legacy-travellers
+    input[type="text"]
+      @extend %input--regular--dark
+      font-weight: 300
+      margin-top: 5px
+
+    h5
+      +font-size(14)
+      font-weight: bold
+      margin-top: 14px
+
+  // These styles are copied from the `.btn` class to get around a dependency issue.
+  .cta-button-primary
+    +font-size(16)
+    @extend %inline-block
+    @extend %rounded-corners
+    @extend %transition--base
+    box-sizing: border-box
+    background-color: $green
+    color: white
+    cursor: pointer
+    font-weight: bold
+    line-height: 1
+    overflow: hidden
+    padding: 10px 25px
+    text-align: center
+    border: 0
+    position: relative
+    width: 100%
+    margin: 10px 0 0 0
+
+  .qqc-background > h1
+    @extend %heading--1
+
+  .input-subgroup
+    float: left
+    margin: 5px 5px 10px 5px
+
+  .icon
+    @extend %inline-block
+    +size(22px)
+    background-position: 0 20%
+    background-size: cover
+    // We have to position it this way due to the
+    // way the third-party JS renders the markup.
+    float: right
+    margin: -30px 5px 0 0
+
+  #selected-destinations
+    li
+      +font-size(11)
+      @extend %rounded-corners
+      display: inline-block
+      padding: 1px 4px
+      color: #fff
+      font-weight: bold
+      line-height: 12px
+      text-transform: uppercase
+      white-space: no-wrap
+      background-color: $green
+      margin: 0 2px
+
+  #quote-departure-date
+    width: 45%
+    float: left
+
+  #quote-return-date
+    width: 45%
+    float: right
+
+  .traveller-inputs-wrapper
+    clear: both
+    padding: 5px 0 0 0
+
+  .custom-select-open
+    display: none
+
+  .input-validation-errors
+    border-radius: 2px
+    background: $red
+    color: #fff
+    list-style-type: none
+    padding: 5px
+    margin: 5px 0 0 0
+
+
+// ----------------------------------------------------------------------------
+//
+// Styles below this line were ripped directly from the WN stylesheet
+// and are needed to have the date pickers, tooltips, and validation
+// messages styled correctly.
+//
+// ----------------------------------------------------------------------------
+%floating-after
+  @extend %empty-abs-generated-content
+  +z-layer(top)
+  top: -10px
+  left: 10px
+  width: 0
+  height: 0
+  margin-bottom: 0
+  border-bottom: 10px solid $subduedgray
+  border-left: 10px solid transparent
+  border-right: 10px solid transparent
+
+.datepicker.wn-insurance-quote-editor
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px
+  background: #fff
+  border: 1px solid $lightgray
+  padding: 10px
+  margin-right: 20px
+  border: 2px solid $subduedgray
+  &:after
+    @extend %floating-after
+  .closePanel
+    +font-size(20)
+    position: absolute
+    top: 0
+    right: 0
+    padding: 6px 12px
+  h3
+    display: none
+  .datepicker-show-past-month, .datepicker-show-next-month
+    border-radius: 2px
+    position: absolute
+    top: 10px
+    padding: 5px 12px
+    color: #fff
+    background: $teal
+    &:hover
+      background: $green
+      color: #fff
+  .datepicker-show-past-month
+    left: 10px
+  .datepicker-show-next-month
+    right: 10px
+  .datepicker-calendar-title
+    font-weight: 500
+    text-align: center
+  .datepicker-calendar
+    display: inline
+    float: left
+    margin-right: 10px
+    &:nth-last-child(1)
+      display: none
+    table
+      margin-top: 20px
+      border-spacing: 0
+    th
+      text-align: center
+      line-height: 20px
+      font-weight: 300
+    td
+      border: 1px solid #fff
+      a
+        border-radius: 3px
+        display: block
+        padding: 9px
+        color: $darkblue
+        background: $orange
+        text-align: center
+        font-weight: 300
+        &:hover
+          background: $yella
+      &.disabled a
+        background: $subduedgray
+        color: $lightgray
+
+
+#autocompleter-instructions
+  +z-layer(modal)
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px
+  background: #fff
+  border: 2px solid $subduedgray
+  padding: 10px
+  margin-left: 1px
+  strong
+    font-weight: bold
+  &:after
+    @extend %floating-after
+
+
+.autocomplete.wn-insurance-quote-editor
+  +z-layer(modal)
+  border: 1px solid $lightgray
+  padding-left: 0
+  list-style-type: none
+  background: #fff
+  margin: 0 0 0 1px
+  border: 2px solid $subduedgray
+  em
+    font-style: normal
+    font-weight: 500
+  li
+    +font-size(16)
+    border-bottom: 1px solid $lightgray
+    line-height: 40px
+    padding: 0 10px
+    color: black
+    em
+      font-weight: bold
+    &:last-child
+      border-bottom: none
+    &:hover, &:active, &.selected
+      background: $teal
+      color: #fff
+
+.traveller-age
+  position: relative
+
+  .tooltip
+    +z-layer(top)
+    display: none
+    opacity: 1
+    position: absolute
+    left: 0
+    top: 65px
+    border: 2px solid $subduedgray
+    background: #fff
+    padding: 5px 10px
+    margin-left: 1px
+    label
+      +font-size(13)
+      color: $body-copy
+      margin-bottom: 0
+      font-weight: 300
+      line-height: 17px
+    &:after
+      @extend %floating-after
+  input:focus + .tooltip
+    display: block

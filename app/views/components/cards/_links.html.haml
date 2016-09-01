@@ -1,0 +1,8 @@
+- html_content = capture_haml do
+  %ul.card__links
+    - properties[:links].each do |link|
+      %li.card__links__item
+        %a{ href: link[:url].chomp('/when-to-go'), class: 'card__links__anchor' }
+          = link[:title]
+
+= render partial: "components/cards/card", locals: { properties: properties.merge(html_content: html_content) }

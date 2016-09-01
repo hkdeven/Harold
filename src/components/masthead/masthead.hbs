@@ -1,0 +1,89 @@
+<article class="masthead masthead--{{type}}{{#if masthead.first}} masthead--has-images{{else}} masthead--no-images{{/if}}{{#if is_continent}} masthead--has-nav{{/if}}" data-has-ad="false">
+  {{#if video}}
+  <div class="masthead__video-container js-video-container">
+    <div class="masthead__video-wrap">
+      <video class="masthead__video js-video" autoplay loop preload="auto" poster={{video.poster}}>
+        <source src="{{video.source}}" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="masthead__video-caption">
+    <p class="masthead__video-caption--copy">{{{video.caption}}}</p>
+  </div>
+  {{/if}}
+
+  {{#if masthead.first}}
+    <div class="slideshow js-slideshow" data-lp-initial-images="{{masthead.json}}">
+      <div class="slideshow__images">
+        {{#with masthead.first}}
+          <div class="slideshow__slide slideshow__slide--num_0" style="background-image: url({{large}})"></div>
+        {{/with}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="masthead__text-wrap">
+    <div class="masthead__text{{#if masthead.first}} masthead__text--visible{{/if}}">
+      {{#if masthead.parent}}
+        <div class="masthead__breadcrumb">
+          {{#if masthead.grandparent}}
+            <a href="{{masthead.grandparent.slug}}">{{masthead.grandparent.place}}</a>
+            <span class="masthead__breadcrumb__separator" aria-hidden="true">/</span>
+          {{/if}}
+          <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
+        </div>
+      {{/if}}
+
+      <h1 class="masthead__title js-masthead-title">
+        {{masthead.title}}
+      </h1>
+
+      {{#if masthead.images}}
+        <div class="masthead__straplines">
+          {{#each masthead.images}}
+            <div class="masthead__strapline{{#if @first}} masthead__strapline--visible{{/if}}">{{strapline}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#if top_places}}
+        <button class="masthead__button js-top-places">
+          {{masthead_button_types}} <i class="icon-chevron-down" aria-hidden="true"></i>
+        </button>
+      {{/if}}
+
+      <button class="masthead__button--play js-play-video" hidden>
+        <i class="masthead__button--play__icon icon-play3" aria-hidden="true"></i>
+        <span class="masthead__button--play__label">Play Video</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="masthead__ad js-masthead-ad">
+    <div class="adunit adunit--sponsor-logo-masthead display-none"
+      id="sponsor-logo-masthead"
+      data-size-mapping="sponsor-logo"
+      data-targeting='{ "position": "masthead" }'>
+    </div>
+  </div>
+
+  {{#if masthead.masthead__cta}}
+    <div class="masthead__cta js-modal" style="background: url({{masthead.masthead__cta.img}}) no-repeat; background-size: 60px"
+      data-href="{{masthead.masthead__cta.href}}">
+      <p class="masthead__cta--copy">{{{masthead.masthead__cta.copy}}}</p>
+      <button class="button" role="button" data-lpa-category="{{masthead.masthead__cta.category}}" data-lpa-action="{{masthead.masthead__cta.action}}" data-lpa-label="{{masthead.masthead__cta.label}}">{{masthead.masthead__cta.button--text}}</button>
+    </div>
+  {{/if}}
+
+  {{#if is_continent}}
+    {{> "components/masthead/masthead_nav" }}
+  {{/if}}
+
+  {{#if modal}}
+    {{> "components/modal/modal" }}
+  {{/if}}
+
+  {{#if top_places}}
+    {{> "components/top_places/top_places" }}
+  {{/if}}
+</article>

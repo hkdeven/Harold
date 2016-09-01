@@ -1,0 +1,9 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.copy--body.context--content.js-colours
+  .clearfix
+    %h1.split--left.copy--h1 Color Palette (Destinations Next)
+
+  .grid-wrapper--10
+    - @app.get_colours('../../assets/stylesheets/rizzo_next/_color_variables.scss').each do |group|
+      = render 'styleguide/partials/colour', group: group

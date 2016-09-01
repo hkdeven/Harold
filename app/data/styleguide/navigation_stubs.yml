@@ -1,0 +1,116 @@
+left_nav_stub:
+  -
+    :groups:
+      -
+        :items:
+          -
+            :name: 'All'
+            :slug: '#'
+
+      -
+        :title: "Collections"
+        :items:
+          -
+            :name: 'Top places to stay'
+            :slug: '#'
+          -
+            :name: 'Best things to do in Scotland'
+            :slug: '#'
+
+  -
+    :groups:
+      -
+        :title: "Collections"
+        :items:
+          -
+            :name: 'Top places to stay'
+            :slug: '#'
+            :count: 20
+            :active: true
+          -
+            :name: 'Best things to do in Scotland'
+            :slug: '#'
+            :count: 150
+
+  -
+    :groups:
+      -
+        :title: "Topics"
+        :items:
+          -
+            :name: 'Articles'
+            :slug: '#'
+          -
+            :name: 'Collections'
+            :slug: '#'
+          -
+            :name: 'Things to do'
+            :slug: '#'
+
+  -
+    :groups:
+      -
+        :title: "Nav with Icons"
+        :items:
+          -
+            :name: 'Sights'
+            :slug: '#'
+            :icon: 'sight'
+          -
+            :name: 'Restaurants'
+            :slug: '#'
+            :icon: 'restaurant'
+            :active: true
+          -
+            :name: 'Tours'
+            :slug: '#'
+            :icon: 'tour'
+
+
+secondary_navigation_stub:
+  :items:
+    -
+      :title: 'Overview'
+      :slug: 'argentina'
+    -
+      :title: 'Things to do'
+      :slug: 'things-to-do'
+      :submenu:
+        -
+          :title: 'Sights'
+          :slug: '#sights'
+          :icon_class: 'icon--sight--before'
+        -
+          :title: 'Restaurants'
+          :slug: '#restaurants'
+          :icon_class: 'icon--restaurant--before'
+        -
+          :title: 'Shopping'
+          :slug: '#shopping'
+          :icon_class: 'icon--shopping--before'
+        -
+          :title: 'Entertainment'
+          :slug: '#entertainment'
+          :icon_class: 'icon--entertainment--before'
+        -
+          :title: 'Activities'
+          :slug: '#activities'
+          :icon_class: 'icon--activity--before'
+        -
+          :title: 'Tours'
+          :slug: '#tours'
+          :icon_class: 'icon--tour--before'
+        -
+          :title: 'Events'
+          :slug: '#events'
+          :icon_class: 'icon--event--before'
+    -
+      :title: 'Hotels'
+      :slug: 'hotels'
+      :current: true
+    -
+      :title: 'Tips & articles'
+      :slug: 'travel-tips-and-articles'
+    -
+      :title: 'Images & video'
+      :slug: 'images-and-video'

@@ -1,0 +1,29 @@
+-
+  :current_page: 5
+  :total_results: 50
+  :path: "/styleguide/pagination/%i"
+  :visible_pages: 3
+  :classes: "card"
+-
+  :current_page: 2
+  :total_results: 50
+  :path: "/styleguide/pagination/?foo=bar&baz=qux&page=5"
+  :param: "page"
+  :classes: "card"
+-
+  :current_page: 9
+  :total_results: 50
+  :path: "/styleguide/pagination/?foo=bar&baz=qux&page=5"
+  :param: "page"
+  :classes: "card"
+-
+  :current_page: 1
+  :total_results: 25
+  :path: "/styleguide/pagination/%i"
+  :classes: "card"
+-
+  :current_page: 5
+  :total_results: 25
+  :path: "/styleguide/pagination/%i"
+  :show_detailed: true
+  :classes: "card"

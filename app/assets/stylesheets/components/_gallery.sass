@@ -1,0 +1,289 @@
+$ad-width: 300px
+$footer-height: 250px
+
+.gallery
+  margin: auto
+  transition: left .5s ease
+
+.gallery__controls
+  top: 0
+  left: 0
+  margin: 0 auto
+  width: 80%
+  .gallery-box &
+    top: 120px
+
+.gallery__viewport
+  background-color: $titlegray
+
+.gallery__container
+  position: relative
+  margin: auto
+  +respond-to(wide-view)
+    width: 80%
+    .slider--4x3 &
+      padding-top: percentage((1 / 4) * 3 * .8)
+    .slider--16x9 &
+      padding-top: percentage((1 / 16) * 9 * .8)
+
+.gallery__slide
+  opacity: 0.5
+  &.is-current
+    opacity: 1
+    &:hover .social__item--pinned
+      opacity: 1
+  &.is-loading.is-current:after
+    content: " "
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 1em
+    height: 1em
+    margin: -0.5em 0 0 -0.5em
+    background: rgba(125, 125, 125, 0.5)
+    border-radius: 100%
+    animation: discmove 2s cubic-bezier(0.6, 1, 1, 1) infinite
+
+.gallery__slide__caption
+  +alpha-background($dark-blue-gray, 0.75)
+  bottom: 0
+  box-sizing: border-box
+  color: white
+  font-weight: bold
+  left: 0
+  opacity: 0
+  padding: 14px 21px
+  position: absolute
+  transition: opacity .5s ease
+  width: 100%
+  .is-current &
+    opacity: 1
+
+.gallery__slide__caption--position
+  color: $placeholder-copy
+  margin: 0 3px
+  font-weight: normal
+
+.gallery__slide__caption--title
+  margin: 0 3px
+
+.gallery__slide__caption--source
+  float: right
+
+.gallery__img
+  &, & > img
+    display: block
+    min-height: 100%
+    width: 100%
+
+.gallery__img--portrait
+  &, & > img
+    display: block
+    height: 100%
+    margin: auto
+    width: auto
+
+.gallery__title
+  +font-size(20)
+  color: $body-copy
+  padding-bottom: 10px
+  +respond-to(768)
+    +font-size(22)
+  +respond-to(1000)
+    +font-size(24)
+
+.gallery__breadcrumb
+  position: relative
+
+.gallery__footer
+  background: white
+  margin: auto
+  min-height: $footer-height
+  overflow: hidden
+
+.gallery__footer__wrapper
+  +respond-to(wide-view)
+    max-width: 1000px
+    overflow: hidden
+    margin: 0 auto
+    position: relative
+
+.gallery__description
+  +z-layer
+  background: white
+  border-radius: 0 0 0 4px
+  max-width: 50em
+  min-height: $footer-height
+  padding: 20px 20px 0 20px
+  position: relative
+  +respond-to(wide-view)
+    padding-right: 20px + $ad-width
+
+.gallery__social .sharing
+  padding: 10px 0 20px 0
+  border-top: none
+  .split--right
+    display: none
+  .sharing__label
+    display: none
+  .social,
+  .facebook-like
+    margin-left: 0
+
+.gallery__subject-lead-in
+  +font-size(14)
+  color: $darkblue
+  font-weight: bold
+  line-height: 1.5
+  text-transform: uppercase
+
+.gallery__poi
+  margin-bottom: 10px
+
+.gallery__poi-title
+  +font-size(16)
+  color: $body-copy
+  font-weight: bold
+  line-height: 2
+  &:before
+    display: inline-block
+    height: 24px
+    margin-right: 2px
+    vertical-align: middle
+    width: 20px
+
+.gallery__quote
+  +font-size(14)
+  border-left-style: solid
+  border-left-width: 2px
+  line-height: 1.2
+  margin-left: 9px
+  padding: 5px 10px 5px 15px
+  width: 95%
+
+  @for $i from 1 through length($poi-names)
+    $type: nth($poi-names, $i)
+    &.gallery__quote--#{$type}
+      border-color: nth($poi-colors, $i)
+
+.gallery__poi-more
+  color: $body-copy
+  font-style: italic
+  font-weight: bold
+
+.gallery__mpu
+  +z-layer(middle)
+  display: none
+  width: $ad-width
+  height: $footer-height
+  background: white
+  +respond-to(strip-unit($ad-width))
+    display: block
+    margin: 0 auto 20px
+  +respond-to(wide-view)
+    margin: 0
+    position: absolute
+    right: 0
+    top: 0
+
+.gallery-underlay
+  +z-layer(middle)
+  +alpha-background($body-background, 0.95)
+  bottom: 0
+  left: 0
+  opacity: 0
+  position: fixed
+  right: 0
+  top: 0
+  transition: opacity 1s
+  &.is-active
+    opacity: 1
+
+.gallery-box
+  +z-layer(modal)
+  left: 0
+  height: 100%
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  top: 0
+  transition: opacity .5s, left 1s
+  width: 100%
+  &.is-active
+    opacity: 1
+  &.is-loading
+    left: 100%
+
+.gallery-box__close
+  +size(40px)
+  margin: 40px 20px
+  cursor: pointer
+  opacity: .25
+
+$arrow-size: 50px
+.arrow--left,
+.arrow--right,
+.gallery__next,
+.gallery__previous
+  +hardware-acceleration()
+  +z-layer(modal)
+  +size($arrow-size)
+  +alpha-background($darkgray, 0.15, #888)
+  border: 2px solid white
+  border-radius: $arrow-size
+  box-sizing: border-box
+  display: inline-block
+  margin-top: -#{$arrow-size / 2}
+  opacity: 0.7
+  position: absolute
+  top: 50%
+  transition: background 0.3s, opacity 0.3s
+  &:hover,
+  &.is-hover,
+  &:focus
+    +alpha-background($darkgray, 0.5)
+    opacity: 1
+    text-decoration: none
+  .supports-touch &
+    display: none
+
+.arrow--left:after,
+.arrow--right:before
+  +size(50%)
+  display: inline-block
+  left: 25%
+  position: relative
+  top: 25%
+  vertical-align: top
+
+.arrow--left
+  left: -90px
+
+.arrow--right
+  right: -90px
+
+.gallery__next
+  right: 20px
+  +respond-to(larger-than-ipad)
+    right: -90px
+
+.gallery__previous
+  left: 20px
+  +respond-to(larger-than-ipad)
+    left: -90px
+
+.gallery__slide-details
+  display: none
+
+.gallery__slide-counter
+  +z-layer(middle)
+  bottom: 0
+  color: white
+  display: none
+  font-size: 14px
+  font-weight: bold
+  right: 0
+  padding: 1em
+  position: absolute
+  .supports-touch
+    display: block

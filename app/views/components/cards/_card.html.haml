@@ -1,0 +1,43 @@
+%article{ class: card_classes(properties).join(" ") }
+  .card__mask
+
+    - card_link_if(properties[:url].present?, href: properties[:url], target: properties[:target], data: card_link_data(properties), class: properties[:layer?] ? 'js-lightbox-toggle' : '') do
+
+      - if properties[:image_url].present?
+        %figure.card__figure
+          = safe_image_tag(properties[:image_url], class: "card__figure__img", alt: properties[:image_alt])
+
+          - if properties[:image_icon].present?
+            .card__figure__icon{ class: "icon--#{properties[:image_icon]}" }
+
+      .card__content
+
+        - if properties[:context_pin]
+          .card__content__pin{ class: "icon--#{card_icon(properties)}--pin" }
+
+        - if properties[:tags] && properties[:tags][:top_choice?]
+          .card__content__ribbon.icon--top-pick
+            .accessibility Top Pick
+
+        - if properties[:context_text]
+          .card__content__context{ class: properties[:context_icon] ? "copy--icon--before icon--#{card_icon(properties)}--before" : "" }
+            = properties[:context_text]
+
+        %h1.card__content__title.js-prerender-title
+          = properties[:title]
+
+        .card__content__desc
+          - if properties[:html_content]
+            != properties[:html_content]
+          - elsif properties[:description]
+            %p
+              = properties[:description]
+
+        - if properties[:long_description]
+          .js-prerender-content.is-hidden
+            = properties[:long_description]
+
+      = render partial: "/components/cards/partials/footer", locals: { properties: properties }
+
+  - if properties[:price_tag].present?
+    = ui_component("price_label", properties: properties[:price_tag])

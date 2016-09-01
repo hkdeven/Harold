@@ -1,0 +1,22 @@
+.vertical-nav.card{ role: 'navigation' } 
+
+  - properties[:links].each do |item|
+
+    :ruby
+      item_class = item[:selected] || item[:current] ? 'is-active' : nil
+      item_title = item[:name] || item[:title]
+      item_url = item[:path] || item[:href] || item[:url] || item[:slug]
+
+    %a.vertical-nav__item.nav--left__item{ href: item_url, class: item_class }
+
+      - if item[:image_url]
+        .media
+          .media__img
+            %img.vertical-nav__item-thumbnail{ src: item[:image_url], alt: item[:image_alt] }
+          .media__body
+            %p.vertical-nav__item-text.copy--h5= item_title
+
+      - else
+        %p.vertical-nav__item-text.copy--h5= item_title
+        - if item[:count]
+          %span{ class: 'nav--left__item__facet' }= "(#{item[:count]})"

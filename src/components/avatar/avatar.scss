@@ -1,0 +1,77 @@
+@import "../../../sass/webpack_deps";
+
+/// ----------------------------------------------------------------------------
+/// Settings map
+///
+/// Settings are called via the `get` method, which is simply an alias for
+/// Sass's `map-get` method.
+///
+/// @usage
+/// `get($map-name, "setting-name")`
+/// ----------------------------------------------------------------------------
+
+$avatar: (
+  "size": 4rem
+);
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base
+/// ----------------------------------------------------------------------------
+
+.avatar {
+  background-color: $color-white;
+  border-radius: 100%;
+  display: inline-block;
+  height: get($avatar, "size");
+  max-width: get($avatar, "size");
+  position: relative;
+  vertical-align: middle;
+  width: get($avatar, "size");
+
+  // If the avatar component isn't an `img`
+  img {
+    border-radius: 100%;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Modifiers
+/// ----------------------------------------------------------------------------
+
+// Used for when the avatar belongs to an author, either in an article or love-letter component
+.avatar--author {
+  height: auto;
+  max-width: get($avatar, "size");
+  width: 12vw;
+}
+
+// Used to make the avatar bigger at 600px and above, either in an article or love-letter component
+.avatar--large {
+  @media (min-width: $min-600) {
+    max-width: none;
+    width: (2 * get($avatar, "size"));
+  }
+}
+
+// Used to float the avatar left, mainly used in related articles on highlight pages
+.avatar--horizontal {
+  float: left;
+  margin-right: 1.4rem;
+}
+
+// Used for the logged in user's avatar in the site's navigation
+.avatar--navigation {
+  position: relative;
+  top: -.4rem;
+}

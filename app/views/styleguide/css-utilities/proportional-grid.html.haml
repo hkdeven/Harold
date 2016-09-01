@@ -1,0 +1,42 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+  %h1.copy--h1 Proportional Grid
+  %p
+    The main grid in waldorf is based on the width of one card. Landing pages more often use this proportional grid.
+
+  .copy--h4 N.b. The card appearance is applied separately - grid class only provide dimensions
+
+- gutters = [0,10,15,20,30]
+
+- gutters.each do |gutter|
+  .styleguide-block.styleguide-grid.context--content
+    %p.copy--h2 Proportional Grid with a #{gutter} pixel gutter (.grid-wrapper--#{gutter})
+    %div{class: "grid-wrapper--#{gutter}"}
+      .col--one-whole
+        .card
+          %code .col--one-whole
+
+    %div{class: "grid-wrapper--#{gutter}"}
+      - 2.times do
+        .col--one-half
+          .card
+            %code .col--one-half
+
+    %div{class: "grid-wrapper--#{gutter}"}
+      - 3.times do
+        .col--one-third
+          .card
+            %code .col--one-third
+
+    %div{class: "grid-wrapper--#{gutter}"}
+      - 4.times do
+        .col--one-quarter
+          .card
+            %code .col--one-quarter
+
+    %div{class: "grid-wrapper--#{gutter}"}
+      - 5.times do
+        .col--one-fifth
+          .card
+            %code .col--one-fifth

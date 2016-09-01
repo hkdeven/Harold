@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// Maintain intrinsic ratios
+// -----------------------------------------------------------------------------
+
+.intrinsic-ratio
+  position: relative
+
+.intrinsic-ratio__inner
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.intrinsic-ratio--16x9
+  +intrinsic-ratio(16, 9)
+
+.intrinsic-ratio--4x3
+  +intrinsic-ratio(4, 3)

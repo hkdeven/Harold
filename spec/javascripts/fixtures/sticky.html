@@ -1,0 +1,37 @@
+<style>
+  .container {
+    margin: 0 25px;
+    width: 200px;
+  }
+
+  .header {
+    height: 100px;
+  }
+
+  .content {
+    position: relative;
+    height: 400px;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 200px;
+  }
+
+  .footer {
+    height: 400px
+  }
+</style>
+
+<div class="container">
+  <div class="header"></div>
+  <div class="content">
+    <div class="sidebar" id="#sticky-target">
+      <div class="js-sticky">This content will stick.</div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>

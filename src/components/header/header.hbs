@@ -1,0 +1,45 @@
+{{> "components/header/header_icons" }}
+
+<header class="lp-global-header lp-global-header--{{type}}{{#if images}} lp-global-header--has-images{{else}} lp-global-header--no-images{{/if}}" role="banner">
+  <div class="lp-global-header__container">
+    <div class="lp-global-header__inner js-lp-global-header-inner">
+
+      <a class="lp-logo lp-logo--{{type}}" href="/">
+        <svg class="svg-icon svg-icon--fit" viewBox="0 0 142 72" aria-label="Lonely Planet">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-logo"></use>
+        </svg>
+      </a>
+
+      <a class="lp-global-header__search js-lp-global-header-search" href="/search">
+        <svg class="svg-icon" aria-hidden="true">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-search"></use>
+        </svg>
+        <span class="lp-global-header__search-text">Search {{search.title}}</span>
+        <span class="lp-global-header__search-beyond">and beyond</span>
+      </a>
+
+      <div class="lp-global-header__navigation">
+        {{> "components/navigation/navigation" }}
+      </div>
+
+      <div class="lp-global-header__mobile lp-global-header__mobile--left">
+        <a class="lp-global-header__mobile-search js-lp-global-header-search" href="/search">
+          <svg class="svg-icon" aria-label="Search">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-search"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="lp-global-header__mobile lp-global-header__mobile--right js-lp-global-header-mobile">
+        {{!--
+        <a class="lp-global-header__mobile-cart icon-cart js-mobile-cart">Cart</a>
+        --}}
+
+        <a class="lp-global-header__mobile-menu js-menu" href="#footer">
+          <span class="menu-icon" aria-label="Menu"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>

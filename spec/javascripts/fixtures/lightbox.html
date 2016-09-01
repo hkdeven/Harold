@@ -1,0 +1,42 @@
+<style type="text/css" media="screen">
+  #js-lightbox { position: absolute; }
+</style>
+<script id="tmpl-preloader" type="text-mustache">
+  <div class='preloader js-preloader'>
+  </div>
+</script>
+<script id="tmpl-layer-prerender" type="text-mustache">
+  <div class='my-title'>{{title}}</div>
+  <div class='my-content'>{{content}}</div>
+</script>
+<div id="js-card-holder">
+  <div id="js-row--content">
+    <div id="js-lightbox" class="lightbox">
+      <div class="lightbox__wrapper">
+        <div class="lightbox__content">
+          <div class="js-lightbox-content"></div>
+        </div>
+      </div>
+      <div class="lightbox__controls-wrapper">
+        <div class="lightbox__controls js-lightbox-controls">
+          <a class="js-lightbox-arrow js-lightbox-previous arrow--left icon--chevron-left--after icon--white--after" href="/first-next-url">
+            <span class="tooltip--container tooltip--hover">
+              <span class="js-lightbox-arrow__text lightbox-arrow__text tooltip tooltip--above icon--tapered-arrow-down--after">Previous</span>
+            </span>
+          </a>
+          <a class="js-lightbox-arrow js-lightbox-next arrow--right icon--chevron-right--before icon--white--before" href="/first-prev-url">
+            <span class="tooltip--container tooltip--hover">
+              <span class="js-lightbox-arrow__text lightbox-arrow__text tooltip tooltip--above icon--tapered-arrow-down--after">Next</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="js-lightbox-spec js-lightbox-toggle" data-lightbox-class="lightbox-foo" data-toggle-target=".lightbox">show lightbox</a>
+    <a href="#" class="js-lightbox-spec js-lightbox-with-prerender">
+      <div class="js-prerender-title">Prerendered title</div>
+      <div class="js-prerender-content">Prerendered content</div>
+    </a>
+
+  </div>
+</div>

@@ -1,0 +1,10 @@
+= render 'styleguide/partials/shared'
+
+- price_labels = YAML.load(File.read(File.expand_path('../../../../data/styleguide/price_label_stubs.yml', __FILE__)))
+
+.card.styleguide-intro.context--content
+  .clearfix
+    %h1.copy--h1 Price Label
+
+- price_labels.each_with_index do |stub, i|
+  = styleguide_component('price_label', properties: stub, count: i, card_style: true)

@@ -1,0 +1,212 @@
+@import "../../../sass/webpack_deps";
+
+$user-panel: (
+  "tabs-height": 5rem,
+  "icon-size": 3rem,
+  "icon-spacing": .25rem
+);
+
+.user-panel {
+  $top: ($header-height - $gutter);
+  $left: 50%;
+  $width: 29rem;
+  $margin-left: -($width / 2);
+  $padding-top: 0;
+  @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
+  @include dropdown-menu-visible;
+
+  &::before {
+    @include dropdown-menu-arrow;
+  }
+}
+
+.user-panel__button {
+  @include button;
+  border-radius: 0 0 $radius $radius;
+  display: block;
+  padding-bottom: 1.9rem;
+  padding-top: 2.3rem;
+}
+
+.user-panel__header {
+  $height: 9rem;
+  border-bottom: .1rem solid $color-gray;
+  font-size: 1.6rem;
+  height: $height;
+  line-height: $height;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  a {
+    color: $titlegray;
+    display: block;
+    transition: color $animation-speed;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $lpblue;
+    }
+  }
+}
+
+.user-panel__sign-out {
+  color: $font-color-light;
+  height: map-get($user-panel, "icon-size");
+  position: absolute;
+  right: map-get($user-panel, "icon-spacing");
+  text-indent: -9999rem;
+  top: map-get($user-panel, "icon-spacing");
+  transition: color $animation-speed;
+  width: map-get($user-panel, "icon-size");
+  z-index: z("default");
+
+  &::before {
+    bottom: 0;
+    display: block;
+    font-size: 1.6rem;
+    left: 0;
+    line-height: map-get($user-panel, "icon-size");
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-indent: 0;
+    top: 0;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $titlegray;
+  }
+}
+
+.user-panel__name {
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-top: .3rem;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 18.6rem;
+}
+
+.user-panel__empty {
+  color: $font-color-light;
+  font-size: 1.4rem;
+  font-style: italic;
+  min-height: 15.6rem;
+  padding: (($gutter * 2) + .3) $gutter;
+  text-align: center;
+}
+
+.user-panel__scroll {
+  max-height: 23.6rem;
+  overflow: auto;
+}
+
+// The strange selectors for .user-panel__items are due to the way that the user
+// data is currently being returned; each item is one long string of HTML. For
+// that reason, classes cannot be applied to each item or its children.
+
+.user-panel__items li {
+  color: $titlegray;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  overflow: hidden;
+  padding: $spacing $gutter;
+  position: relative;
+  width: 100%;
+
+  &:not(:first-child) {
+    border-top: .1rem solid $color-gray;
+  }
+
+  > a {
+    display: block;
+    transition: background-color $animation-speed linear;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $active-background-color;
+    }
+  }
+
+  // avatar
+  > div:nth-of-type(1) {
+    height: 3.5rem;
+    position: absolute;
+    right: $spacing;
+    top: $spacing;
+    width: 3.5rem;
+
+    a {
+      display: block;
+    }
+
+    img {
+      border-radius: 100%;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  // timestamp
+  > div:nth-of-type(2) {
+    bottom: $spacing;
+    position: absolute;
+    width: 18rem;
+
+    time {
+      color: $light-text-color;
+      display: block;
+      font-size: 1.1rem;
+    }
+  }
+
+  // subject text
+  > span {
+    display: block;
+    padding-bottom: ($spacing + .5);
+    width: 18rem;
+
+    a {
+      color: $titlegray;
+      font-weight: bold;
+      transition: color $animation-speed linear;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $lpblue;
+      }
+    }
+  }
+}
+
+.user-panel__item {
+  &--unread {
+    background-color: $color-gray;
+  }
+}
+
+.user-panel__link {
+  @include button("inverse");
+  border-radius: 0;
+  box-shadow: 0 0 3rem 0 rgba($color-black, .08);
+  text-transform: none;
+  width: 100%;
+}
+
+.unread-count {
+  color: $light-text-color;
+  font-size: 1.1rem;
+  font-weight: normal;
+
+  .tabs & {
+    padding-left: .3rem;
+  }
+}

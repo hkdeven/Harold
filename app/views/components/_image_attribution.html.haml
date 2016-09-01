@@ -1,0 +1,15 @@
+.image-attribution.icon--image--before.icon--white--before
+  %span.image-attribution__link.js-image-attribution{ data: { link_to: properties[:image_attribution_link] }}<
+    = properties[:image_attribution]
+  %span.card__licenses
+    - unless properties[:image_license] == 'permission'
+      %span.image-attribution__license.icon--cc.icon--white<
+        Creative Commons
+    %span.image-attribution__license.icon--by.icon--white<
+      Attribution
+    - if properties[:image_license] == 'by-nd'
+      %span.image-attribution__license.icon--nd.icon--white<
+        Non-Derivation
+    - if properties[:image_license] == 'by-sa'
+      %span.image-attribution__license.icon--sa.icon--white<
+        Share Alike

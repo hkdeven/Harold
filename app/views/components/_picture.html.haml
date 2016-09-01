@@ -1,0 +1,17 @@
+:ruby
+  retina = properties[:retina]
+  src = properties[:src]
+  size = properties[:size] ||  {
+    aspect_ratio: "16x9", resize: { width: 1200 }, retina: true
+  }
+	
+
+%picture{ class: properties[:class] }
+  -# IE9 has a conflict with <source> elements that aren't nested in a <video>.
+  /[if IE 9] <video style="display: none;">
+  - if properties[:breakpoints].any?
+    - properties[:breakpoints].each do |breakpoint|
+      - width = breakpoint.delete(:at)
+      %source{ srcset: "#{srcset_url(breakpoint, src, retina)}", media: "(min-width: #{width}px)" }
+  /[if IE 9] </video>
+  %img{ srcset: srcset_url(size, src, retina), alt: properties[:alt] }

@@ -1,0 +1,11 @@
+-
+  :currency: "£"
+  :price: "500"
+-
+  :currency: "$"
+  :price: "14.95"
+-
+  :currency: "€"
+  :price: "124.50"
+  :on_sale?: true
+  :retail_price: "130.00"

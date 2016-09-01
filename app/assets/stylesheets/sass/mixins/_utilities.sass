@@ -1,0 +1,62 @@
+// [doc] Utility to simply strip units from any value. [/doc]
+@function strip-unit($value)
+  @return $value / ($value * 0 + 1)
+
+// [doc] Rem with pixel fallback for font sizes. [/doc]
+@mixin font-size($sizeValue: 14)
+  $value: strip-unit($sizeValue)
+  font-size: #{$value + px}
+  font-size: #{($value / $base-font-size) + rem}
+
+// [doc] Vertically center using line-height (not suitable for multiple lines of text). [/doc]
+@mixin vertically-center($x: 20)
+  $value: strip-unit($x)
+  height: #{$value + px}
+  line-height: #{$value + px}
+
+// [doc] Style input placeholders (Pass in a content block). [/doc]
+@mixin placeholder()
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+// [doc] Create square dimenstions based on width, returns width & height. [/doc]
+@mixin size($w, $h: $w)
+  height: $h
+  width: $w
+
+// [doc] Gradient Background overlay (for images). [/doc]
+@mixin image-overlay--gradient( $color-start: $darkgray, $opacity-start: 0.5, $color-end: #FFF, $opacity-end: 0, $start: 0, $stop: 35% )
+  .enhanced &
+    background: linear-gradient(to top, rgba($color-start, $opacity-start) $start, rgba($color-end, $opacity-end) $stop)
+
+// [doc] Flat Background overlay (for images). 35% percent. [/doc]
+@mixin image-overlay--flat( $percent: 0.35, $color: $darkgray )
+  .enhanced &
+    background-color: rgba($darkgray, $percent)
+
+// [doc] A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
+@mixin z-layer( $layer: default )
+  @if $layer == below
+    z-index: -1
+  @else if $layer == default
+    z-index: 1
+  @else if $layer == middle
+    z-index: 10
+  @else if $layer == top
+    z-index: 20
+  @else if $layer == modal
+    z-index: 9999
+  @else
+    z-index: 1
+
+// [doc] Specify user avatar size and make it round. [/doc]
+@mixin user-avatar-size($size)
+  &, & img
+    +size(#{$size}px)
+    border-radius: #{$size/2}px

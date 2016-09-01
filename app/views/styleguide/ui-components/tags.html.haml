@@ -1,0 +1,16 @@
+= render 'styleguide/partials/shared'
+
+- tags_list = styleguide_stubs('tags')
+.card.styleguide-intro.context--content
+  .clearfix
+    %h1.copy--h1 Price Tags
+
+- tags_list['tag_price'].each_with_index do | stub, i |
+  = styleguide_component('tags/price', properties: stub, count: i, card_style: true)
+
+.card.styleguide-intro.context--content
+  .clearfix
+    %h1.copy--h1 Competition Tag
+
+- tags_list['tag_competition'].each_with_index do | stub, i |
+  = styleguide_component('tags/competition', properties: stub, count: i, card_style: true)

@@ -1,0 +1,16 @@
+{
+  "source": "src",
+  "excludes": ["node_modules", "spec", "sass", "tmp"],
+  "includes": ["\\.(jsx?)$"],
+  "destination": "./docs/js",
+  "test": {
+    "type": "mocha",
+    "source": "./spec"
+  },
+  "plugins": [
+    {
+      "name": "esdoc-es7-plugin"
+    }
+  ],
+  "styles": ["dist/css/docs.css"]
+}

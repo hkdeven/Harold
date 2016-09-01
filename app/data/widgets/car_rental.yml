@@ -1,0 +1,110 @@
+:country_list:
+  -
+    :title: "USA"
+  -
+    :title: "UK"
+
+:currency_list:
+  -
+    :title: "USD"
+  -
+    :title: "GBP"
+
+:default_time: "16:30"
+:times_list:
+  -
+    :title: "00:00"
+  -
+    :title: "00:30"
+  -
+    :title: "01:00"
+  -
+    :title: "01:30"
+  -
+    :title: "02:00"
+  -
+    :title: "02:30"
+  -
+    :title: "03:00"
+  -
+    :title: "03:30"
+  -
+    :title: "04:00"
+  -
+    :title: "04:30"
+  -
+    :title: "05:00"
+  -
+    :title: "05:30"
+  -
+    :title: "06:00"
+  -
+    :title: "06:30"
+  -
+    :title: "07:00"
+  -
+    :title: "07:30"
+  -
+    :title: "08:00"
+  -
+    :title: "08:30"
+  -
+    :title: "09:00"
+  -
+    :title: "09:30"
+  -
+    :title: "10:00"
+  -
+    :title: "10:30"
+  -
+    :title: "11:00"
+  -
+    :title: "11:30"
+  -
+    :title: "12:00"
+  -
+    :title: "12:30"
+  -
+    :title: "13:00"
+  -
+    :title: "13:30"
+  -
+    :title: "14:00"
+  -
+    :title: "14:30"
+  -
+    :title: "15:00"
+  -
+    :title: "15:30"
+  -
+    :title: "16:00"
+  -
+    :title: "16:30"
+  -
+    :title: "17:00"
+  -
+    :title: "17:30"
+  -
+    :title: "18:00"
+  -
+    :title: "18:30"
+  -
+    :title: "19:00"
+  -
+    :title: "19:30"
+  -
+    :title: "20:00"
+  -
+    :title: "20:30"
+  -
+    :title: "21:00"
+  -
+    :title: "21:30"
+  -
+    :title: "22:00"
+  -
+    :title: "22:30"
+  -
+    :title: "23:00"
+  -
+    :title: "23:30"

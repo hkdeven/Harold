@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// Reveals the identities of criminals from low resolution images of reflections
+// -----------------------------------------------------------------------------
+%card-content-overflow
+  &:before
+    @extend %empty-abs-generated-content
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 20px
+
+    // Safari inteprets transparent value as a shade of grey
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #FFF 75%)
+
+%card-figure-shroud
+  &:before
+    @extend %empty-abs-generated-content
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 50%
+    background: linear-gradient(to bottom, rgba(44, 54, 67, 0) 0, rgba(44, 54, 67, .75) 100%)
+
+.enhanced
+
+  .card
+    @extend %standard-shadow
+
+    &.is-disabled
+      opacity: .65
+
+    &.is-invisible
+      opacity: 0
+
+    .card__figure
+      &:after
+        @extend %empty-abs-generated-content
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        opacity: 0
+        background: $darkgray
+        transition: opacity .25s ease-out
+
+    a:hover,
+    a:focus
+      .card__figure
+        &:after
+          opacity: .35
+
+  .card--no-cover
+    .card__content
+      @extend %card-content-overflow
+
+  .card--cover
+    .card__figure
+      @extend %card-figure-shroud
+
+    &.card--list--short,
+    &.card--column--short
+
+      .card__figure:before
+        height: 100%
+
+  .card--guide
+
+    &.card--has-img
+      .card__figure__img
+        box-shadow: 0 10px 10px rgba(0, 0, 0, .65), 0 15px 15px rgba(0, 0, 0, .15)

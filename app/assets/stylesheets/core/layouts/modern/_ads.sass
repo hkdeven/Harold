@@ -1,0 +1,160 @@
+// ----------------------------------------------------------------------------
+// Ad layout rows
+// ----------------------------------------------------------------------------
+
+.row--sponsored
+  padding: 0
+  height: 0
+  min-height: 0
+  overflow: hidden
+
+  &.is-open
+    height: auto
+    min-height: 60px
+    +respond-to(728)
+      min-height: 100px
+
+// ----------------------------------------------------------------------------
+// Site leaderboard
+// ----------------------------------------------------------------------------
+
+.ad-leaderboard
+  padding: 12px 0
+  +respond-to(728)
+    padding: 16px 0
+
+.ad-leaderboard__inner
+  position: relative
+  display: table
+  margin-left: auto
+  margin-right: auto
+
+.ad-leaderboard__bottom
+  position: relative
+  display: table
+  margin-left: auto
+  margin-right: auto
+  padding-top: 40px
+  +respond-to(728 + 180)
+    padding-left: 90px
+    padding-right: 90px
+
+.ads.adpartner
+  position: absolute
+  width: 1px
+  height: 1px
+  opacity: 0
+
+.sponsor-logo
+  margin-top: 10px
+  +respond-to(728 + 180)
+    position: absolute
+    bottom: 0px
+    left: -90px
+    margin-top: 0
+
+.sponsor-logo__logo
+  display: inline
+  max-width: 80px
+  max-height: 40px
+  margin-right: 5px
+  vertical-align: middle
+  +respond-to(728 + 180)
+    display: block
+    margin: 0 0 5px
+
+.row--leaderboard--header
+  background-color: $row-leaderboard
+
+.row--leaderboard--footer
+  background: darken($body-background, 2.5%)
+
+// ----------------------------------------------------------------------------
+// Page billboard
+// ----------------------------------------------------------------------------
+
+.row--billboard
+  background: darken($body-background, 2.5%)
+
+.ad-billboard
+  padding: 12px 0
+  text-align: center
+  +respond-to(728)
+    padding: 20px 0
+
+.ad-billboard__inner
+  display: inline-block
+  vertical-align: bottom
+
+// ----------------------------------------------------------------------------
+// MPU
+// ----------------------------------------------------------------------------
+
+.adunit--mpu
+  background: $subduedgray
+  min-height: 250px
+
+// ----------------------------------------------------------------------------
+// Sponsor tile
+// ----------------------------------------------------------------------------
+
+.ad-sponsorTile
+  @extend %transition--base
+  width: 276px
+  height: 32px
+  opacity: 1
+
+  &.is-closed
+    opacity: 0
+
+.ad-sponsorTile__tag
+  margin-bottom: 2px
+  text-align: right
+
+// ----------------------------------------------------------------------------
+// Ad sense
+// ----------------------------------------------------------------------------
+
+.ad-adSense--leaderboard
+  margin-top: 20px
+
+// ----------------------------------------------------------------------------
+// HTML Traffic Driver
+// ----------------------------------------------------------------------------
+
+.traffic-driver
+  overflow: hidden
+
+.traffic-driver__link:hover
+  text-decoration: none
+
+.traffic-driver__content
+  position: relative
+  height: 50px
+  padding: 10px
+
+.traffic-driver__title
+  text-transform: uppercase
+  font-weight: bold
+  color: $titlegray
+
+.traffic-driver__logo,
+.traffic-driver__badge
+  position: absolute
+  bottom: 10px
+
+.traffic-driver__logo
+  right: 10px
+  max-width: 60px
+  max-height: 20px
+
+// ----------------------------------------------------------------------------
+// Paraphernalia
+// ----------------------------------------------------------------------------
+
+.ad-label
+  +font-size(10)
+  color: $feature-copy
+  line-height: 20px
+  text-align: center
+  text-transform: uppercase

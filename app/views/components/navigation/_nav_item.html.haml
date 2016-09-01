@@ -1,0 +1,46 @@
+:ruby
+  if defined?(primary)
+    nav_type = defined?(has_submenu) ? "" : "nav__item--primary"
+  else
+    nav_type = "nav__item--secondary"
+  end
+
+  item_classes = [
+    defined?(submenu_item) ? "nav__submenu__item" : nav_type,
+    item[:image_url] ? "has-image" : "",
+  ].join(" ")
+
+  show_badge = defined?(submenu_item) && item[:badge]
+  item_analytics = item.fetch(:analytics, {})
+
+  if (defined?(global) && defined?(has_submenu))
+    item[:submenu].each { |item| item[:global] = true }
+  end
+
+  lpa_data = case
+             when defined?(global) && global
+               item_analytics.merge lpa: { category: "Global Navigation Click", action: "Click", label: item[:title] }
+             else
+               item_analytics
+             end
+
+- if item[:slug]
+
+  %a.nav__item.js-nav-item{ class: [item_classes, active, item[:extra_class]], data: lpa_data, href: item[:slug], target: item[:target], itemprop: "url", aria: { label: active.present? ? "Current page" : nil } }<
+
+    - if item[:image_url]
+      %img{ class: "nav__submenu__item--image", src: item[:image_url], alt: item[:title] }
+
+    %div{ class: [item[:icon_class] ? "nav__icon #{item[:icon_class]}" : false, defined?(submenu_item) ? "" : "wv--hidden--before", "nav__submenu__item__text"], itemprop: "name" }
+      = item[:title]
+
+      - if show_badge
+        %span.badge--pink.nav__item__badge
+          = item[:badge]
+
+  - if item[:submenu]
+    = render "components/navigation/submenu", item: item, show_responsive_toggle: !defined?(primary), button_text: item[:button_text], button_url: item[:button_url]
+
+- else
+  %span.nav__item{ class: [nav_type, item[:extra_class]]}
+    = item[:title]

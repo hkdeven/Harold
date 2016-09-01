@@ -1,0 +1,8 @@
+.nearby-pois.js-poi-list
+  %ul.nearby-pois__list
+    - pois[0,5].each do |poi|
+      %li.nearby-pois__poi.js-poi{ class: "icon--#{poi[:topic]}--pin--before", data: { longitude: poi[:longitude], latitude: poi[:latitude], topic: poi[:topic] } }
+        %a.nearby-pois__title.copy--h4{ href: "/#{poi[:slug]}" }
+          = poi[:name]
+        %p.nearby-pois__description
+          = poi[:description]

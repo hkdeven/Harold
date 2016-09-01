@@ -1,0 +1,815 @@
+// -----------------------------------------------------------------------------
+// Fonts
+// -----------------------------------------------------------------------------
+
+@font-face
+  font-family: "Benton Sans"
+  src: url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-2.eot")
+  src: url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-2.eot?") format("embedded-opentype"), url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-1.ttf") format("truetype")
+  font-style: normal
+  font-stretch: normal
+  font-weight: 300
+
+@font-face
+  font-family: "Benton Sans"
+  src: url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-2.eot")
+  src: url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-2.eot?") format("embedded-opentype"), url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-1.ttf") format("truetype")
+  font-style: normal
+  font-stretch: normal
+  font-weight: 500
+
+@font-face
+  font-family: "Benton Sans"
+  src: url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-2.eot")
+  src: url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-2.eot?") format("embedded-opentype"), url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-1.ttf") format("truetype")
+  font-style: normal
+  font-stretch: normal
+  font-weight: 600
+
+@font-face
+  font-family: "Miller Daily"
+  src: url("https://assets.staticlp.com/javascripts/2d4b6287-e087-4bce-89af-61a0cd634f27-2.eot")
+  src: url("https://assets.staticlp.com/javascripts/2d4b6287-e087-4bce-89af-61a0cd634f27-2.eot?") format("embedded-opentype"), url("https://assets.staticlp.com/javascripts/2d4b6287-e087-4bce-89af-61a0cd634f27-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/2d4b6287-e087-4bce-89af-61a0cd634f27-1.ttf") format("truetype")
+  font-style: italic
+  font-weight: normal
+  font-stretch: normal
+
+@font-face
+  font-family: "Miller Daily"
+  src: url("https://assets.staticlp.com/javascripts/6e603ae4-800b-4625-9fa8-1819315263a6-2.eot")
+  src: url("https://assets.staticlp.com/javascripts/6e603ae4-800b-4625-9fa8-1819315263a6-2.eot?") format("embedded-opentype"), url("https://assets.staticlp.com/javascripts/6e603ae4-800b-4625-9fa8-1819315263a6-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/6e603ae4-800b-4625-9fa8-1819315263a6-1.ttf") format("truetype")
+  font-style: normal
+  font-weight: normal
+  font-stretch: normal
+
+// -----------------------------------------------------------------------------
+// Utilities
+// -----------------------------------------------------------------------------
+
+@mixin lp-font-size($sizeValue, $baseValue: 10)
+  $value: strip-unit($sizeValue)
+  font-size: #{$value * $baseValue + px}
+
+@function rem-to-px($value)
+  @return strip-unit($value) * 10px
+
+// -----------------------------------------------------------------------------
+// Rizzo Next classes
+// -----------------------------------------------------------------------------
+
+.svg-icon
+  display: inline-block
+  fill: currentColor
+  height: 1em
+  vertical-align
+  width: 1em
+
+.svg-icon-inline
+  position: relative
+  top: -.0625em
+
+.svg-icon--fit
+  height: 100%
+  width: 100%
+
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+
+// Rizzo Next base font size / Rizzo base font size
+$scaling-factor: (10 / 14)
+
+// Rizzo Next variables
+$lp-gutter: rem-to-px(3rem)
+
+$lp-min-1410: #{(1410 * .0625)}em // 88.125em
+$lp-min-1350: #{(1350 * .0625)}em // 84.375em
+$lp-min-1290: #{(1290 * .0625)}em // 80.625em
+$lp-min-1200: #{(1200 * .0625)}em // 75em
+$lp-min-1080: #{(1080 * .0625)}em // 67.5em
+$lp-min-1024: #{(1024 * .0625)}em // 64em
+$lp-min-960: #{(960 * .0625)}em   // 60em
+$lp-min-840: #{(840 * .0625)}em   // 52.5em
+$lp-min-768: #{(768 * .0625)}em   // 48em
+$lp-min-720: #{(720 * .0625)}em   // 45em
+$lp-min-600: #{(600 * .0625)}em   // 37.5em
+$lp-min-560: #{(560 * .0625)}em   // 35em
+$lp-min-480: #{(480 * .0625)}em   // 30em
+$lp-min-360: #{(360 * .0625)}em   // 22.5em
+$lp-min-320: #{(320 * .0625)}em   // 20em
+
+$lp-max-1530: #{(1530 * .0625)}em // 95.625
+$lp-max-720: #{(719 * .0625)}em   // 44.9375em
+$lp-max-480: #{(479 * .0625)}em   // 29.9375em
+
+$lp-blue: #287bbb
+$lp-color-red: #dc221a
+$lp-notification-badge-size: 17px
+
+@mixin container-header
+  %clearfix
+  margin-left: ($lp-gutter / 2)
+  margin-right: ($lp-gutter / 2)
+  max-width: rem-to-px(129rem)
+
+  @media (min-width: $lp-min-720)
+    margin-left: $lp-gutter
+    margin-right: $lp-gutter
+
+  @media (min-width: $lp-min-1080)
+    margin-left: ($lp-gutter * 2)
+    margin-right: ($lp-gutter * 2)
+
+  @media (min-width: $lp-min-1410)
+    margin-left: auto
+    margin-right: auto
+
+[hidden]
+  display: none
+
+%lp-icon-font
+  font-family: "dest-next-icons"
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+  line-height: 1
+  speak: none
+  text-transform: none
+
+.content-wrapper.navigation-wrapper.rizzo-navigation.rizzo-next
+  box-sizing: border-box
+
+  // ---------------------------------------------------------------------------
+  // header
+  // ---------------------------------------------------------------------------
+
+  .lp-global-header
+    background-color: $navblue
+    box-sizing: inherit
+    font-family: "Benton Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+
+    @media (max-width: $lp-max-720)
+      border-bottom: 0
+
+  .lp-global-header__container
+    +container-header
+
+  .lp-global-header__inner
+    border-bottom: 0
+    height: rem-to-px(5rem)
+
+    @media (min-width: $lp-min-720)
+      height: rem-to-px(13rem)
+
+  .lp-logo
+    color: #fff
+    width: rem-to-px(7.2rem)
+
+    @media (min-width: $lp-min-720)
+      width: rem-to-px(14.2rem)
+
+    .svg-icon
+      margin-top: rem-to-px(.5rem)
+
+  .lp-global-header__search
+    color: #fff
+    text-decoration: none
+
+    @media (min-width: $lp-min-1080)
+      +lp-font-size(2.4rem)
+      height: rem-to-px(13rem)
+      margin-top: rem-to-px(-6.5rem)
+      line-height: rem-to-px(13rem)
+
+    .svg-icon
+      +lp-font-size(1.8rem)
+      color: #fff
+      margin-right: rem-to-px(1.4rem)
+
+    &:hover,
+    &:active,
+    &:focus
+      color: rgba(#fff, .38)
+
+      .svg-icon
+        margin-right: rem-to-px(1.1rem)
+
+  // override shop styles; reset to defaults because of `button span` declaration
+  body.shop .lp-global-header__search-text
+    display: inline
+    margin: 0
+    padding: 0
+    position: static
+    white-space: normal
+
+  .lp-global-header__search-text
+    color: #fff
+
+  .lp-global-header__search:hover .lp-global-header__search-text,
+  .lp-global-header__search:active .lp-global-header__search-text,
+  .lp-global-header__search:focus .lp-global-header__search-text
+    color: rgba(#fff, .38)
+
+  .lp-global-header__mobile--right
+    right: rem-to-px(-1.3rem)
+
+  .lp-global-header__mobile--left
+    left: rem-to-px(-1.3rem)
+
+  .lp-global-header__mobile-search
+    +size(rem-to-px(5rem))
+
+    &:before
+      margin-left: rem-to-px(.4rem)
+
+  .lp-global-header__mobile-search,
+  .lp-global-header__mobile-menu
+    +size(rem-to-px(5rem - 1.3rem - 1.3rem))
+    margin-top: rem-to-px(.1rem)
+    padding: rem-to-px(1.3rem)
+
+  // Pixel value for line-height to be more precise
+  .lp-global-header__mobile-search,
+  .lp-global-header__mobile-menu,
+  .lp-global-header__mobile-cart
+    +lp-font-size(2.4rem)
+    line-height: 1
+
+  .lp-global-header__mobile-cart
+    &:before
+      +lp-font-size(2.3rem)
+
+  .lp-global-header--narrow .lp-global-header__mobile-search,
+  .lp-global-header--narrow .lp-global-header__mobile-menu,
+  .lp-global-header--narrow .lp-global-header__mobile-cart
+    color: #fff
+
+  .lp-global-header__mobile-menu .menu-icon
+    top: rem-to-px(2.4rem)
+    left: rem-to-px(1.3rem)
+    right: rem-to-px(1.3rem)
+
+    &:before
+      top: rem-to-px(-.7rem)
+
+    &:after
+      top: rem-to-px(.7rem)
+
+  .lp-global-header__mobile-menu .menu-icon,
+  .lp-global-header__mobile-menu .menu-icon:before,
+  .lp-global-header__mobile-menu .menu-icon:after
+    +size(rem-to-px(2.4rem), rem-to-px(.2rem))
+    background-color: #fff
+
+  .lp-global-header--narrow .lp-global-header__mobile-menu .menu-icon,
+  .lp-global-header--narrow .lp-global-header__mobile-menu .menu-icon:before,
+  .lp-global-header--narrow .lp-global-header__mobile-menu .menu-icon:after
+    background-color: #fff
+
+
+
+
+
+  // ---------------------------------------------------------------------------
+  // navigation
+  // ---------------------------------------------------------------------------
+
+  // pixel value here because rem calculation is 1 px off
+  .navigation
+    box-sizing: inherit
+    line-height: 130px
+
+  .navigation__item--active
+    border-bottom: 0
+    height: rem-to-px(13rem)
+
+  .navigation__item
+    margin-left: rem-to-px(1.7rem)
+
+    &:not(:last-child)
+      margin-right: rem-to-px(1.7rem)
+
+  .navigation__link
+    +lp-font-size(1.4rem)
+    text-decoration: none
+    transition: color 400ms
+
+    &:hover,
+    &:active,
+    &:focus
+      transition: color 400ms
+
+  .navigation__link,
+  .navigation__item--active .navigation__link
+    color: #fff
+
+    &:hover,
+    &:active,
+    &:focus
+      color: #7796bb
+
+  .navigation__item--user > .navigation__link
+    border-color: rgba(#fff, .8)
+    border-width: 1px
+    border-radius: rem-to-px(1.7rem)
+    padding: rem-to-px(1.7rem) rem-to-px(2rem) rem-to-px(1.5rem)
+    transition: background-color 400ms, border-color 400ms
+
+    &:hover,
+    &:active,
+    &:focus
+      background-color: rgba(#fff, .07)
+      border-color: rgba(#fff, .38)
+      color: #fff
+      transition: background-color 400ms, border-color 400ms
+
+
+
+
+
+  // ---------------------------------------------------------------------------
+  // sub-navigation
+  // ---------------------------------------------------------------------------
+
+  .sub-navigation
+    +lp-font-size(1.8rem)
+    font-family: inherit
+    box-sizing: inherit
+    border-radius: rem-to-px(.2rem)
+    width: rem-to-px(29rem)
+    margin-left: rem-to-px((-29rem / 2 + .1))
+    top: rem-to-px(10rem)
+
+    @media (max-width: $lp-max-1530)
+      right: 0
+
+    &:before
+      border: rem-to-px(.8rem) solid transparent
+      border-bottom-color: #fff
+      margin-left: rem-to-px(-.8rem)
+      top: rem-to-px(-1.6rem)
+
+      @media (max-width: $lp-max-1530)
+        right: rem-to-px(1.6rem)
+
+  .sub-navigation--visible
+    box-shadow: 0 $lp-gutter rem-to-px(9rem) rgba(0, 0, 0, .4)
+
+  .sub-navigation-feature
+    padding: $lp-gutter $lp-gutter rem-to-px(2rem)
+
+  .sub-navigation-feature__image
+    margin-right: rem-to-px(2.6rem)
+    width: rem-to-px(8rem)
+
+  .sub-navigation-feature__text
+    padding-top: ($lp-gutter / 2)
+
+  .sub-navigation-feature__title
+    +lp-font-size(1.6rem)
+
+  .sub-navigation-feature__subtitle
+    +lp-font-size(1.1rem)
+    margin-top: rem-to-px(.4rem)
+
+  .sub-navigation__list
+    padding-bottom: rem-to-px(2.8rem)
+    padding-top: rem-to-px(2.8rem)
+
+  .sub-navigation-feature + .sub-navigation__list
+    padding-top: 0
+
+  .sub-navigation__item
+    +lp-font-size(1.6rem)
+    margin-left: $lp-gutter
+    margin-right: $lp-gutter
+
+  .sub-navigation__link
+    padding-top: rem-to-px(1rem)
+    padding-bottom: rem-to-px(.8rem)
+    text-decoration: none
+
+    &:after
+      +size(calc(100% + #{$lp-gutter} + #{$lp-gutter}), calc(100% + .2rem))
+      left: -$lp-gutter
+      right: -$lp-gutter
+      top: rem-to-px(-.1rem)
+
+  .sub-navigation__button
+    +lp-font-size(1.2rem)
+    padding: rem-to-px(1.8rem) rem-to-px(3rem) rem-to-px(1.4rem)
+    border-radius: 0 0 rem-to-px(.2rem) rem-to-px(.2rem)
+    padding-top: rem-to-px(2.3rem)
+    padding-bottom: rem-to-px(1.9rem)
+
+
+
+
+
+  // ---------------------------------------------------------------------------
+  // avatar
+  // ---------------------------------------------------------------------------
+
+  // pixel values for exact sizing
+  .avatar
+    +size(40px)
+    max-width: 40px
+
+  .navigation__item--user > a.avatar
+    padding: 0
+
+  .avatar--navigation
+    top: rem-to-px(-.4rem)
+
+
+
+
+
+  // ---------------------------------------------------------------------------
+  // notification-badge
+  //
+  // All styles from Rizzo Next are being included below until this component
+  // is namespaced. Namespaced styles have been retained
+  //
+  // Pixel values are used for finer control and exact positioning, sizing
+  // ---------------------------------------------------------------------------
+
+  .notification-badge
+    +size($lp-notification-badge-size)
+    font-size: 10px
+    font-weight: bold
+    font-style: normal
+    line-height: ($lp-notification-badge-size + 1)
+    text-align: center
+    color: #fff
+    border-radius: 50%
+    background-color: $lp-color-red
+    user-select: none
+    // override Rizzo
+    box-sizing: border-box
+    box-shadow: none
+    left: auto
+
+  .notification-badge__wrap
+    position: relative
+
+  .notification-badge--shop
+    position: absolute
+    top: 46.5px
+    right: -6px
+
+  .notification-badge--shop-inline
+    +size(6px)
+    position: absolute
+    left: 46px
+    top: 18px
+
+  .notification-badge--user,
+  .notification-badge--user-inline
+    position: absolute
+    border: 3px solid #fff
+
+  .notification-badge--user
+    +size(15px)
+    top: 0
+    right: -2px
+
+  .notification-badge--user-inline
+    +size(12px)
+    top: -5px
+    right: -11px
+
+  .notification-badge--mobile-menu
+    +size(6px)
+    position: absolute
+    top: 16px
+    right: 12px
+    z-index: 2
+
+// ---------------------------------------------------------------------------
+// notification-badge (namespaced)
+// ---------------------------------------------------------------------------
+
+// pixel values for finer control and exact positioning, sizing
+.lp-notification-badge
+  +size(17px)
+  font-size: 10px
+  line-height: 18px
+
+// pixel values for finer control and exact positioning, sizing
+.lp-notification-badge--shop
+  top: 46.5px
+  right: -6px
+
+// pixel values for finer control and exact positioning, sizing
+.lp-notification-badge--shop-inline
+  +size(6px)
+  left: 46px
+  top: 18px
+
+// pixel values for finer control and exact positioning, sizing
+.lp-notification-badge--user
+  +size(15px)
+  right: -2px
+
+// rem too small to work for dimensions
+.lp-notification-badge--user-inline
+  +size(12px)
+  top: rem-to-px(-.5rem)
+  right: rem-to-px(-1.1rem)
+
+// pixel values for finer control and exact positioning, sizing
+.lp-notification-badge--mobile-menu
+  +size(6px)
+  top: 16px
+  right: 12px
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// mobile-navigation
+// -----------------------------------------------------------------------------
+
+.mobile-navigation
+  box-sizing: border-box
+  font-family: "Benton Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+  padding: rem-to-px(3rem)
+  width: rem-to-px(25rem)
+
+  .notification-badge
+    +size($lp-notification-badge-size)
+    font-size: 10px
+    font-weight: bold
+    font-style: normal
+    line-height: ($lp-notification-badge-size + 1)
+    text-align: center
+    color: #fff
+    border-radius: 50%
+    background-color: $lp-color-red
+    user-select: none
+    // override Rizzo
+    box-sizing: border-box
+    box-shadow: none
+    left: auto
+
+  .notification-badge__wrap
+    position: relative
+
+  .notification-badge--shop
+    position: absolute
+    top: 46.5px
+    right: -6px
+
+  .notification-badge--shop-inline
+    +size(6px)
+    position: absolute
+    left: 46px
+    top: 18px
+
+  .notification-badge--user,
+  .notification-badge--user-inline
+    position: absolute
+    border: 3px solid #fff
+
+  .notification-badge--user
+    +size(15px)
+    top: 0
+    right: -2px
+
+  .notification-badge--user-inline
+    +size(12px)
+    top: -5px
+    right: -11px
+
+  .notification-badge--mobile-menu
+    +size(6px)
+    position: absolute
+    top: 16px
+    right: 12px
+    z-index: 2
+
+// Pixel values for more precise measurements
+.mobile-navigation__item
+  border-bottom-width: 1px
+  font-size: 18px
+
+  .icon
+    +size(rem-to-px(1.3rem))
+    margin-top: rem-to-px(.6rem)
+
+.mobile-navigation__link
+  line-height: 1.5
+  padding: rem-to-px(1.6rem) 0 rem-to-px(1.1rem)
+  text-decoration: none !important
+
+.mobile-navigation__item--active > .mobile-navigation__link
+  color: #333
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// mobile-sub-navigation
+// -----------------------------------------------------------------------------
+
+.mobile-sub-navigation
+  box-sizing: border-box
+
+.mobile-sub-navigation .sub-navigation-feature
+  padding: 0 0 rem-to-px(2rem)
+
+// Pixel width because rem calculation is 1 px off
+.mobile-sub-navigation .sub-navigation-feature__image
+  margin-right: rem-to-px(1.4rem)
+  width: 60px
+
+.mobile-sub-navigation .sub-navigation-feature__text
+  padding-top: rem-to-px(.8rem)
+
+.mobile-sub-navigation .sub-navigation-feature__title
+  +lp-font-size(1.6rem)
+
+.mobile-sub-navigation .sub-navigation-feature__subtitle
+  +lp-font-size(1.1rem)
+  margin-top: rem-to-px(.4rem)
+
+.mobile-sub-navigation .sub-navigation__list
+  padding: 0
+
+.mobile-sub-navigation .sub-navigation__item
+  +lp-font-size(1.6rem)
+  margin-left: 0
+  margin-right: 0
+
+.mobile-sub-navigation .sub-navigation__link
+  padding: rem-to-px(1rem) ($lp-gutter / 2) rem-to-px(.8rem)
+  text-decoration: none
+
+  &:after
+    +size(calc(100% + #{$lp-gutter} + #{$lp-gutter}), calc(100% + .2rem))
+    left: -$lp-gutter
+    right: -$lp-gutter
+    top: rem-to-px(-.1rem)
+
+.mobile-sub-navigation .sub-navigation__button
+  +lp-font-size(1.2rem)
+  padding: rem-to-px(1.8rem) rem-to-px(3rem) rem-to-px(1.4rem)
+  border-radius: 0 0 rem-to-px(.2rem) rem-to-px(.2rem)
+  padding-top: rem-to-px(2.3rem)
+  padding-bottom: rem-to-px(1.9rem)
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// search
+// ---------------------------------------------------------------------------
+
+.lp-search
+  box-sizing: border-box
+  font-family: "Benton Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+
+  @media (min-width: $lp-min-720)
+    box-shadow: rem-to-px(-5rem) 0 rem-to-px(15rem) rgba(0, 0, 0, .5)
+
+  [class^="icon-"],
+  [class*=" icon-"]
+    @extend %lp-icon-font
+
+  // .icon-close-small:before
+  //   content: "\e605"
+
+  .icon-chevron-right:before
+    content: "\e603"
+
+.lp-search__container
+  +container-header
+
+.lp-search__inner
+  height: rem-to-px(5rem)
+  line-height: rem-to-px(3.8rem)
+
+  @media (min-width: $lp-min-720)
+    height: rem-to-px(13rem)
+
+  &:after
+    @media (max-width: $lp-max-720)
+      background-image: linear-gradient(to left, #fff 0%, rgba(#fff, 0) 100%)
+      bottom: 0
+      content: ""
+      height: 100%
+      position: absolute
+      right: 29px
+      top: 0
+      width: 30px
+
+.lp-search__label
+  +size(rem-to-px(2rem))
+  top: rem-to-px(.1rem)
+
+  @media (min-width: $lp-min-720)
+    top: rem-to-px(-.3rem)
+
+  .svg-icon
+    +lp-font-size(1.8rem)
+
+.lp-search__input
+  +lp-font-size(1.6rem)
+  +size(calc(100% - #{rem-to-px(5rem)} - #{rem-to-px(.9rem)}), rem-to-px(3.8rem))
+  left: rem-to-px(2.5rem)
+  right: rem-to-px(5.9rem)
+
+  @media (max-width: $lp-max-720)
+    padding-top: rem-to-px(.3rem)
+
+  @media (min-width: $lp-min-720)
+    +lp-font-size(2.4rem)
+    left: rem-to-px(3.4rem)
+    right: rem-to-px(3.4rem)
+    padding-top: 1px
+    width: calc(100% - #{rem-to-px(8rem)})
+
+.lp-search__close
+  +size(rem-to-px(3.8rem))
+  right: rem-to-px(-.9rem)
+
+  @media (min-width: $lp-min-720)
+    right: 0
+    top: rem-to-px(-.4rem)
+
+  .svg-icon
+    +lp-font-size(1.8rem)
+
+.lp-search-results
+  transform: translateY(rem-to-px(-2rem))
+
+.lp-search-results--visible
+  transform: translateY(0)
+
+.lp-search-results__list
+  margin-bottom: rem-to-px(4.5rem + .6rem)
+  padding-top: rem-to-px(1rem)
+  border-top-width: rem-to-px(.1rem)
+
+// Pixel value for line-height so that it's more precise
+.lp-search-item
+  margin-bottom: rem-to-px(1rem)
+  line-height: 60px
+
+.lp-search-item__link
+  padding-left: rem-to-px(11rem)
+  text-decoration: none !important
+
+.lp-search-item__name
+  +lp-font-size(1.8rem)
+  border-bottom-width: rem-to-px(.1rem)
+
+  @media (min-width: $lp-min-720)
+    +lp-font-size(2.2rem)
+    transform: translateX(0)
+
+.lp-search-item:hover,
+.lp-search-item:active,
+.lp-search-item:focus,
+.lp-search-item--selected
+  .lp-search-item__name
+    @media (min-width: $lp-min-720)
+      transform: translateX(rem-to-px(.7rem))
+
+.lp-search-results__more
+  +lp-font-size(1.2rem)
+  margin-bottom: rem-to-px(4.5rem)
+
+.lp-search-results__more
+  color: $lp-blue
+  text-decoration: none
+
+  &:hover
+  &:active,
+  &:focus
+    color: $lp-blue + 30
+
+  [class*="icon-"]
+    transform: translateX(rem-to-px(.6rem))
+
+  &:hover [class*="icon-"],
+  &:active [class*="icon-"],
+  &:focus [class*="icon-"]
+    transform: translateX(rem-to-px(.2rem))
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// topic
+// ---------------------------------------------------------------------------
+
+.topic__image
+  +size(rem-to-px(8rem), rem-to-px(6rem))

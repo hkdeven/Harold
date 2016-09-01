@@ -1,0 +1,123 @@
+// ----------------------------------------------------------------------------
+//
+// Flyout Sub-Menus
+//
+// ----------------------------------------------------------------------------
+
+// Variables - to make the below calculations more obvious
+$submenu--width:         200px
+$submenu__padding--horizontal: 10px
+$submenu__padding: 20px $submenu__padding--horizontal 10px
+$submenu__padding__item: 10px
+$submenu__left-offset: -(($submenu--width/2) + $submenu__padding--horizontal)
+$submenu__vertical-padding: 14px
+
+.nav__submenu__trigger
+  cursor: pointer
+  position: relative
+  &:hover
+    .nav__submenu
+      display: none
+      +respond-to(wide-view)
+        display: block
+
+  &.is-visible
+    .nav__submenu
+      display: block
+
+  > .nav__item
+    display: block
+
+.nav__submenu__trigger--icon
+  +size(15px)
+  margin-top: 14px
+  float: right
+  &.icon--chevron-up
+    display: none
+
+// padding around the submenu gives the submenu flyout more area to hover over
+.nav__submenu
+  +z-layer(middle)
+  display: none
+
+  // Centralise the submenu relative to its parent
+  left: 50%
+  top: 54%
+
+  &.place-title__submenu
+    top: 25px
+    padding-top: 5px
+
+  +respond-to(wide-view)
+    position: absolute
+    padding: $submenu__padding
+    margin-left: $submenu__left-offset
+    width: $submenu--width
+
+.nav__submenu__content
+  +css-arrow-central(top, $size: 30px)
+  @extend %transition--base
+  @extend %rounded-corners
+  position: relative
+  display: none
+  background-color: white
+  &:after
+    position: absolute
+    display: none
+    filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.1))
+
+  +respond-to(wide-view)
+    // We can't use `@extend %fly-out-shadow` within a mixin, thus:
+    box-shadow: 0 2px 2px 0 rgba($darkgray,0.25)
+    &, &:after
+      display: block
+
+  .row--secondary &
+    border-top: 1px solid $subduedgray
+
+  .place-title__submenu &
+    +css-arrow-central(top, $size: 20px)
+
+.nav__submenu__item
+  color: $body-copy
+  font-weight: normal
+  padding: $submenu__vertical-padding 20px
+  text-transform: uppercase
+  border-bottom: 1px solid $subduedgray
+  background-color: $responsive-nav-subnav-bg
+  &:hover
+    color: $lpblue
+
+  &:first-child
+    border-radius: 4px 4px 0 0
+    overflow: hidden
+
+  &:last-child
+    border-bottom: 0
+    border-radius: 0 0 4px 4px
+
+  +respond-to(wide-view)
+    background-color: transparent
+    padding: $submenu__padding__item
+    text-transform: none
+    &:hover
+      background-color: $body-background-offset
+      color: $body-copy
+
+  .nav__item__badge
+    float: right
+
+.nav__submenu__item__text
+  @extend %truncate-text
+
+.nav__submenu__button
+  padding: 10px
+  .btn
+    text-transform: uppercase
+
+.nav__submenu__title
+  +font-size(16)
+  font-weight: bold
+  cursor: default
+  &:hover
+    background-color: transparent

@@ -1,0 +1,11 @@
+= render 'styleguide/partials/shared'
+- flickr_widgets = styleguide_stubs('flickr_widget')
+
+.card.styleguide-intro.copy--body.context--content
+  %h1.copy--h1 Flickr Widget
+
+  %p
+    This is the flickr widget
+
+- flickr_widgets.each_with_index do |widget, i|
+  = styleguide_component("widgets/flickr", properties: widget.merge(fixed?: true), num_items: 5, count: i, full_width: true)

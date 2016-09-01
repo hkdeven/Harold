@@ -1,0 +1,19 @@
+:ruby
+  hero = properties.merge({
+    retina: true,
+    size: {
+      resize: { width: 480 }
+    },
+    breakpoints: [
+      {
+        at: 700,
+        resize: { width: 1000 }
+      },
+      {
+        at: 480,
+        resize: { width: 700 }
+      }
+    ]
+  })
+
+= ui_component('picture', properties: hero)

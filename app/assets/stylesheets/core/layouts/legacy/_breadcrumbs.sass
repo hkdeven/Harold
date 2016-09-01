@@ -1,0 +1,30 @@
+// ----------------------------------------------------------------------------
+// 
+// Breadcrumbs
+// 
+// ----------------------------------------------------------------------------
+
+.row--breadcrumbs
+  @extend %lp-font-stack
+
+.nav__item--breadcrumbs--current
+  @extend .nav__item--breadcrumbs
+  font-weight: bold
+  &:hover
+    text-decoration: none
+
+.nav__item--breadcrumbs, .nav__item--breadcrumbs--home
+  @extend %inline-block
+
+.nav__item--breadcrumbs
+  padding: 12px 5px 12px 25px
+  position: relative
+
+.nav__item--breadcrumbs--home
+  width: 26px
+  height: 32px
+  top: 10px
+
+.nav--breadcrumbs--footer
+  @extend %clearfix
+  padding: 0 0 15px 0

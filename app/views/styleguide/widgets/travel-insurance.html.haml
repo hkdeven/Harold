@@ -1,0 +1,71 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.split--left.copy--h1 Travel insurance widget
+
+  %p
+    Our travel insurance widget is not really ours, but is rather pulled in by an external script from World Nomads. It is, by default, not styled in any way, so you must provide your own styles. The default style in this example mimics the look of how it is implemented in the Lonely Planet booking page, which you can view in the 
+    %code.language-markup
+      widgets/_travel_insurance.sass 
+    file.
+
+  %p
+    There is one known conflict. The World Nomads widget implements an element with a class of 
+    %code.language-markup
+      \.tooltip
+    , which is also a Lonely Planet class, so the tooltip that should appear when the "Who's going" input gains focus will not appear in this example.
+
+.styleguide-block
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Arguments
+
+    %p
+      %code.language-markup
+        show_sponsor
+      Setting this to true will display the World Nomad logo beneath the widget.
+
+  .styleguide-block__description.card.copy--body
+
+    %h2.copy--h2.styleguide-block__heading
+      Usage
+
+    %p
+      The following example demonstrates how to implement.
+
+    
+    %pre.styleguide.copy--body.language-html
+      %code
+        = preserve do
+          :plain
+            @import 'components/preloader'
+    %p
+      If you use show_preloader: true, ensure that preloader sass is included.
+
+    %pre.styleguide.copy--body.language-html
+      %code
+        = preserve do
+          :plain
+            = ui_component("widgets/travel_insurance", properties: { show_sponsor: true, show_preloader: true})
+
+    %p
+      To setup the widget, you need to require it, and call <code>.render()</code>. You can optionally use the <code>.then()</code>
+      to run a function when the widget has loaded.
+
+
+    %pre.styleguide.copy--body.language-javascript
+      %code
+        = preserve do
+          :plain
+            define(["lib/widgets/travel_insurance"], function(TravelInsurance) {
+              var widget = new TravelInsurance();
+              widget.render().then(function() {
+                // ...
+              });
+            });
+
+
+= ui_component("widgets/travel_insurance", properties: { show_sponsor: true , show_preloader: true })

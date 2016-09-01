@@ -1,0 +1,26 @@
+- icon_class = properties[:icon] ? "breadcrumbs--icon icon--#{properties[:icon]}--before" : ""
+
+.nav--inline{ class: icon_class }
+
+  - if properties[:show_home]
+    %a.nav__item.nav__item--breadcrumbs--home.icon--home{href: '/'}> Home
+
+  - properties[:breadcrumbs].each_with_index do |breadcrumb, index|
+    - last = properties[:breadcrumbs].length == (index + 1)
+
+    - if breadcrumb[:slug] && !last
+      %a.nav__item.js-nav-item.nav__item--breadcrumbs{href: "http://www.lonelyplanet.com/#{breadcrumb[:slug]}"}<>
+        = breadcrumb[:place]
+      
+    - else
+      %span.nav__item.js-nav-item.nav__item--breadcrumbs{class: last ? "current" : false}<>
+        = breadcrumb[:place]
+
+  -# invisible navigation for Google Breadcrumbs
+  .google-breadcrumbs.is-hidden
+    - google_breadcrumbs = properties[:breadcrumbs].select {|item| !!(item[:slug] && item[:place])}[0..-2]
+    - google_breadcrumbs.each_with_index do |breadcrumb, index|
+      %div{id: "google-breadcrumb-#{index}", itemscope: true, itemprop:"child", itemtype: 'http://data-vocabulary.org/Breadcrumb', itemref: (!!google_breadcrumbs[index+1] ? "google-breadcrumb-#{index+1}" : nil)}
+        %a{href: "http://www.lonelyplanet.com/#{breadcrumb[:slug]}", itemprop: "url"}
+          %span{itemprop: "title"}
+            = breadcrumb[:place]

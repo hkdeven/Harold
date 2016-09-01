@@ -1,0 +1,69 @@
+@import "../../../sass/webpack_deps";
+
+$notification-badge-size: 1.7rem;
+
+.notification-badge {
+  background-color: $color-red;
+  border-radius: 50%;
+  color: $color-white;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: bold;
+  height: $notification-badge-size;
+  line-height: ($notification-badge-size + .1);
+  text-align: center;
+  user-select: none;
+  width: $notification-badge-size;
+
+  // Use when you need it directly on a word, aka
+  // <span class="notification-badge__wrap">Messages
+  //   <span class="notification-badge notification-badge--user-inline">
+  //   </span>
+  // </span>
+  &__wrap {
+    position: relative;
+  }
+}
+
+.notification-badge--shop {
+  position: absolute;
+  right: -.6rem;
+  top: ($header-height / 2) - ($notification-badge-size / 2) - 1;
+}
+
+.notification-badge--shop-inline {
+  height: .6rem;
+  left: 4.6rem;
+  position: absolute;
+  top: 1.8rem;
+  width: .6rem;
+}
+
+.notification-badge--user,
+.notification-badge--user-inline {
+  border: .3rem solid $color-white;
+  position: absolute;
+}
+
+.notification-badge--user {
+  height: 1.5rem;
+  right: -.2rem;
+  top: 0;
+  width: 1.5rem;
+}
+
+.notification-badge--user-inline {
+  height: 1.2rem;
+  right: -1.1rem;
+  top: -.5rem;
+  width: 1.2rem;
+}
+
+.notification-badge--mobile-menu {
+  height: .6rem;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.6rem;
+  width: .6rem;
+  z-index: z("default") + 1;
+}

@@ -1,0 +1,9 @@
+= render 'styleguide/partials/shared'
+- alerts = styleguide_stubs('alert')
+
+.card.styleguide-intro.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 Alerts
+
+- alerts['alerts'].each_with_index do |alert, i|
+  = styleguide_component("alert", properties: alert, count: i, full_width: true)

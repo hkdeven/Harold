@@ -1,0 +1,46 @@
+= render 'styleguide/partials/shared'
+
+.card.styleguide-intro.styleguide-block.copy--body.context--content
+  .clearfix
+    %h1.copy--h1 Preloader
+    %p Adds a loading animation inside of an element.
+    %p
+      %em Note:
+      This element is positioned absolutely and centered within the element, as such it's necessary to make sure the container has
+      %code.language--sass position: relative
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Default Usage
+
+  %pre.styleguide.copy--body.language-ruby
+    %code
+      = preserve do
+        :plain
+          = ui_component('preloader')
+
+  %p
+    Note that the above will output the markup for the preloader. To make it visible, you need to add a class of
+    %code.language--markup is-loading
+    to the parent container.
+
+  %h2.copy--h2.styleguide-block__heading
+    Example
+
+  .styleguide-preloader.is-loading
+    = ui_component('preloader')
+
+.styleguide-block.styleguide-block__description.card.copy--body
+
+  %h2.copy--h2.styleguide-block__heading
+    Styled Example
+
+  %pre.styleguide.copy--body.language-ruby
+    %code
+      = preserve do
+        :plain
+          = ui_component('preloader', properties: { styled: true })
+
+.styleguide-preloader.is-loading
+  = ui_component('preloader', properties: { styled: true })

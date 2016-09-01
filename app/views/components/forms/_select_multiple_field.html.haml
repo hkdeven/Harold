@@ -1,0 +1,9 @@
+= render :layout => 'components/forms/partials/field', :locals => { id: properties[:id], label: properties[:label], extra_class: properties[:extra_class], tooltip: properties[:tooltip] } do
+
+  .input__container.js-input{ class: properties[:error] ? 'field__input--error' : nil }
+
+    = ui_component('forms/select_multiple', properties: properties )
+
+    - if properties[:error]
+      .field__error.js-error
+        = properties[:error]

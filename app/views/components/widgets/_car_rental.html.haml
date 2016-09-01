@@ -1,0 +1,37 @@
+- data = YAML.load(File.read(File.expand_path('../../../../data/widgets/car_rental.yml', __FILE__)))
+
+.booking-widget.booking-widget--car-rental.rwd-image-blocker.tab--homepage--car-rental.js-car-rental-widget.js-tab{ class: properties[:widget_class], data: {threshold: -400} }
+  .booking-widget__inner
+    %h2.copy--h1 Car rental
+
+    - if properties[:show_subheading]
+      %h4.copy--h4.booking-subtitle Book your next car rental with Lonely Planet
+
+    %form.module--car-hire#car-rental-form{:action => ""}
+      %fieldset.car-hire--pickup
+        %label.polyfill--placeholder{for: "pickup_location"} Enter Pickup Location
+        = ui_component('forms/text_field', properties: {extra_class: "field--booking field--no-label", placeholder: "Enter Pickup Location", name: "pickup_location", id: "js-pickup-location"})
+        = ui_component('forms/checkbox_field', properties: {extra_class: "field--booking field--no-label", label: "Return to a different location", checked: false, name: "dropoff_different", id: "js-dropoff-different"})
+        .dropoff-area
+          = ui_component('forms/text_field', properties: {extra_class: "field--booking field--no-label", placeholder: "Enter Dropoff Location", name: "dropoff_location", id: "js-dropoff-location"})
+
+      .times-dates.clearfix
+        %label.polyfill--placeholder#car-hire--pickup-date-time{for: "pickup_date"} Enter pickup date & time
+        %fieldset.fieldset--pair.car-hire--pickup--datetime
+          = ui_component('forms/date_field', properties: {extra_class: "field--booking", id: "js-pickup-date", name: "pickup_date", placeholder: "Pick up date"})
+          = ui_component('forms/dropdown', properties: {class: "field--booking", id: "js-pickup-time", name: "pickup_time", placeholder: "Time", options: data[:times_list], selected: data[:default_time]})
+        %label.polyfill--placeholder#car-hire--dropoff-date-time{for: "dropoff_date"} Enter drop off date & time
+        %fieldset.fieldset--pair.car-hire--dropoff--datetime
+          = ui_component('forms/date_field', properties: {extra_class: "field--booking", id: "js-dropoff-date", name: "dropoff_date", placeholder: "Drop off date"})
+          = ui_component('forms/dropdown', properties: {class: "field--booking", id: "js-dropoff-time", name: "dropoff_time", placeholder: "Time", options: data[:times_list], selected: data[:default_time]})
+
+      .field--booking.driver-info
+        %fieldset.fieldset--pair.car-hire--driver-info
+          = ui_component('forms/dropdown', properties: {class: "field--booking", id: "js-driver-country", placeholder: "Country of residence", name: "Country of residence", options: data[:country_list]})
+          = ui_component('forms/dropdown', properties: {class: "field--booking", id: "js-driver-currency", placeholder: "Currency", name: "Currency", options: data[:currency_list]})
+
+      .field--booking
+        %a.btn.btn--green.btn--medium.btn--full-width.btn--booking.js-get-quote{:href => "#getQuote"}
+          Get your quote
+          .alert.alert--error.btn--full-width.btn--booking__error.copy--icon--before.icon--cross--before.icon--white--before
+            Please make sure all fields are filled out

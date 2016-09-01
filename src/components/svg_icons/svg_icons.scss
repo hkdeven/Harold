@@ -1,0 +1,39 @@
+@import "../../../sass/webpack_deps";
+
+.svg-icon {
+  @include svg-icon;
+}
+
+.svg-icon--inline {
+  @include svg-icon-inline;
+}
+
+.svg-icon--dark {
+  fill: $darkgray;
+}
+
+.svg-icon--gray {
+  fill: rgba($color-black, .6);
+}
+
+.svg-icon--light-gray {
+  fill: rgba($color-black, .25);
+}
+
+.svg-icon--spin {
+  animation: spin 500ms linear infinite;
+}
+
+// Sizing
+
+.svg-icon--fit {
+  @include svg-icon-fit;
+}
+
+.svg-icon--small {
+  @include svg-icon-small;
+}
+
+.svg-icon--tiny {
+  @include svg-icon-tiny;
+}

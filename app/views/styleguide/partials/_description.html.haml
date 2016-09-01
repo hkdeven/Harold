@@ -1,0 +1,17 @@
+.styleguide-block__description.card.copy--body
+  .styleguide-block__tabs
+    
+    - if properties[:styleguide_title].present?
+      .copy--h2.styleguide-block__heading #{properties.delete(:styleguide_title)}
+    - if properties[:styleguide_description].present?
+      %p #{properties.delete(:styleguide_description)}
+    
+    .styleguide__partial.copy--body.js-styleguide-partial
+      \= ui_component('#{component}', properties:
+      %b {as_below}
+      )
+    %input.styleguide__input-copy.styleguide__partial.copy--body.is-hidden{ value: "= ui_component('#{component}', properties: properties)" }
+    %pre.styleguide.copy--body.language-ruby
+      %code
+        - formatted = JSON.pretty_generate properties
+        %code #{formatted.gsub(/\"(\S+)?\":/, '\1:')}
